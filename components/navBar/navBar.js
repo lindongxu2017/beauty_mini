@@ -1,17 +1,15 @@
 // components/navBar/navBar.js
 Component({
-  header: {
-    type: Object,
-    value: {
-      title: "",
-      hiddenBlock: false,
-    }
-  },
+ 
   properties: {
-    /**
-     * 自定义返回事件处理
-     * customBackReturn="{{true}}" bind:customBackReturn="customBackReturn"
-     */
+    header: {
+      type: Object,
+      value: {
+        title: "",
+        hiddenBlock: false,
+        homeCapsule:false,
+      }
+    },
     customBackReturn: {
       type: Boolean,
       value: false
@@ -35,12 +33,12 @@ Component({
           })
         }
       }
-    }
-  },
-  homeClick() {
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
+    },
+    homeClick() {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    },
   },
   attached() {
     var self = this;

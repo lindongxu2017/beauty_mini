@@ -11,7 +11,11 @@ Page({
       { imgurl: "../../utils/img/1562911353027.jpg" },
     ]
   },
-
+  goCardCase:function(){
+    wx.navigateTo({
+      url: '../cardcase/cardcase'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

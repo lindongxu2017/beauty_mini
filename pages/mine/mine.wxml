@@ -23,7 +23,7 @@
       <image src="../../utils/img/icon_order.png"></image>
       <view>全部订单</view>
     </view>
-    <view class="menuChild">
+    <view class="menuChild" bindtap="goCardCase">
       <image src="../../utils/img/icon_card.png"></image>
       <view>我的卡包</view>
     </view>

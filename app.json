@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/appointServe/appointServe",
     "pages/index/index",
-    "pages/mine/mine",
-    "pages/appointment/appointment"
+    
+    "pages/appointment/appointment",
+    "pages/cardcase/cardcase"
   ],
   "window": {
     "backgroundTextStyle": "light",

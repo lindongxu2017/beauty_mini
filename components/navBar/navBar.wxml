@@ -3,9 +3,12 @@
 <view class='topbar'>
   <view class='status' style="height:{{statusHeight}}px"></view>
   <view class='navbar' style="height:{{navHeight}}px">
-      <view class='navbar_home' >
-        <view bindtap='backClick' class="iconfont iconzuojiantou"></view>
-        <view bindtap='homeClick' class="iconfont iconhuidaoshouye"></view>
+      <view class='navbar_home' wx:if="{{header.homeCapsule}}">
+        <image src='../../utils/img/zuojiantou.png' bindtap='backClick'></image>
+        <image src='../../utils/img/huidaoshouye.png' bindtap='homeClick'></image>
+      </view>
+      <view class='navbar_back' bindtap='backClick' wx:else>
+        <image src='../../utils/img/zuojiantou.png'></image>
       </view>
       <view class='navbar_title'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
   </view>
