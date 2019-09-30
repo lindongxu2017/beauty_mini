@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/appointServe/appointServe",
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/appointment/appointment"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "美肌工坊",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#c3c3c5",
+    "selectedColor": "#363636",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "美肌工坊",
+        "iconPath": "utils/img/shangcheng.png",
+        "selectedIconPath": "utils/img/shangcheng1.png"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "text": "预约",
+        "iconPath": "utils/img/shijian.png",
+        "selectedIconPath": "utils/img/yuyue1.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "utils/img/gerenzhongxin.png",
+        "selectedIconPath": "utils/img/gerenzhongxin1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,83 @@
+<!--pages/appointServe/appointServe.wxml-->
+<view>
+  <!-- <view class="navbar" style="{{'height: ' + navigationBarHeight}}">
+  <view style="{{'height: ' + statusBarHeight}}"></view>
+  <view class='title-container'>
+    <view class='capsule' wx:if="{{ back || home }}">
+      <view bindtap='back' wx:if="{{back}}">
+        <view class="iconfont iconzuojiantou"></view>           
+      </view>
+    </view>
+    <view class='title'>{{text}}</view>
+  </view>
+</view> -->
+  <view class="banner">
+    <image src="../../utils/img/1562166494968.jpg"></image>
+  </view>
+  <view class="productInfo">
+    <view class="ptitle">Ut哑光肌·超音波嫩白管理</view>
+    <view class="ptime">65min</view>
+    <view class="psolgon">通过产生波100万次/秒震动，打开细胞间隙，有效将幻彩精华渗透到真皮层，美白补水回复肌肤光滑细腻</view>
+    <view class="psign">¥</view>
+    <view class="pprice">299.</view>
+    <view class="pzero">00</view>
+    <view class="poriginprice">¥399.00</view>
+    <view class="psold">已售9000件</view>
+  </view>
+  <view class="demand">
+    <view class="iconfont iconwancheng">颜选优品</view>
+    <view class="iconfont iconwancheng">价格透明</view>
+    <view class="iconfont iconwancheng">禁止强推</view>
+    <view class="iconfont iconwancheng lastCHild">支持退款</view>
+  </view>
+  <view class="grayAare"></view>
+  <view class="content">
+    <view class="contitle">
+      <text class="process">护理流程</text>
+      <text class="processsolgon">全心全意创造美</text>
+    </view>
+    <view class="firtstep">
+      <view class="oneline">
+        <text class="fsltitle">1.手部消毒</text>
+        <text class="fslmin">1min</text>
+      </view>
+      <view class="twoline">
+        <view class="twolineword">
+          <text>解决清洁大提前，开启安心护理</text>
+        </view>
+         <view class="twolineword">
+          <text>解决清洁大提前，开启安心护理，进行狐狸前，先消毒首部避免细菌残            留。</text>
+        </view>
+      </view>
+      <view class="threeline" wx:if="{{testHave}}">
+        <view class="useProduct">使用产品</view>
+        <view class="userproductinfo">
+          <image src="../../utils/img/1561370726351.jpg"></image>
+          <view class="productname">生物祛痘美白嫩肤</view>
+          <view class="productprice">¥299.00</view>
+        </view>
+         <view class="userproductinfo">
+          <image src="../../utils/img/1561370726351.jpg"></image>
+          <view class="productname">生物祛痘美白嫩肤</view>
+          <view class="productprice">¥299.00</view>
+        </view>
+         <view class="userproductinfo">
+          <image src="../../utils/img/1561370726351.jpg"></image>
+          <view class="productname">生物祛痘美白嫩肤</view>
+          <view class="productprice">¥299.00</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="navBar">
+    <view class="shopping">
+      <view class="iconfont iconshangcheng2"></view>
+      <view class="shopingword">商城</view>
+    </view>
+    <view class="share">
+      <view class="iconfont iconfenxiang"></view>
+      <view class="shopingword">分享</view>
+    </view>
+    <view class="nowclick">立即预约</view>
+  </view>
+</view>

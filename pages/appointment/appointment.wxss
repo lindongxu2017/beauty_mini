@@ -1,0 +1,28 @@
+/* pages/appointment/appointment.wxss */
+.solgonBox{ 
+  margin-bottom: 400rpx
+} 
+.imgBoX,.presentBox,.solgonBox{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+}
+.newUser image{
+  width: 530rpx;
+  height: 530rpx;
+  display: block
+}
+.solgon{
+  font-size: 24rpx;
+  color: #b5b3b4;
+  width: 420rpx
+}
+.present{
+  width:  530rpx;
+  height: 88rpx;
+  border-radius: 37rpx;
+  background: #9c846a;
+  text-align: center;
+  line-height: 88rpx;
+  color: #ffffff;
+}

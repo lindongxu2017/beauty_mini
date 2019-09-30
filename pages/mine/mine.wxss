@@ -1,0 +1,87 @@
+/* pages/mine/mine.wxss */
+.info{
+  padding: 20rpx 50rpx;
+}
+.imgBox{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 26rpx;
+  float: left;
+}
+.imgBox image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+.personalInfo{
+  float: left;
+  width: 450rpx
+}
+.infoBox{
+  width: 100%;
+  height: 84rpx;
+  line-height: 84rpx
+}
+.nameBox{
+  float: left;
+  font-size: 32rpx;
+  margin-right: 10rpx
+}
+.personalInfo .iconfont{
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  color: #ffffff;
+  font-size:18rpx;
+  line-height: 40rpx;
+  text-align: center;
+  margin-top:26rpx;
+}
+.iconnv{
+  background: #ef99b4
+}
+.personalTel{
+  float: left;
+  font-size: 20rpx; 
+  color: #979797
+}
+.iconshezhi{
+  height: 120rpx;
+  line-height: 120rpx;
+  color: #a0a0a0
+}
+.card{
+ height: 300rpx;
+ width: 100%;
+ display: flex;
+  flex-direction: row;
+ white-space: nowrap;
+ background: #f3f3f1
+}
+.cardItem{
+  display: inline-block;
+  margin:20rpx 0rpx 0rpx 50rpx;
+}
+.cardItem image{
+  width: 573rpx;
+  height: 280rpx;
+  border-radius: 30rpx
+}
+.muneItem{
+  margin-top:54rpx;
+  height: 100rpx
+}
+.menuChild{
+  height: 100rpx;
+  width: 105rpx;
+  margin:0rpx 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+  float: left
+}
+.menuChild image{
+  width: 60rpx;
+  height: 60rpx
+}

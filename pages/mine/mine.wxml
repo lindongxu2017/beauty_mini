@@ -1,0 +1,39 @@
+<!--pages/mine/mine.wxml-->
+<view>
+  <view class="info">
+    <view class="imgBox">
+      <image src="../../utils/img/63JsEE6zTsh7aXYN.jpg"></image>
+    </view>
+    <view class="personalInfo">
+      <view class="infoBox">
+        <view class="nameBox">爱拔</view>
+        <view class="iconfont iconnv"></view>
+      </view>
+      <view class="personalTel">11312732763</view>
+    </view>
+    <view class="iconfont iconshezhi"></view>
+  </view>
+  <scroll-view class="card" scroll-x="true">
+    <block wx:for="{{cardArr}}" wx:key="{{index}}">
+      <view class="cardItem"><image src="{{item.imgurl}}"></image></view>
+    </block>
+  </scroll-view>
+  <view class="muneItem">
+    <view class="menuChild">
+      <image src="../../utils/img/icon_order.png"></image>
+      <view>全部订单</view>
+    </view>
+    <view class="menuChild">
+      <image src="../../utils/img/icon_card.png"></image>
+      <view>我的卡包</view>
+    </view>
+    <view class="menuChild">
+      <image src="../../utils/img/icon_coupon.png"></image>
+      <view>优惠券</view>
+    </view>
+    <view class="menuChild">
+      <image src="../../utils/img/icon_cart.png"></image>
+      <view>购物车</view>
+    </view>
+  </view>
+</view>

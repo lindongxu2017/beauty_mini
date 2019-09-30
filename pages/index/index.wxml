@@ -1,0 +1,264 @@
+<!--index.wxml-->
+<view class="indexItem">
+  <!-- <scroll-view scroll-y="false" bindscroll="scroll" style="height:100%"> -->
+    <!-- <scroll-view wx:if="{{showNav}}" class="navigatorTop" bindscroll="moveNav"                            style="background-color:rgba(161,131,107,0.4)"   scroll-x="true" >
+      <block wx:for="{{navData}}" wx:key="index">
+        <view class="navItem {{activeName[index]}}">{{item.text}}</view>
+      </block>
+    </scroll-view> -->
+    <view class="banner">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}"
+        duration="{{duration}}"  indicator-active-color="#6e6158"
+        circular="true" style="height:348rpx" 
+        >
+        <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item class="swiperItem">
+            <image src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="functionArea">
+        <view class="serveItem">
+          <image src="../../utils/img/shouyetypea.png"></image>
+          <view class="functionText">服务项目</view>
+        </view>
+        <view class="serveItem discountItem">
+          <image src="../../utils/img/shouyetypeb.png"></image>
+          <view class="functionText">优惠次卡</view>
+        </view>
+        <view class="serveItem">
+          <image src="../../utils/img/shouyetypec.png"></image>
+          <view class="functionText">家居产品</view>
+        </view>
+    </view>
+    <view class="purchasement">
+      <view class="skin1">
+        <image src="../../utils/img/1562166341037.jpg"></image>
+        <view class="skinContent purchasementItem">
+          <view class="skinTitle">服务项目</view>
+          <view class="skinSlogan">精选护肤好物，爱美不分场合</view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Bubble小气泡·毛孔深层清洁管理</view>
+            <view class="skinItemTime">65min</view>
+            <view class="skinItemSlogan">通过真空负压原理，将小气泡于营养液直接作用进去您的皮肤真皮层</view>
+            <view class="priceItem">
+              <view class="priceSpan">¥</view>
+              <view class="priceNum">199.</view>
+              <view class="priceZroe">00</view>
+              <view class="appointment" bindtap="handleAppointe">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Bubble小气泡·毛孔深层清洁管理</view>
+            <view class="skinItemTime">65min</view>
+            <view class="skinItemSlogan">通过真空负压原理，将小气泡于营养液直接作用进去您的皮肤真皮层</view>
+            <view class="priceItem">
+              <view class="priceSpan">¥</view>
+              <view class="priceNum">199.</view>
+              <view class="priceZroe">00</view>
+              <view class="appointment">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Bubble小气泡·毛孔深层清洁管理</view>
+            <view class="skinItemTime">65min</view>
+            <view class="skinItemSlogan">通过真空负压原理，将小气泡于营养液直接作用进去您的皮肤真皮层</view>
+            <view class="priceItem">
+              <view class="priceSpan">¥</view>
+              <view class="priceNum">199.</view>
+              <view class="priceZroe">00</view>
+              <view class="appointment">去预约</view>
+            </view>
+          </view>
+          <view class="skinTitle">家居产品</view>
+          <view class="skinSlogan">专注肌肤健康，全面守护颜值</view>
+          <view class="product">
+            <view class="productItem">
+              <image src="../../utils/img/1561370726351.jpg"></image>
+              <view class="productTitle">多肽精华乳</view>
+              <view class="productPrice">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1561370726351.jpg"></image>
+              <view class="productTitle">多肽精华乳</view>
+              <view class="productPrice">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1561370726351.jpg"></image>
+              <view class="productTitle">多肽精华乳</view>
+              <view class="productPrice">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1561370726351.jpg"></image>
+              <view class="productTitle">多肽精华乳</view>
+              <view class="productPrice">¥298.00</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="skin2">
+        <image src="../../utils/img/1562166363414.jpg"></image>
+        <view class="skinContent purchasementItem" style="background:white">
+          <view class="skinTitle" style="color:#c1c1b9">服务项目</view>
+          <view class="skinSlogan" style="color:#d9dad5">精选护肤好物，爱美不分场合</view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Golden黄金换肤·排毒管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">利用黄金排毒作用，将24k纯金箔作用脸部，排出脸部毒素</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Golden黄金换肤·排毒管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">利用黄金排毒作用，将24k纯金箔作用脸部，排出脸部毒素</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">Golden黄金换肤·排毒管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">利用黄金排毒作用，将24k纯金箔作用脸部，排出脸部毒素</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinTitle" style="color:#c1c1b9">家居产品</view>
+          <view class="skinSlogan" style="color:#d9dad5">专注肌肤健康，全面守护颜值</view>
+          <view class="product">
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="skin3">
+        <image src="../../utils/img/1562166385222.jpg"></image>
+        <view class="skinContent purchasementItem" style="background:white">
+          <view class="skinTitle" style="color:#c1c1b9">服务项目</view>
+          <view class="skinSlogan" style="color:#d9dad5">精选护肤好物，爱美不分场合</view>
+          <view class="skinItem">
+            <view class="skinItemTitle">战痘净肤管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">采用表皮清洁除螨、深层祛痘、淡化痘印和三位一体疗法</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">战痘净肤管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">采用表皮清洁除螨、深层祛痘、淡化痘印和三位一体疗法</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">战痘净肤管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">采用表皮清洁除螨、深层祛痘、淡化痘印和三位一体疗法</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinTitle" style="color:#c1c1b9">家居产品</view>
+          <view class="skinSlogan" style="color:#d9dad5">专注肌肤健康，全面守护颜值</view>
+          <view class="product">
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/1560835458748.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="skin4">
+        <image src="../../utils/img/1562166400165.jpg"></image>
+        <view class="skinContent purchasementItem" style="background:white">
+          <view class="skinTitle" style="color:#c1c1b9">服务项目</view>
+          <view class="skinSlogan" style="color:#d9dad5">精选护肤好物，爱美不分场合</view>
+          <view class="skinItem">
+            <view class="skinItemTitle">手部舒活管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">以木油果为核心成分，结合专业按摩手法和远红外线导入</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinItem">
+            <view class="skinItemTitle">手部舒活管理</view>
+            <view class="skinItemTime" style="color:#838383">65min</view>
+            <view class="skinItemSlogan" style="color:#858585">以木油果为核心成分，结合专业按摩手法和远红外线导入</view>
+            <view class="priceItem">
+              <view class="priceSpan" style="color:#dab394">¥</view>
+              <view class="priceNum" style="color:#dab394">499.</view>
+              <view class="priceZroe" style="color:#dab394">00</view>
+              <view class="appointment" style="background:#dab394;color:#fff">去预约</view>
+            </view>
+          </view>
+          <view class="skinTitle" style="color:#c1c1b9">家居产品</view>
+          <view class="skinSlogan" style="color:#d9dad5">专注肌肤健康，全面守护颜值</view>
+          <view class="product">
+            <view class="productItem">
+              <image src="../../utils/img/7b1586eeb7814b3da0cbbbe6bd1d2a6a.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤冻干粉</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+            <view class="productItem">
+              <image src="../../utils/img/7b1586eeb7814b3da0cbbbe6bd1d2a6a.jpg"></image>
+              <view class="productTitle">焕颜补水嫩肤眼霜</view>
+              <view class="productPrice" style="color:#dab394">¥298.00</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  <!-- </scroll-view> -->
+</view>

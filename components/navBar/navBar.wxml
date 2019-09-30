@@ -1,0 +1,12 @@
+
+<view style="height:{{statusHeight+navHeight}}px" hidden='{{header.hiddenBlock}}'></view>
+<view class='topbar'>
+  <view class='status' style="height:{{statusHeight}}px"></view>
+  <view class='navbar' style="height:{{navHeight}}px">
+      <view class='navbar_home' >
+        <view bindtap='backClick' class="iconfont iconzuojiantou"></view>
+        <view bindtap='homeClick' class="iconfont iconhuidaoshouye"></view>
+      </view>
+      <view class='navbar_title'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
+  </view>
+</view>
