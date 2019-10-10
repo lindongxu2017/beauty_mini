@@ -1,6 +1,8 @@
 /* pages/mine/mine.wxss */
 .info{
-  padding: 20rpx 50rpx;
+  margin: 20rpx 50rpx;
+  height: 150rpx;
+  border-bottom: 2rpx solid #f2f2f2
 }
 .imgBox{
   width: 120rpx;
@@ -39,9 +41,6 @@
   text-align: center;
   margin-top:26rpx;
 }
-.iconnv{
-  background: #ef99b4
-}
 .personalTel{
   float: left;
   font-size: 20rpx; 
@@ -73,18 +72,7 @@
   margin-top:54rpx;
   height: 100rpx
 }
-.menuChild{
-  height: 100rpx;
-  width: 105rpx;
-  margin:0rpx 40rpx;
-  text-align: center;
-  font-size: 24rpx;
-  float: left
-}
-.menuChild image{
-  width: 60rpx;
-  height: 60rpx
-}
+
 .noSIgn{
   display: flex;
   flex-direction:column;
@@ -113,4 +101,38 @@
   line-height: 51rpx;
   border-radius: 20rpx;
   margin-bottom: 27rpx;
+}
+.message{
+  margin:0 50rpx;
+  height: 130rpx;
+}
+.zhanghao{
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  font-size: 28rpx
+}
+.yue{
+  font-size: 28rpx;
+  float: left
+}
+.yue text{
+  font-size: 34rpx;
+  color: #ffa31a;
+  font-weight: bold
+}
+.depositBtn{
+  float: right;
+  width: 130rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: #a0856a;
+  border-radius: 20rpx
+}
+.gap{
+  width: 100%;
+  height: 20rpx;
+  background: #f2f2f2
 }

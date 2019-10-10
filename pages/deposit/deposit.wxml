@@ -1,0 +1,30 @@
+<!--pages/deposit/deposit.wxml-->
+<header header='{{header}}'></header>
+<view>
+  <view class="info">
+    <view class="idNumber">账号：{{info.id}}</view>
+    <view class="remain">余额：<text>￥{{info.remain}}.00</text></view>
+  </view>
+  <view class="gap"></view>
+  <view class="content">
+    <view class="chooseWords">选择充值金额</view>
+    <view class="moneyChoose">
+      <block wx:for="{{moneyInfo}}" wx:key="index">
+        <view class="moneyItem {{moneyActive===index?'active':''}}" bindtap="handleMoney" data-index="{{index}}" data-money="{{item.money}}" data-depositMoney="{{item.depositMoney}}">
+          <view>{{item.money}}元</view>
+          <view>送{{item.depositMoney}}元</view>
+        </view>
+      </block>
+      <view class="depositInfo">已选充值优惠：<text decode="{{true}}">充{{chooseMoney.money}}元&nbsp;送{{chooseMoney.depositMoney}}元</text></view>
+    </view>
+    <view class="realMoney">实际到账：<text>￥{{chooseMoney.money+chooseMoney.depositMoney}}元</text></view>
+    <view class="realMoney">应付金额：<text>￥{{chooseMoney.money}}元</text></view>
+    <view class="remind">温习提示：</view>
+    <view class="tips">
+      <view>1.充值实时到账</view>
+      <view>2.消费时优先使用实际金额，赠送金额有效期为1年</view>
+      <view>3.在法律允许的范围内，解释权归我公司所有</view>
+    </view> 
+  </view>
+  <view class="comfirm">确认充值</view>
+</view>

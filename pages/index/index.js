@@ -5,12 +5,10 @@ const app = getApp()
 Page({
   data: {
     imgUrls: [
-      '../../utils/img/1568777964097.jpg',
-      '../../utils/img/1568777964097.jpg',
       '../../utils/img/1568777964097.jpg'
     ],
     header: {
-      title: '美肌工坊',
+      title: '美肌商城',
       hiddenBlock: '',
       homeCapsule: '',
     },
@@ -19,10 +17,9 @@ Page({
     interval: 3000,
     duration: 1000,
     showNav:false,
-    navData:[
-      { text: "皮表层管理",}, { text: "中胚层管理"}, { text: "痘痘肌管理"}, { text: "局部专项管理"},
+    cardType:[
+      { money: 2000, depositMoney: 200 }, { money: 3000, depositMoney: 500 }, { money: 5000, depositMoney: 1000 }, { money: 8000, depositMoney: 2000 }, { money: 10000, depositMoney: 3000 }, { money: 20000, depositMoney: 7000 }
     ],
-    activeName: ['active','','','' ],
     scrollTopNum:null
   },
   onPageScroll: function (e) {
@@ -52,5 +49,13 @@ Page({
     wx.navigateTo({
       url: '../appointServe/appointServe'
     })
+  },
+  handleDeposit:function(e){
+    var money = e.currentTarget.dataset.money
+    var depositmoney = e.currentTarget.dataset.depositmoney
+    var index = e.currentTarget.dataset.index
+      wx.navigateTo({
+        url: '../deposit/deposit?money=' + money + '&depositMoney=' + depositmoney + '&index=' + index
+      })
   }
 })

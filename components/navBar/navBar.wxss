@@ -37,20 +37,19 @@
   left: 0;
   top: 0;
   width: 100%;
-  text-align: center;
+  
   display: flex;
-  justify-content: center;
+
   align-items: center;
   z-index: -1; 
 }
 .navbar_title view {
-  width: 40%;
   word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 36rpx;
-  font-weight: bold
+  margin-left: 40rpx
 }
 .navbar_home {
   margin-left: 32rpx;
@@ -79,4 +78,7 @@
 .navbar_back image{
   width: 32rpx;
   height: 32rpx;
+}
+.navbar_title1{
+  margin-left:50rpx
 }

@@ -1,17 +1,11 @@
-// pages/appointServe/appointServe.js
+// pages/setPage/setPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    header: {
-      homeCapsule: false,
-      title: '服务详情',
-      homeCapsule:true,
-      tubiao: true
-    },
-    testHave:"diswdh"
+
   },
 
   /**

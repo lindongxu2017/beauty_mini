@@ -1,0 +1,84 @@
+/* pages/deposit/deposit.wxss */
+.info{
+  padding: 40rpx;
+}
+.idNumber{
+  margin-bottom: 20rpx
+}
+.remain text{
+  font-size: 40rpx;
+  color: #ffa31a;
+  font-weight: bold
+}
+.gap{
+  height: 20rpx;
+  background: #f2f2f2
+}
+.content{
+  padding: 20rpx 40rpx
+}
+.chooseWords{
+  color: #999999;
+  padding-bottom:30rpx;
+  border-bottom: 1px solid #f2f2f2
+}
+.moneyChoose{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  flex-wrap: wrap
+}
+.moneyItem{
+  width: 31%;
+  height: 130rpx;
+  border: 1rpx solid #999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15rpx;
+  color: #a0856a;
+  margin-left:2% ;
+  margin-bottom: 20rpx
+}
+.active{
+  color: white;
+  background: #a0856a
+}
+.depositInfo{
+  color:#999999;
+  font-size: 26rpx;
+  line-height: 50rpx
+}
+.depositInfo text{
+  color:#a0856a;
+}
+.realMoney{
+  margin-top: 30rpx
+}
+.realMoney text{
+  color: #ffa31a
+}
+.remind{
+  margin: 40rpx 0 20rpx;
+  font-size: 26rpx;
+  color: #999999
+}
+.tips{
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 250rpx
+}
+.comfirm{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 100rpx;
+  z-index: 9;
+  background: #a0856a;
+  width: 100%;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 100rpx
+}

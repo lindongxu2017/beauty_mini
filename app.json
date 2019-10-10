@@ -1,15 +1,12 @@
 {
   "pages": [
-    "pages/promiseLogin/promiseLogin",
     "pages/mine/mine",
-    "pages/allorder/allorder",
-    "pages/cardcase/cardcase",
-    "pages/appointServe/appointServe",
     "pages/index/index",
-    "pages/appointment/appointment",
+    "pages/deposit/deposit",
+    "pages/promiseLogin/promiseLogin",
     "components/navBar/navBar",
-    "components/dialog/dialog"
-    
+    "components/dialog/dialog",
+    "pages/setPage/setPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,15 +22,9 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "美肌工坊",
+        "text": "美肌商城",
         "iconPath": "utils/img/shangcheng.png",
         "selectedIconPath": "utils/img/shangcheng1.png"
-      },
-      {
-        "pagePath": "pages/appointment/appointment",
-        "text": "预约",
-        "iconPath": "utils/img/shijian.png",
-        "selectedIconPath": "utils/img/yuyue1.png"
       },
       {
         "pagePath": "pages/mine/mine",
