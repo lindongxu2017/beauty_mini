@@ -6,8 +6,10 @@ Component({
       type: Object,
       value: {
         title: "",
-        hiddenBlock: false,
-        homeCapsule:false,
+        hiddenBlock: '',
+        homeCapsule:'',
+        tubiao:true,
+        background:""
       }
     },
     customBackReturn: {

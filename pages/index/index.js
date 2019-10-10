@@ -9,6 +9,11 @@ Page({
       '../../utils/img/1568777964097.jpg',
       '../../utils/img/1568777964097.jpg'
     ],
+    header: {
+      title: '美肌工坊',
+      hiddenBlock: '',
+      homeCapsule: '',
+    },
     indicatorDots:true,
     autoplay: true,
     interval: 3000,

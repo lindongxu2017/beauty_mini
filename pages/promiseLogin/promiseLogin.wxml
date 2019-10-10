@@ -1,0 +1,2 @@
+<!--pages/promiseLogin/promiseLogin.wxml-->
+<header header='{{header}}'></header>

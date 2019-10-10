@@ -1,11 +1,15 @@
 {
   "pages": [
+    "pages/promiseLogin/promiseLogin",
     "pages/mine/mine",
+    "pages/allorder/allorder",
+    "pages/cardcase/cardcase",
     "pages/appointServe/appointServe",
     "pages/index/index",
-    
     "pages/appointment/appointment",
-    "pages/cardcase/cardcase"
+    "components/navBar/navBar",
+    "components/dialog/dialog"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

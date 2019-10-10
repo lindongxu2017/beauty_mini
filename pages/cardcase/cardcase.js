@@ -5,6 +5,11 @@ Page({
     motto: 'Hello World',
     type: [{ "name": "正常" }, { "name": "已用完/退款" }, { "name": "已过期" }],
     flag: 0,
+    header:{
+      title:'我的卡包',
+      hiddenBlock: '',
+      homeCapsule: '',
+    },
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),

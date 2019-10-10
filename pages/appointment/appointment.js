@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    header: {
+      title: '预约',
+      hiddenBlock: '',
+      homeCapsule: '',
+    },
   },
 
   /**

@@ -1,25 +1,35 @@
 <!--pages/mine/mine.wxml-->
+<header header='{{header}}'></header>
 <view>
-  <view class="info">
-    <view class="imgBox">
-      <image src="../../utils/img/63JsEE6zTsh7aXYN.jpg"></image>
-    </view>
-    <view class="personalInfo">
-      <view class="infoBox">
-        <view class="nameBox">爱拔</view>
-        <view class="iconfont iconnv"></view>
+  <block wx:if="">
+    <view class="info">
+      <view class="imgBox">
+        <image src="../../utils/img/63JsEE6zTsh7aXYN.jpg"></image>
       </view>
-      <view class="personalTel">11312732763</view>
+      <view class="personalInfo">
+        <view class="infoBox">
+          <view class="nameBox">爱拔</view>
+          <view class="iconfont iconnv"></view>
+        </view>
+        <view class="personalTel">11312732763</view>
+      </view>
+      <view class="iconfont iconshezhi"></view>
     </view>
-    <view class="iconfont iconshezhi"></view>
-  </view>
-  <scroll-view class="card" scroll-x="true">
-    <block wx:for="{{cardArr}}" wx:key="{{index}}">
-      <view class="cardItem"><image src="{{item.imgurl}}"></image></view>
-    </block>
-  </scroll-view>
+    <scroll-view class="card" scroll-x="true">
+      <block wx:for="{{cardArr}}" wx:key="{{index}}">
+        <view class="cardItem"><image src="{{item.imgurl}}"></image></view>
+      </block>
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <view class="noSIgn">
+        <image src="../../utils/img/yonghumorentouxiang.png"></image>
+        <view class="statusTip">您还没有登录哦</view>
+        <view class="signBTn" bindtap="promiseLogin">授权登录</view>
+    </view>
+  </block>
   <view class="muneItem">
-    <view class="menuChild">
+    <view class="menuChild" bindtap="goAllOrder">
       <image src="../../utils/img/icon_order.png"></image>
       <view>全部订单</view>
     </view>

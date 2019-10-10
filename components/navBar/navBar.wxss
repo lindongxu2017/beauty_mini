@@ -49,7 +49,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 38rpx;
+  font-size: 36rpx;
+  font-weight: bold
 }
 .navbar_home {
   margin-left: 32rpx;

@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<header header='{{header}}'></header>
 <view class="indexItem">
   <!-- <scroll-view scroll-y="false" bindscroll="scroll" style="height:100%"> -->
     <!-- <scroll-view wx:if="{{showNav}}" class="navigatorTop" bindscroll="moveNav"                            style="background-color:rgba(161,131,107,0.4)"   scroll-x="true" >

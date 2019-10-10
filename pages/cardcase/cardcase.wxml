@@ -6,14 +6,16 @@
         <view class="{{flag==index?'active':''}}" bindtap="flagFun" wx:for="{{type}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
       </scroll-view>
   </view>
-  <view class='normal' hidden="{{flag == 0?false:true}}">
+  <view class="cardArea">
+    <view class='normal' hidden="{{flag == 0?false:true}}">
       <view class="not">空空如也~~</view>
-  </view>
-  <view class='run' hidden="{{flag == 1?false:true}}">
-    已用完
-  </view>
-  <view class='out' hidden="{{flag == 2?false:true}}">
-    已过期
+    </view>
+    <view class='run' hidden="{{flag == 1?false:true}}">
+       <view class="not">空空如也~~</view>
+    </view>
+    <view class='out' hidden="{{flag == 2?false:true}}">
+       <view class="not">空空如也~~</view>
+    </view>
   </view>
 </view>
 

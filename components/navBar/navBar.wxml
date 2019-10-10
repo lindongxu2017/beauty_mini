@@ -1,8 +1,9 @@
-
+<view>
 <view style="height:{{statusHeight+navHeight}}px" hidden='{{header.hiddenBlock}}'></view>
-<view class='topbar'>
+<view class='topbar'style="background:{{header.background}}">
   <view class='status' style="height:{{statusHeight}}px"></view>
   <view class='navbar' style="height:{{navHeight}}px">
+    <view wx:if="{{header.tubiao}}">
       <view class='navbar_home' wx:if="{{header.homeCapsule}}">
         <image src='../../utils/img/zuojiantou.png' bindtap='backClick'></image>
         <image src='../../utils/img/huidaoshouye.png' bindtap='homeClick'></image>
@@ -11,5 +12,8 @@
         <image src='../../utils/img/zuojiantou.png'></image>
       </view>
       <view class='navbar_title'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
+    </view>
+    <view wx:else class='navbar_title'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
   </view>
+</view>
 </view>
