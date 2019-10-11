@@ -1,0 +1,25 @@
+<!--pages/detail/detail.wxml-->
+<header header='{{header}}'></header>
+<view class="container">
+  <view class="message">
+      <view class="zhanghao">账号：{{zhanghao}}</view>
+      <view class="yue">余额：<text>￥{{yue}}.00</text></view>
+      <view class="supply">*其中包含（基础￥80.00+赠送￥20.00 ）</view>
+  </view>
+  <view class="content"> 
+    <view class="contentitem">
+      <block wx:for="{{idData}}" wx:key="index">
+         <view class="itemBox" bindtap="handleAccount" data->
+          <view class="left">
+            <text class="leftTitle">美肌工坊KKONE店</text>
+            <text class="leftTime" decode="{{true}}">{{item.time}}&nbsp;{{item.moreTime}}</text>
+          </view>
+          <view class="right">
+            <text>￥{{item.money}}.00</text>
+            <text class="iconfont iconyoujiantou"></text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

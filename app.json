@@ -1,12 +1,15 @@
 {
   "pages": [
+        "pages/detail/detail",
     "pages/mine/mine",
+    "pages/promiseLogin/promiseLogin",
+    "pages/personal/personal",
+    "pages/setPage/setPage",
     "pages/index/index",
     "pages/deposit/deposit",
-    "pages/promiseLogin/promiseLogin",
     "components/navBar/navBar",
     "components/dialog/dialog",
-    "pages/setPage/setPage"
+    "pages/identity/identity"
   ],
   "window": {
     "backgroundTextStyle": "light",

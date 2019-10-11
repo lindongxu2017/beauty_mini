@@ -1,0 +1,63 @@
+/* pages/detail/detail.wxss */
+page{
+  height: 100%;
+  display: flex;
+  flex-direction: column 
+}
+.container{
+  flex: 1;
+  display: flex;
+  flex-direction: column 
+}
+.content{
+  flex: 1;
+  background: #f2f2f2;
+  padding: 20rpx 0
+}
+.message{
+  margin:20rpx 50rpx;
+}
+.zhanghao{
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  font-size: 28rpx
+}
+.yue{
+  font-size: 28rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f2f2f2
+}
+.yue text{
+  font-size: 34rpx;
+  color: #ffa31a;
+  font-weight: bold
+}
+.supply{
+  margin: 10rpx 0 10rpx;
+  font-size: 24rpx;
+  color: #999999
+}
+.contentitem{
+  background: #fff;
+  padding: 10rpx 50rpx 0;
+}
+.itemBox{
+  border-bottom: 1rpx dashed #f2f2f2;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+   display: flex;
+  justify-content: space-between
+}
+.left{
+  display: flex;
+  flex-direction: column
+}
+.left .leftTitle{
+  font-size: 28rpx;
+  line-height: 40rpx
+}
+.left .leftTime{
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #999999
+}

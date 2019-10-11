@@ -1,2 +1,19 @@
 <!--pages/promiseLogin/promiseLogin.wxml-->
 <header header='{{header}}'></header>
+<view class="contain">
+  <view class="need">需要您的授权</view>
+  <view class="tips">为了给您提供更好的服务，和方便您更好的使用小程序，我们需要获取您的一些授权</view>
+  <view class="content">
+      <view class="contentItem" style="opacity:{{opacityNum1}}">
+        <view class="firstLine"><text>授权微信登录权限</text><button disabled="{{handleBtn1}}" class="promise" bindtap="wxPromise">{{promiseWords1}}</button></view>
+        <view class="promiseTips">请授权您的账号信息（昵称、头像、地区及性别）</view>
+      </view>
+       <view class="contentItem1" style="opacity:{{opacityNum2}}">
+        <view class="firstLine"><text>授权手机号使用权限</text><button disabled="{{handleBtn2}}" class="promise" bindtap="telPromise">{{promiseWords2}}</button></view>
+        <view class="promiseTips">请授权您的手机号使用权限，方便您进行更多服务</view>
+      </view>
+      <text class="telLogin" hidden="{{showTel}}">手机号验证码登录</text>
+  </view>
+  <dialog id="dialog" dialog="{{dialog}}" bind:cancel="{{canFunction}}"
+      bind:confirm="{{comFunction}}"></dialog>
+</view>

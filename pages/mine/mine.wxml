@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
 <header header='{{header}}'></header>
 <view>
-  <block wx:if="111">
+  <block wx:if="id">
     <view class="info">
       <view class="imgBox">
         <image wx:if="{{imgsrc}}" src="../../utils/img/63JsEE6zTsh7aXYN.jpg"></image>
@@ -16,7 +16,7 @@
           <text wx:else>很懒什么也没有留下~</text>
         </view>
       </view>
-      <view class="iconfont iconshezhi"></view>
+      <view class="iconfont iconshezhi" bindtap="goSet"></view>
     </view>
     <view class="message">
       <view class="zhanghao">账号：{{zhanghao}}</view>
@@ -24,6 +24,7 @@
       <view class="depositBtn" bindtap="depositBtn">去充值</view>
     </view>
     <view class="gap"></view>
+    <view class="mingxi"><text>账户明细</text><text class="iconfont iconyoujiantou"></text></view>
   </block>
   <block wx:else>
     <view class="noSIgn">

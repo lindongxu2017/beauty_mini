@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+const app=getApp()
 Page({
 
   /**
@@ -13,17 +14,15 @@ Page({
       background:''
     },
     zhanghao:111111,
-    yue:1000
+    yue:1000,
+    id:'',
   },
-  goCardCase:function(){
-    wx.navigateTo({
-      url: '../cardcase/cardcase'
-    })
-  },
-  goAllOrder: function () {
-    wx.navigateTo({
-      url: '../allorder/allorder'
-    })
+  onLoad: function (options){
+    if (app.globalData.userInfo){
+      this.setData({
+        id: app.globalData.userInfo
+      })
+    }
   },
   promiseLogin:function(){
     wx:wx.navigateTo({
@@ -33,6 +32,11 @@ Page({
   depositBtn:function(){
     wx.navigateTo({
       url: '../deposit/deposit'
+    })
+  },
+  goSet:function(){
+    wx.navigateTo({
+      url: '../setPage/setPage'
     })
   }
 })

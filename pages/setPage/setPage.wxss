@@ -1,1 +1,28 @@
 /* pages/setPage/setPage.wxss */
+page{
+  height: 100%;
+  display: flex;
+  flex-direction: column 
+}
+.container{
+  flex: 1;
+  display: flex;
+  flex-direction: column 
+}
+.gap{
+  flex: 1;
+  background: #f2f2f2
+}
+.content{
+  padding: 20rpx 30rpx 0
+}
+.content view{
+  display: flex;
+  height: 80rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  align-items: center;
+  justify-content: space-between
+}
+.content view .iconfont{
+  color: #999999
+}

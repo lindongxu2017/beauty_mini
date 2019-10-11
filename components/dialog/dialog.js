@@ -10,7 +10,7 @@ Component({
         title: '提示',
         content: '',
         confirmText: '确定',
-        cancelText: '取消'
+        cancelText: '取消',
       }
     }
   },

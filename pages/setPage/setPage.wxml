@@ -1,2 +1,9 @@
 <!--pages/setPage/setPage.wxml-->
-<text>pages/setPage/setPage.wxml</text>
+<header header='{{header}}'></header>
+<view class="container">
+  <view class="content">
+    <view bindtap="personal"><text>个人资料</text><text class="iconfont iconyoujiantou"></text></view>
+    <view bindtap="identity"><text>账号管理</text><text class="iconfont iconyoujiantou"></text></view>
+  </view>
+  <view class="gap"></view>
+</view>

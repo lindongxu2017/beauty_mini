@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "header": "../../components/navBar/navBar"
+    "header": "../../components/navBar/navBar",
+    "dialog": "../../components/dialog/dialog"
   }
 }
