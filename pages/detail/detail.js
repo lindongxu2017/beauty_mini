@@ -18,7 +18,9 @@ Page({
     ]
   },
   handleAccount:function(){
-    
+    wx.navigateTo({
+      url: '../detailmore/detailmore',
+    })
   }
   
 })

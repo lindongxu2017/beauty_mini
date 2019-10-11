@@ -9,7 +9,7 @@
   <view class="content"> 
     <view class="contentitem">
       <block wx:for="{{idData}}" wx:key="index">
-         <view class="itemBox" bindtap="handleAccount" data->
+         <view class="itemBox" bindtap="handleAccount" data-time="{{item.time}}" data-moreTime="{{item.moreTime}}">
           <view class="left">
             <text class="leftTitle">美肌工坊KKONE店</text>
             <text class="leftTime" decode="{{true}}">{{item.time}}&nbsp;{{item.moreTime}}</text>

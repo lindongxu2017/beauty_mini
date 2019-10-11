@@ -1,15 +1,17 @@
 {
   "pages": [
-        "pages/detail/detail",
-    "pages/mine/mine",
     "pages/promiseLogin/promiseLogin",
+    "pages/detailmore/detailmore",
+    "pages/detail/detail",
+    "pages/mine/mine",
     "pages/personal/personal",
     "pages/setPage/setPage",
     "pages/index/index",
     "pages/deposit/deposit",
     "components/navBar/navBar",
     "components/dialog/dialog",
-    "pages/identity/identity"
+    "pages/identity/identity",
+    "pages/telLogin/telLogin"
   ],
   "window": {
     "backgroundTextStyle": "light",

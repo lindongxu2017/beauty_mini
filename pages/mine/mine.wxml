@@ -24,7 +24,7 @@
       <view class="depositBtn" bindtap="depositBtn">去充值</view>
     </view>
     <view class="gap"></view>
-    <view class="mingxi"><text>账户明细</text><text class="iconfont iconyoujiantou"></text></view>
+    <view class="mingxi" bindtap="goAccount"><text>账户明细</text><text class="iconfont iconyoujiantou"></text></view>
   </block>
   <block wx:else>
     <view class="noSIgn">

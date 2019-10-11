@@ -38,5 +38,10 @@ Page({
     wx.navigateTo({
       url: '../setPage/setPage'
     })
+  },
+  goAccount:function(){
+    wx.navigateTo({
+      url: '../detail/detail',
+    })
   }
 })
