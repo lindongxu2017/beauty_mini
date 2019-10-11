@@ -11,61 +11,59 @@ Page({
       homeCapsule: '',
       tubiao: true
     },
+    array: ['', '女', '男'],
+    handleFocus: false,//控制输入框的获取焦点
+    showModify:false,//控制修改页面的展示
+    userName:'DIKS',
+    showInput:false,//控制input框的展示
+    date:"1990-01-01",//生日时间
+    index:0,//性别选择器index
+    sex:'男',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad:function(options){
+    for(var i=0;i<this.data.array.length;i++){
+      if(this.data.sex==this.data.array[i]){
+        this.setData({
+          index:i
+        })
+      }
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  modifyData:function(){
+    this.setData({
+      showModify:true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  modifyName:function(){
+      this.setData({
+        showInput:true,
+        handleFocus:true
+      })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //失去焦点
+  finishInput:function(e){
+    this.setData({
+      userName: e.detail.value,
+      showInput:false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //选择时间的控制
+  bindTimeChange: function (e){
+    this.setData({
+      date: e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //性别修改
+  bindSexChange:function(e){
+    for (var i = 0; i < this.data.array.length; i++) {
+      if (e.detail.value == i) {
+        this.setData({
+          sex: this.data.array[i]
+        })
+      }
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  storeData:function(){
+    
   }
 })

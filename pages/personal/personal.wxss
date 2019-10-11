@@ -1,1 +1,66 @@
 /* pages/personal/personal.wxss */
+page{
+  height: 100%;
+  display: flex;
+  flex-direction: column 
+}
+.container{
+  flex: 1;
+  display: flex;
+  flex-direction: column 
+}
+.gap{
+  flex: 1;
+  background: #f2f2f2;
+}
+.content{
+  margin: 0 40rpx
+}
+.line{
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2
+}
+.line image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx
+}
+.line .title{
+  color:#999999
+}
+.modify{
+  width: 45%;
+  height: 80rpx;
+  color: #fff;
+  background: #7b654c;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 80rpx;
+  position: absolute;
+  bottom: 140rpx;
+  left: 23%
+}
+.line view{
+  display: flex
+}
+.line view text{
+  line-height: 80rpx
+}
+.line .iconfont{
+  display: block;
+  line-height: 80rpx;
+  margin-left:10rpx
+}
+.line .inputItem{
+  width: 30%
+}
+button::after{
+  border:none;
+}
+.line button{
+    background: none!important;
+  font-size: 32rpx!important
+}

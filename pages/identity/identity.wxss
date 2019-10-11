@@ -1,1 +1,22 @@
 /* pages/identity/identity.wxss */
+.notHave{
+  text-align: center;
+  margin: 100rpx;
+  color: #999999
+}
+.handleBtn{
+  width: 50%;
+  height: 80rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background: #7b654c;
+  border-radius: 40rpx;
+  position: absolute;
+  left: 25%;
+  bottom: 50rpx
+}
+.tel{
+  text-align: center;
+  font-size: 36rpx
+}

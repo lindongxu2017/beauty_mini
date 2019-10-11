@@ -12,7 +12,7 @@
         <view class="firstLine"><text>授权手机号使用权限</text><button disabled="{{handleBtn2}}" class="promise" bindtap="telPromise">{{promiseWords2}}</button></view>
         <view class="promiseTips">请授权您的手机号使用权限，方便您进行更多服务</view>
       </view>
-      <text class="telLogin" hidden="{{showTel}}">手机号验证码登录</text>
+      <text class="telLogin" hidden="{{showTel}}" bindtap="goTel">手机号验证码登录</text>
   </view>
   <dialog id="dialog" dialog="{{dialog}}" bind:cancel="{{canFunction}}"
       bind:confirm="{{comFunction}}"></dialog>

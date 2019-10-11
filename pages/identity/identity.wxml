@@ -1,2 +1,17 @@
 <!--pages/identity/identity.wxml-->
-<text>pages/identity/identity.wxml</text>
+<header header='{{header}}'></header>
+<view class="container">
+    <block wx:if="{{tel}}">
+      <view class="content">
+         <view class="notHave">当前绑定手机号</view>
+         <view class="tel">{{tel}}</view>
+         <view class="handleBtn" bindtap="modifyTel">修改手机号</view>
+      </view>
+    </block>
+    <block wx:else>
+       <view class="content">
+         <view class="notHave">暂未绑定手机号</view>
+         <view class="handleBtn" bindtap="modifyTel">绑定手机号</view>
+      </view>
+    </block>   
+</view>

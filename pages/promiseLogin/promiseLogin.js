@@ -86,5 +86,10 @@ Page({
       }
     });
     this.dialog.show()
+  },
+  goTel:function(){
+    wx.navigateTo({
+      url: '../telLogin/telLogin',
+    })
   }
 })

@@ -1,1 +1,38 @@
 /* pages/telLogin/telLogin.wxss */
+.content{
+  margin:20rpx 40rpx
+}
+.input-placeholder{
+  font-size: 26rpx
+}
+input{
+  border-bottom: 1rpx solid #999999;
+  height: 60rpx!important;
+  line-height: 60rpx;
+}
+.testCode{
+  border-bottom: 1rpx solid #999999;
+  display: flex;
+  margin-top:40rpx
+}
+.testCode input{
+  border:none;
+  width: 75%
+}
+.testCode view{
+  font-size: 28rpx;
+  color: #7b654c
+}
+.submit{
+  margin-top: 40rpx;
+  margin-left: 27%
+}
+.submit{
+  width: 44%;
+  height: 80rpx;
+  background: #7b654c;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 40rpx
+}
