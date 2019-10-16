@@ -1,4 +1,5 @@
 // pages/identity/identity.js
+const app=getApp()
 Page({
  
   /**
@@ -17,5 +18,12 @@ Page({
     wx.navigateTo({
       url: '../telLogin/telLogin',
     })
+  },
+  onLoad:function(){
+    if (app.globalData.userInfo){
+      this.setData({
+        tel: app.globalData.userInfo.phone
+      })
+    } 
   }
 })

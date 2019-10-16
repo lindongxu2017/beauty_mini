@@ -1,0 +1,39 @@
+<!--pages/cardMore/cardMore.wxml-->
+<header header='{{header}}'></header>
+<view class="contian">
+  <view class="imgBox">
+    <image src="../../utils/img/1565593452320.jpg"></image>
+    <view>*每位用户限购1次</view>
+  </view>
+  <view class="infoBox">
+    <view class="title">{{pdData.title}}</view>
+    <view class="sogon">{{pdData.describe}}</view>
+    <view class="price">
+      <view class="priceBox">
+        <view class="currentprice">￥<text>{{pdData.current_price}}</text></view>
+        <view class="originprice">原价：<text>￥{{pdData.original_price}}</text></view>
+      </view>
+      <view class="soldNum">已售100件</view>
+    </view>
+  </view>
+  <view class="cardItem">
+    <view class="title">卡项包含项目<text>（以下项目任选，有效期12个月）</text></view>
+    <view class="pdForm">
+     <view class="pdFormItem" wx:for="{{pdData.sub_projects}}" wx:key="index">
+      <text>{{item.title}}</text>
+      <text>￥{{item.price}}</text>
+     </view>
+    </view>
+  </view>
+</view>
+<view class="tabBarCard">
+   <view class="iconf" bindtap="goMall">
+     <text class="iconfont iconshangcheng2"></text>
+    <text>商城</text>
+   </view>
+   <view class="iconf">
+    <text class="iconfont iconfenxiang"></text>
+    <text>分享</text>
+   </view>
+   <view class="buyBtn" bindtap="bugNow" data-id="{{pdData.id}}">立即购买</view>
+</view>

@@ -1,5 +1,9 @@
 /**index.wxss**/
 /* xxxxxxxxxx */
+page{
+  width: 100%;
+  height: 100%
+}
 .indexItem{
   height: 100%
 }
@@ -17,7 +21,7 @@
   padding-top:24rpx;
   white-space: nowrap;
 }
-.navItem{
+/* .navItem{
   height: 50rpx;
   line-height: 50rpx;
   border:1rpx solid #aeaeae;
@@ -26,7 +30,7 @@
   display: inline-block;
   margin-left:30rpx ;
   color: #aeaeae;
-}
+} */
 .active{
   border:1rpx solid #797572;
    color: #797572;
@@ -42,9 +46,30 @@
    width: 100%;
    height: 348rpx;
 }
+.conentNav{
+  height: 190rpx;
+  padding: 25rpx 40rpx;
+  display: flex
+}
+.navItem{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50rpx
+}
+.conentNav image{
+  margin-bottom: 10rpx;
+    width: 120rpx;
+    height: 120rpx;
+}
+.conentNav text{
+  font-size: 28rpx;
+  display: block;
+  width: 120rpx;
+  text-align: center
+}
 /* 第二部分 */
 .functionArea{
-  padding:46rpx 40rpx;
+  padding:46rpx 40rpx 150rpx;
   background: #f2f2f2
 }
 .functionItem{
@@ -80,4 +105,36 @@
   color: #fff;
   border-radius: 30rpx;
   font-size: 24rpx
+}
+/*隐藏框*/
+.dialog{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index:1000
+}
+.dialogitem{
+  position: fixed;
+  width: 60%;
+  max-width: 300px;
+  top: 50%;
+  height: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 30rpx;
+  overflow: hidden;
+  z-index: 5000;
+}
+.dialogitem image{
+  width: 100%;
+  height: 100%
 }

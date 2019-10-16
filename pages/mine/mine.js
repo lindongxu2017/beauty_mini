@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+var template = require('../../components/tabbar/tabbar.js');
 const app=getApp()
 Page({
 
@@ -13,15 +14,21 @@ Page({
       homeCapsule: '',
       background:''
     },
-    zhanghao:111111,
-    yue:1000,
-    id:'',
+    userInfo:'',
   },
-  onLoad: function (options){
-    if (app.globalData.userInfo){
+  onLoad:function(){
+    template.tabbar("tabBar", 1, this)//0表示第一个tabbar
+    if (app.globalData.userInfo) {
       this.setData({
-        id: app.globalData.userInfo
+        userInfo: app.globalData.userInfo
       })
+    }
+  },
+  onShow: function (options){
+    if (app.globalData.userInfo){
+       this.setData({
+         userInfo: app.globalData.userInfo
+       })
     }
   },
   promiseLogin:function(){
@@ -30,8 +37,9 @@ Page({
     })
   },
   depositBtn:function(){
+    let cardData = app.globalData.cardData
     wx.navigateTo({
-      url: '../deposit/deposit'
+      url: '../deposit/deposit?invest_amount=' + cardData[0].invest_amount + '&give_amount=' + cardData[0].give_amount + '&index=0'
     })
   },
   goSet:function(){

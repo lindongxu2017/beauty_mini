@@ -1,0 +1,140 @@
+/* pages/cardMore/cardMore.wxss */
+page{
+  height: 100%
+}
+.tabBarCard{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  border-top: 1rpx solid #f2f2f2;
+  background: #fff
+}
+.iconf{
+  width: 20%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #7b6e5b;
+  font-size:24rpx 
+}
+.iconf text:nth-child(1){
+  font-size: 46rpx
+}
+.iconf text:nth-child(2){
+  color: #000
+}
+.contian{
+  height: 100%;
+  background: #f2f2f2
+}
+.buyBtn{
+  width: 60%;
+  background: #7b6e5b;
+  color: #fff;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx
+}
+.imgBox{
+  position: relative
+}
+.imgBox image{
+  height: 348rpx;
+  width: 100%
+}
+.imgBox view{
+  height: 60rpx;
+  font-size: 24rpx;
+  width: 100%;
+  opacity: 0.8;
+  color: #FF6600;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  padding-left:40rpx;
+  line-height: 60rpx
+}
+.infoBox{
+  background: #fff;
+  padding:20rpx 40rpx;
+  margin-bottom: 30rpx
+}
+.infoBox .title{
+  font-size: 32rpx;
+  font-weight: 400;
+  color:#333333;
+  line-height: 40rpx;
+  margin-bottom: 20rpx
+}
+.infoBox .sogon{
+  font-size: 28rpx;
+  color:#999999;
+  line-height: 40rpx;
+  margin-bottom: 10rpx
+} 
+.infoBox .price{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  justify-content: space-between
+}
+.infoBox .price .priceBox{
+  display: flex
+}
+.infoBox .price .currentprice{
+  color: #FF6600;
+  font-size: 28rpx 
+}
+.infoBox .price .currentprice text{
+  font-size: 48rpx ;
+  font-weight: 400
+}
+.infoBox .price .originprice{
+  margin-left: 40rpx;
+  font-size: 28rpx;
+  color: #cccccc
+}
+.infoBox .price .originprice text{
+  text-decoration: line-through
+}
+.infoBox .price .soldNum{
+  font-size: 28rpx;
+  color: #cccccc
+}
+.cardItem{
+  background: #fff;
+  padding: 40rpx 40rpx 0;
+}
+.title{
+  font-size: 32rpx;
+  color: #666666
+}
+.cardItem text{
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 10rpx
+}
+.pdForm .pdFormItem{
+  height: 120rpx;
+  border-bottom: 1rpx dashed #999999;
+  line-height: 120rpx;
+  display: flex;
+  justify-content: space-between
+}
+.pdForm .pdFormItem text:nth-child(1){
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333333
+}
+.pdForm .pdFormItem text:nth-child(2){
+  font-size: 32rpx;
+  color: #FF9900
+}
+.pdForm .pdFormItem:last-child{
+  border-bottom: none
+}

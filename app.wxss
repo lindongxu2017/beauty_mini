@@ -1,6 +1,8 @@
 /**app.wxss**/
 @import "./font/font.wxss";
+@import "/components/tabbar/tabbar.wxss";
 button{
   padding: 0;
   margin: 0
 }
+view,text,button{font-family: '微软雅黑 Bold', '微软雅黑';}

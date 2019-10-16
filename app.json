@@ -1,20 +1,21 @@
 {
   "pages": [
+    "pages/cardMore/cardMore",
+    "pages/newVip/newVip",
+    "pages/index/index",
     "pages/identity/identity",
-      "pages/personal/personal",
+    "pages/personal/personal",
     "pages/telLogin/telLogin",
     "pages/promiseLogin/promiseLogin",
     "pages/detailmore/detailmore",
     "pages/detail/detail",
     "pages/mine/mine",
-  
     "pages/setPage/setPage",
-    "pages/index/index",
     "pages/deposit/deposit",
     "components/navBar/navBar",
-    "components/dialog/dialog"
+    "components/dialog/dialog",
+    "components/tabbar/tabbar"
     
-
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,25 +23,6 @@
     "navigationBarTitleText": "美肌工坊",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 50
-  },
-  "tabBar": {
-    "color": "#c3c3c5",
-    "selectedColor": "#363636",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "美肌商城",
-        "iconPath": "utils/img/shangcheng.png",
-        "selectedIconPath": "utils/img/shangcheng1.png"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "utils/img/gerenzhongxin.png",
-        "selectedIconPath": "utils/img/gerenzhongxin1.png"
-      }
-    ]
   },
   "sitemapLocation": "sitemap.json"
 }

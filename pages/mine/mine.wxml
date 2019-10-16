@@ -1,26 +1,28 @@
 <!--pages/mine/mine.wxml-->
+<import src="../../components/tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <header header='{{header}}'></header>
 <view>
-  <block wx:if="id">
+  <block wx:if="{{userInfo}}">
     <view class="info">
       <view class="imgBox">
-        <image wx:if="{{imgsrc}}" src="../../utils/img/63JsEE6zTsh7aXYN.jpg"></image>
+        <image wx:if="{{userInfo.headimgurl}}" src="{{userInfo.headimgurl}}"></image>
         <image wx:else src="../../utils/img/yonghumorentouxiang.png"></image>
       </view>
       <view class="personalInfo">
         <view class="infoBox">
-          <view class="nameBox">爱拔</view>
+          <view class="nameBox">{{userInfo.nickname}}</view>
         </view>
         <view class="personalTel">
-          <text wx:if="{{quotation}}"></text>
-          <text wx:else>很懒什么也没有留下~</text>
+          <text wx:if="{{userInfo.phone}}">{{userInfo.phone}}</text>
+          <text wx:else>暂无绑定手机号~</text>
         </view>
       </view>
       <view class="iconfont iconshezhi" bindtap="goSet"></view>
     </view>
     <view class="message">
-      <view class="zhanghao">账号：{{zhanghao}}</view>
-      <view class="yue">余额：<text>￥{{yue}}.00</text></view>
+      <view class="zhanghao">账号：{{userInfo.id}}</view>
+      <view class="yue">余额：<text>￥{{userInfo.sum_balance}}.00</text></view>
       <view class="depositBtn" bindtap="depositBtn">去充值</view>
     </view>
     <view class="gap"></view>

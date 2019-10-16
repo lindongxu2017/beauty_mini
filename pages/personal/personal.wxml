@@ -3,7 +3,7 @@
 <view class="container">
   <view class="content">
     <block wx:if="{{showModify}}">
-      <view class="line">
+      <!-- <view class="line">
         <text class="title">姓名</text>
         <view  wx:if="{{!showInput}}" bindtap="modifyName">
           <text>{{userName}}</text>
@@ -12,12 +12,12 @@
         <view class="inputItem" wx:else>
           <input value="{{userName}}" focus="{{handleFocus}}" bindblur="finishInput"/>
         </view>
-      </view>
+      </view> -->
       <view class="line">
         <text class="title">生日</text>
         <view>
           <picker class="weui-btn" mode="date" value="{{date}}" start="" end="" bindchange="bindTimeChange">
-            <button type="default">{{date}}</button>
+            <button type="default">{{birthday}}</button>
           </picker>
           <text class="iconfont iconyoujiantou"></text>
         </view>   
@@ -31,22 +31,22 @@
           <text class="iconfont iconyoujiantou"></text>
         </view>
       </view>
-      <view class="modify" bindtap="storeData">保存</view>
+      <view class="modifyBox"><view class="modify" bindtap="storeData">保存</view></view>
     </block>
     <block wx:else>
-      <view class="line">
+      <!-- <view class="line">
         <text class="title">姓名</text>
         <text>{{userName}}</text>
-      </view>
+      </view> -->
       <view class="line">
         <text class="title">生日</text>
-        <text>{{date}}</text>
+        <text>{{birthday}}</text>
       </view>
       <view class="line">
         <text class="title">性别</text>
-        <text>男</text>
+        <text>{{sex}}</text>
       </view>
-      <view class="modify" bindtap="modifyData">修改资料</view>
+      <view class="modifyBox"><view class="modify" bindtap="modifyData">修改资料</view></view>
     </block>
     
   </view>

@@ -1,14 +1,14 @@
 <!--pages/telLogin/telLogin.wxml-->
 <header header='{{header}}'></header>
-<view class="content">
+<form class="content">
   <view class="line">
-    <input type="number" placeholder="请输入您的手机号码" maxlength="18" bindinput="getTel"></input>
+    <input type="number" name="phoneNum" placeholder="请输入您的手机号码" maxlength="11" bindinput="getTel"></input>
     <view class="testCode">
-      <input type="number" placeholder="输入您的验证码" maxlength="6" bindinput="getCode"></input>
-      <view>获取验证码</view>
+      <input type="number" name="phoneCode" placeholder="输入您的验证码" maxlength="6" bindinput="getCode"></input>
+      <button bindtap='getCodeBtn' disabled="{{timeChange}}"  class='getNum'>{{getText2}}</button>
     </view>
   </view>
   <view class="submit">
-    <view bindtap="submit">提交</view>
+    <button formType="submit" bindtap="submit">提交</button>
   </view>   
-</view>
+</form>

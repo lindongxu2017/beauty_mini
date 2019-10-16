@@ -19,27 +19,45 @@ Component({
    * 组件的初始数据
    */
   data: {
-    showDialog: false
+    showDialog: false,
+    showLoginBtn:false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    show() {
-      this.setData({
-        showDialog: true
-      })
+    show(option) {
+      if(option=="login"){
+        this.setData({
+          showDialog: true,
+          showLoginBtn: true
+        })
+      }else{
+        this.setData({
+          showDialog: true
+        })
+      } 
     },
-    hide() {
-      this.setData({
-        showDialog: false
-      })
+    hide(option) {
+      if (option == "login") {
+        this.setData({
+          showDialog: false,
+          showLoginBtn: false
+        })
+      } else {
+        this.setData({
+          showDialog: false
+        })
+      } 
     },
     /*
     * 内部私有方法建议以下划线开头
     * triggerEvent 用于触发事件
     */
+    onGotUserInfo(){
+      this.triggerEvent("confirm");
+    },
     _cancel() {
       //触发取消回调
       this.triggerEvent("cancel")

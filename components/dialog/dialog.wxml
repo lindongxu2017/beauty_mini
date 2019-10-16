@@ -4,9 +4,17 @@
   <view class="my-container">
     <view class="title">{{dialog.title}}</view>
     <view class="content">{{dialog.content}}</view>
-    <view class="btn-row">
-      <view class="confirm" bindtap="_confirm">确定</view>
-      <view class="cancel" bindtap='_cancel'>取消</view>
-    </view>
+    <block wx:if="{{showLoginBtn}}">
+      <view class="btn-row">
+        <button class="confirm" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确定</button>
+        <button class="cancel" bindtap='_cancel'>取消</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="btn-row">
+        <button class="confirm" bindtap="_confirm">确定</button>
+        <button class="cancel" bindtap='_cancel'>取消</button>
+      </view>
+    </block>
   </view>
 </view>

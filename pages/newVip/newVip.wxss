@@ -1,0 +1,60 @@
+/* pages/newVip/newVip.wxss */
+.cantain{
+  padding: 20rpx 40rpx;
+  background: rgba(242, 242, 242, 1);
+  margin-bottom: 110rpx;
+}
+.pdItem{
+  height: 490rpx;
+  background: #fff;
+  padding: 30rpx 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 25rpx
+}
+.pdItem image{
+  height: 300rpx;
+  width: 100%;
+  border-radius: 20rpx
+}
+.titelPd{
+  height: 42rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  margin: 20rpx 0 0
+}
+.sogonPd{
+  white-space: nowrap;
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow:ellipsis;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 20rpx;
+}
+.current_price{
+  font-size: 32rpx;
+  color: #FF9900;
+}
+.price{
+  display: flex;
+  justify-content: space-between
+}
+.original_price{
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 20rpx
+}
+.original_price text{
+  text-decoration: line-through
+}
+.goForLook{
+  font-size: 26rpx;
+  width: 150rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: #7b6e5b;
+  border-radius: 25rpx;
+  color: #fff
+}

@@ -1,4 +1,6 @@
 // pages/personal/personal.js
+const app = getApp()
+
 Page({
 
   /**
@@ -11,23 +13,30 @@ Page({
       homeCapsule: '',
       tubiao: true
     },
-    array: ['', '女', '男'],
+    array: [ '男', '女'],
     handleFocus: false,//控制输入框的获取焦点
     showModify:false,//控制修改页面的展示
-    userName:'DIKS',
+    userName:'',
     showInput:false,//控制input框的展示
-    date:"1990-01-01",//生日时间
-    index:0,//性别选择器index
-    sex:'男',
+    birthday:"",//生日时间
+    index:1,//性别选择器index
+    sex:'',
   },
   onLoad:function(options){
-    for(var i=0;i<this.data.array.length;i++){
-      if(this.data.sex==this.data.array[i]){
-        this.setData({
-          index:i
-        })
-      }
+    if (app.globalData.userInfo.gender==1){
+      this.setData({
+        sex:'男'
+      })
+    } else if (app.globalData.userInfo.gender == 2) {
+      this.setData({
+        sex: '女'
+      })
     }
+    this.setData({
+      //userName: app.globalData.userInfo.nickname,
+      birthday: app.globalData.userInfo.birthday,
+      index: app.globalData.userInfo.gender-1,
+    })
   },
   modifyData:function(){
     this.setData({
@@ -50,20 +59,53 @@ Page({
   //选择时间的控制
   bindTimeChange: function (e){
     this.setData({
-      date: e.detail.value
+      birthday: e.detail.value
     })
   },
   //性别修改
   bindSexChange:function(e){
-    for (var i = 0; i < this.data.array.length; i++) {
-      if (e.detail.value == i) {
         this.setData({
-          sex: this.data.array[i]
+          index: e.detail.value+1
         })
-      }
+    if (this.data.index == 1) {
+      this.setData({
+        sex: '男'
+      })
+    } else if (this.data.index == 2) {
+      this.setData({
+        sex: '女'
+      })
+    } else {
+      this.setData({
+        sex: ''
+      })
     }
   },
   storeData:function(){
-    
+    console.log(this.data)
+    wx.request({
+      url: 'https://ttwx.169kang.com/applet/user/edit',
+      method:'post',
+      header: { unionid: app.globalData.unionid},
+      data:{
+        nickname: app.globalData.userInfo.nickname,
+        gender: this.data.index-0,
+        birthday: this.data.birthday,
+      },
+      success:res=>{
+        if(res.data.status==200){
+          wx.request({
+            url: 'https://ttwx.169kang.com/applet/user/details',
+            header: { unionid: app.globalData.unionid },
+            success:res=>{
+              app.globalData.userInfo = res.data.data
+            }
+          })
+          wx.switchTab({
+            url: '../mine/mine',
+          })
+        }
+      }
+    })
   }
 })

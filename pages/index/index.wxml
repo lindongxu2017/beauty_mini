@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<import src="../../components/tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 <header header='{{header}}'></header>
 <view class="indexItem">
     <view class="banner">
@@ -14,14 +16,23 @@
         </block>
       </swiper>
     </view>
+    <view class="conentNav">
+      <view class="navItem" bindtap="goNewGift"><image src="../../utils/img/shouyetypea.png"></image><text>新人专享</text></view>
+      <view class="navItem"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view>
+    </view>
     <view class="functionArea">
-      <block wx:for="{{cardType}}" wx:key="index">
+      <block wx:for="{{cardData}}" wx:key="index">
         <view class="functionItem">
-          <view class="storecard">储存卡</view>
-          <view class="money">{{item.money}}元</view>
-          <view class="giveMoney">送{{item.depositMoney}}元</view>
-          <view class="depositMoney" bindtap="handleDeposit" data-money="{{item.money}}" data-depositmoney="{{item.depositMoney}}" data-index="{{index}}">去充值</view>
+          <view class="storecard">{{item.title}}</view>
+          <view class="money">{{item.invest_amount}}元</view>
+          <view class="giveMoney">送{{item.give_amount}}元</view>
+          <view class="depositMoney" bindtap="handleDeposit" data-invest_amount="{{item.invest_amount}}" data-give_amount="{{item.give_amount}}" data-index="{{index}}">去充值</view>
         </view>
       </block>
     </view>
 </view>
+<view class="dialog" hidden="{{showDav}}" bindtap="hiddenAdv">
+  <view class="dialogitem">
+    <image src="../../utils/img/dav.png" bindtap="goNewGift"></image>
+  </view>
+ </view>
