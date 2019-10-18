@@ -1,6 +1,5 @@
 <!--index.wxml-->
-<import src="../../components/tabbar/tabbar.wxml"/>
-<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
 <header header='{{header}}'></header>
 <view class="indexItem">
     <view class="banner">
@@ -18,9 +17,9 @@
     </view>
     <view class="conentNav">
       <view class="navItem" bindtap="goNewGift"><image src="../../utils/img/shouyetypea.png"></image><text>新人专享</text></view>
-      <view class="navItem"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view>
+      <!-- <view class="navItem" bindtap="godeposit"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view> -->
     </view>
-    <view class="functionArea">
+    <view class="functionArea" wx:if="{{cardData}}">
       <block wx:for="{{cardData}}" wx:key="index">
         <view class="functionItem">
           <view class="storecard">{{item.title}}</view>

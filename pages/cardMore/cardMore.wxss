@@ -23,10 +23,12 @@ page{
   font-size:24rpx 
 }
 .iconf text:nth-child(1){
-  font-size: 46rpx
+  font-size: 46rpx;
+  line-height: 46rpx
 }
 .iconf text:nth-child(2){
-  color: #000
+  color: #000;
+  line-height: 26rpx
 }
 .contian{
   height: 100%;
@@ -50,13 +52,13 @@ page{
 .imgBox view{
   height: 60rpx;
   font-size: 24rpx;
-  width: 100%;
+  width: 95%;
   opacity: 0.8;
   color: #FF6600;
   background: #fff;
   position: absolute;
   bottom: 0;
-  padding-left:40rpx;
+  padding-left:5%;
   line-height: 60rpx
 }
 .infoBox{
@@ -120,16 +122,16 @@ page{
   margin-left: 10rpx
 }
 .pdForm .pdFormItem{
-  height: 120rpx;
+  padding: 30rpx 0;
   border-bottom: 1rpx dashed #999999;
-  line-height: 120rpx;
   display: flex;
   justify-content: space-between
 }
 .pdForm .pdFormItem text:nth-child(1){
   font-size: 32rpx;
   font-weight: 700;
-  color: #333333
+  color: #333333;
+
 }
 .pdForm .pdFormItem text:nth-child(2){
   font-size: 32rpx;

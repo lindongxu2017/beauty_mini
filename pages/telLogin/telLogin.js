@@ -13,9 +13,9 @@ Page({
       tubiao: true
     },
     //验证手机号
-    testPhone:true,
+    testPhone:false,
     timeChange:false,
-    testCode:true,
+    testCode:false,
     tel:'',
     code:'',
     getText2:'获取验证码'
@@ -108,8 +108,8 @@ Page({
         success:res=>{
           if (res.data.status==200){
             app.globalData.userInfo.phone = this.data.tel
-            wx.switchTab({
-              url: '../mine/mine',
+            wx.navigateTo({
+              url: '../indexindex',
             })
           }else{
             wx.showToast({

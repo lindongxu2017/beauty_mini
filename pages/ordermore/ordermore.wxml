@@ -1,0 +1,33 @@
+<!--pages/ordermore/ordermore.wxml-->
+<header header='{{header}}'></header>
+<view class="contain">
+  <view class="status">{{orderData.state}}</view>
+  <view class="orderTC">
+    <view class="orderTime">
+      <text>下单日期</text>
+      <text decode="true">{{orderData.create_time}}</text>
+    </view>
+    <view class="orderCode">
+      <text>订单编号</text>
+      <text decode="true">{{orderData.out_trade_no}}</text>
+    </view>
+  </view>
+   <view class="prderPD">
+      <view class="productName"><text>{{orderData.package_title}}</text><text>￥{{orderData.original_price}}</text></view>
+      <view class="payWay"><text>{{orderData.package_describe}}</text><text>✖1</text></view>
+    </view>
+  <view class="orderTC1">
+    <view class="orderTime">
+      <text>订单金额：</text>
+      <text decode="true">￥{{orderData.original_price}}</text>
+    </view>
+    <view class="orderCode">
+      <text>商品优惠：</text>
+      <text decode="true">新人体验项目</text>
+    </view>
+  </view>
+  <view class="orderpice">
+    <text>实付金额：</text>
+    <view>￥<text>{{orderData.total_fee}}</text></view>
+  </view>
+</view>

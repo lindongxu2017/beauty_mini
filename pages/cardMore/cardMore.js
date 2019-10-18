@@ -12,14 +12,17 @@ Page({
       homeCapsule: '',
       tubiao: true
     },
-    pdData:{}
+    pdData:{},
+    orderId:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    this.setData({
+      orderId: options.id
+    })
     wx.request({
       url: 'https://ttwx.169kang.com/applet/product/spread?id='+options.id,
       success:res=>{
@@ -36,8 +39,7 @@ Page({
     })
   },
   goMall:function(){
-    console.log(111)
-    wx.navigateTo({
+    wx.switchTab({
       url: '../index/index',
     })
   },
@@ -80,5 +82,21 @@ Page({
         })
       }, 1500)
     }
-  }
+  },
+  onShareAppMessage:function(options){
+    let gbid = this.data.orderId;
+    return {
+      title: '分享',
+      path: '/pages/cardMore/cardMore?id=' + gbid,
+      imageUrl: this.data.pdData.img_url,  //用户分享出去的自定义图片大小为5:4,
+      success: function (res) {
+        // 转发成功
+        wx.showToast({
+          title: "分享成功",
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    }
+  },
 })

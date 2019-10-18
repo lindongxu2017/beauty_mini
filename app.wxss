@@ -3,6 +3,33 @@
 @import "/components/tabbar/tabbar.wxss";
 button{
   padding: 0;
-  margin: 0
+  margin: 0;
+  background-color: #fff
+}
+button::after{
+  border: none;
 }
 view,text,button{font-family: '微软雅黑 Bold', '微软雅黑';}
+.tabbar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+}
+ 
+.tabbar-item {
+  flex-grow: 1;
+  padding: 6rpx 0;
+  text-align: center;
+}
+ 
+.tabbar-icon {
+  width: 46rpx;
+  height: 46rpx;
+  display: block;
+  margin: 0 auto;
+}
+ 
+.tabbar-text {
+  font-size: 24rpx;
+}

@@ -9,7 +9,7 @@
     <view class="titelPd">{{item.title}}</view>
     <view class="sogonPd">{{item.describe}}</view>
     <view class="price">
-      <view class="priceItem"><text class="current_price">￥{{item.current_price/100}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
+      <view class="priceItem"><text class="current_price">￥{{item.current_price}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
       <view class="goForLook" bindtap="goForLook" data-id="{{item.id}}">去看看</view>
     </view>
   </view>

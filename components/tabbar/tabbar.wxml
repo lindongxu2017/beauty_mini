@@ -1,6 +1,6 @@
 <!--components/tabbar/tabbar.wxml-->
 <template name="tabBar">
-  <view class="tabBar">
+  <view class="tabBarNav">
     <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="tabBar">
         <view class="tabBar-item">
             <navigator open-type="reLaunch" url="{{item.pagePath}}">

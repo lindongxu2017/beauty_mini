@@ -31,9 +31,9 @@
      <text class="iconfont iconshangcheng2"></text>
     <text>商城</text>
    </view>
-   <view class="iconf">
+   <button class="iconf" open-type="share">
     <text class="iconfont iconfenxiang"></text>
-    <text>分享</text>
-   </view>
+    <text >分享</text>
+   </button>
    <view class="buyBtn" bindtap="bugNow" data-id="{{pdData.id}}">立即购买</view>
 </view>

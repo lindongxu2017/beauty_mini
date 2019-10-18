@@ -1,0 +1,64 @@
+/* pages/mycard/mycard.wxss */
+page{
+  height: 100%;
+  display: flex;
+  flex-direction: column 
+}
+.cantain{
+  flex: 1;
+  display: flex;
+  flex-direction: column 
+}
+.cardNav{
+  display: flex;
+  height: 120rpx;
+}
+.cardNav view{
+  width: 27.3%;
+  margin:0 3%;
+  text-align: center;
+  line-height: 120rpx;
+  font-size: 32rpx
+}
+.activeBorder{
+  border-bottom: 2rpx solid #9c846a
+}
+.content{
+  flex:1;
+  background: #f2f2f2
+}
+.picItem{
+  margin: 20rpx 40rpx;
+  position: relative
+}
+.picItem image{
+  width: 100%;
+  height: 300rpx
+}
+.picItem .shengyu{
+  position: absolute;
+  left: 80%;
+  bottom: 10%;
+  color: #999999;
+  font-size: 28rpx
+}
+.picItem .shengyu text{
+  color: #FF9900
+}
+.nothing{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nothing image{
+  margin-top: 80rpx;
+  height: 240rpx;
+  width: 240rpx
+}
+.nothing text{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  color: #999999
+}
+

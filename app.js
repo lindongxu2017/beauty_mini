@@ -19,5 +19,5 @@ App({
     cardData:null
     // openId:null,
     // encryptedData:null
-  }
+  },
 })

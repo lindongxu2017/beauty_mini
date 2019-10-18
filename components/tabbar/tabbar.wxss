@@ -1,17 +1,17 @@
 /* components/tabbar/tabbar.wxss */
 .icon{
-  width:54rpx;
-  height: 54rpx;
+  width:48rpx;
+  height: 48rpx;
 }
-.tabBar{
+.tabBarNav{
   width:100%;
   position: fixed;
   bottom:0;
   padding:10rpx;
   margin-left:-4rpx;
-  border-top:1rpx solid #f2f2f2;
+  border-top:1rpx solid #F2F2F2;
   background: #fff;
-  font-size:24rpx;
+  font-size:20rpx;
   color:#8A8A8A;
   display: flex;
   justify-content: space-between;

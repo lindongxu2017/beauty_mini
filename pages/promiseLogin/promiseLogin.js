@@ -98,7 +98,7 @@ Page({
               })
               // 这里一般都是与后台交互过程
               wx.switchTab({
-                url: '../mine/mine'
+                url: '../index.index',
               })
             }
           })

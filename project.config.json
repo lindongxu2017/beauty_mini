@@ -21,7 +21,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
+	"libVersion": "2.5.0",
 	"appid": "wx6fcef9e5c43a13b3",
 	"projectname": "meijigongfang",
 	"debugOptions": {

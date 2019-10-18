@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/mycard/mycard",
+    "pages/ordermore/ordermore",
+    "pages/allorder/allorder",
     "pages/cardMore/cardMore",
     "pages/newVip/newVip",
-    "pages/index/index",
     "pages/identity/identity",
     "pages/personal/personal",
     "pages/telLogin/telLogin",
@@ -11,12 +14,29 @@
     "pages/detail/detail",
     "pages/mine/mine",
     "pages/setPage/setPage",
-    "pages/deposit/deposit",
-    "components/navBar/navBar",
-    "components/dialog/dialog",
-    "components/tabbar/tabbar"
-    
+    "pages/deposit/deposit"
+   
   ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#a0856a",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "美肌商城",
+        "iconPath": "utils/img/shangcheng.png",
+        "selectedIconPath": "utils/img/shangcheng1.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "utils/img/gerenzhongxin.png",
+        "selectedIconPath": "utils/img/gerenzhongxin1.png"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

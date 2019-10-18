@@ -1,0 +1,33 @@
+<!--pages/allorder/allorder.wxml-->
+<header header='{{header}}'></header>
+<view class="container">
+  <!-- <view class="cardNav" >
+    <view class="{{flagNav==index?'activeBorder':''}}"  bindtap="handleNav" wx:for="{{typeNav}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
+  </view> -->
+      <view class="scroll-wrap"  scroll-x="true" style="width:100%">
+        <view class="{{flag==index?'active':''}}" bindtap="flagFun" wx:for="{{typeApp}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
+      </view>
+    <view class='normal'>
+      <block  wx:if="{{datalist}}">
+        <view  class="cardArea" wx:for="{{datalist}}" wx:key="index">
+          <view class="cardItem" bindtap="goOrderMore" data-id="{{item.id}}">
+            <view class="title"><text decode="true">{{item.create_time}}</text><text class="status">{{item.state}}</text></view>
+            <view class="title">
+              <view class="productName"><text>{{item.package_title}}</text><text>￥{{item.original_price}}</text></view>
+              <view class="payWay"><text>{{item.package_describe}}</text><text>✖1</text></view>
+            </view>
+            <view class="money">
+              <view class="monetItem1">
+                实付金额：
+                <text>¥</text>
+                <text>{{item.total_fee}}</text>
+              </view>
+              <text class="monetItem2">共{{item.money}}件商品</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="not" wx:else>暂无数据</view>
+    </view>
+</view>
+

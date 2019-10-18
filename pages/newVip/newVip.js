@@ -23,9 +23,13 @@ Page({
     wx.request({
       url: 'https://ttwx.169kang.com/applet/product/spreads',
       success:res=>{
-        console.log(res)
+        var arr=res.data.data
+        for(var i=0;i<arr.length;i++){
+          arr[i].original_price = ((arr[i].original_price - 0) / 100).toFixed(2)
+          arr[i].current_price = ((arr[i].current_price - 0) / 100).toFixed(2)
+        }
         this.setData({
-          pdInfo:res.data.data
+          pdInfo:arr
         })
       }
     })

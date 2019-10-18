@@ -15,12 +15,14 @@ Page({
       background:''
     },
     userInfo:'',
+    allMoney:0
   },
   onLoad:function(){
     template.tabbar("tabBar", 1, this)//0表示第一个tabbar
     if (app.globalData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo
+        userInfo: app.globalData.userInfo,
+        allMoney: ((app.globalData.userInfo.give_balance + app.globalData.userInfo.invest_balance)/100).toFixed(2)
       })
     }
   },
@@ -50,6 +52,16 @@ Page({
   goAccount:function(){
     wx.navigateTo({
       url: '../detail/detail',
+    })
+  },
+  goAllOrder:function(){
+    wx.navigateTo({
+      url: '../allorder/allorder',
+    })
+  },
+  goCardCase: function () {
+    wx.navigateTo({
+      url: '../mycard/mycard',
     })
   }
 })

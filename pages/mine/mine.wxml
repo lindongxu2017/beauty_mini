@@ -1,6 +1,5 @@
 <!--pages/mine/mine.wxml-->
-<import src="../../components/tabbar/tabbar.wxml"/>
-<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
 <header header='{{header}}'></header>
 <view>
   <block wx:if="{{userInfo}}">
@@ -22,11 +21,20 @@
     </view>
     <view class="message">
       <view class="zhanghao">账号：{{userInfo.id}}</view>
-      <view class="yue">余额：<text>￥{{userInfo.sum_balance}}.00</text></view>
-      <view class="depositBtn" bindtap="depositBtn">去充值</view>
+      <view class="yue">余额：<text>￥{{allMoney}}</text></view>
+      <!-- <view class="depositBtn" bindtap="depositBtn">去充值</view> -->
     </view>
     <view class="gap"></view>
-    <view class="mingxi" bindtap="goAccount"><text>账户明细</text><text class="iconfont iconyoujiantou"></text></view>
+    <view class="muneItem">
+    <view class="menuChild" bindtap="goAllOrder">
+      <image src="../../utils/img/icon_order.png"></image>
+      <view>全部订单</view>
+    </view>
+    <view class="menuChild" bindtap="goCardCase">
+      <image src="../../utils/img/icon_card.png"></image>
+      <view>我的卡包</view>
+    </view>
+  </view>
   </block>
   <block wx:else>
     <view class="noSIgn">

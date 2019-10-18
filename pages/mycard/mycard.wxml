@@ -1,0 +1,21 @@
+<!--pages/mycard/mycard.wxml-->
+<header header='{{header}}'></header>
+<view class="cantain">
+  <view class="cardNav" >
+    <view class="{{flagNav==index?'activeBorder':''}}"  bindtap="handleNav" wx:for="{{typeNav}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
+  </view>
+  <view class="content">
+    <block wx:if="{{datalist==[]?datalist:''}}">
+      <view class="picItem" wx:for="{{datalist}}" wx:key="index">
+        <image src="{{item.img_url}}"></image>
+        <view class="shengyu">剩余<text>{{item.amount}}</text>次</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="nothing">
+        <image src="../../utils/img/kabaokong.png"></image>
+        <text>空空如也~</text>
+      </view>
+    </block>
+  </view>
+</view>

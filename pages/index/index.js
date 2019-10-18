@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var template = require('../../components/tabbar/tabbar.js');
+
 const app = getApp()
 
 Page({
@@ -18,12 +18,11 @@ Page({
     interval: 3000,
     duration: 1000,
     showNav:false,
-    cardData:[],
+    cardData:null,
     scrollTopNum:null,
     showDav:true
   },
   onLoad:function(){
-    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
     var self = this
     wx.login({
       success: res => {
@@ -78,16 +77,16 @@ Page({
         }
       }
     })
-    wx.request({
-      url: 'https://ttwx.169kang.com/applet/product/invests',
-      method:'post',
-      success:res=>{
-        this.setData({
-          cardData:res.data.data
-        })
-      app.globalData.cardData = res.data.data
-      }
-    })
+    // wx.request({
+    //   url: 'https://ttwx.169kang.com/applet/product/invests',
+    //   method:'post',
+    //   success:res=>{
+    //     this.setData({
+    //       cardData:res.data.data
+    //     })
+    //   app.globalData.cardData = res.data.data
+    //   }
+    // })
   },
   // onPageScroll: function (e) {
     //   if (e.scrollTop < 300) {
@@ -137,5 +136,10 @@ Page({
     wx.navigateTo({
       url: "../newVip/newVip",
     })
-  }
+  },
+  godeposit: function () {
+    wx.navigateTo({
+      url: "../deposit/deposit",
+    })
+  },
 })

@@ -73,10 +73,28 @@ page{
   border-radius: 30rpx
 }
 .muneItem{
-  margin-top:54rpx;
-  height: 100rpx
+  height: 260rpx;
+  width: 100%; 
+  display: flex
 }
-
+.menuChild{
+  height: 260rpx;
+  width: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.menuChild image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.menuChild view{
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  font-size: 28rpx
+}
 .noSIgn{
   display: flex;
   flex-direction:column;

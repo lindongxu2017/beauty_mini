@@ -1,0 +1,68 @@
+/* pages/ordermore/ordermore.wxss */
+page{
+  height: 100%;
+  display: flex;
+  flex-direction: column
+}
+.contain{
+  flex:1;
+  background: #f2f2f2
+}
+.status{
+  height: 240rpx;
+  background: #eddbc9;
+  font-size: 48rpx;
+  line-height:240rpx;
+  padding-left: 40rpx;
+  color: #7b6e5b
+}
+.orderTC,.orderTC1{
+  height: 140rpx;
+  padding: 0 40rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.orderTC view,.orderTC1 view{
+  height: 70rpx;
+  line-height: 70rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #999999;
+  font-size: 28rpx
+}
+.prderPD .productName{
+  font-size: 32rpx;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700
+}
+.prderPD{
+  background: #fff;
+  padding:20rpx 40rpx;
+  margin-bottom:20rpx 
+}
+.prderPD .productName text:nth-child(2){
+  font-weight: 400
+}
+.prderPD .payWay{
+  font-size: 28rpx;
+  color: #a0a09e;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx
+}
+.orderTC1{
+  margin-bottom: 0
+}
+.orderpice{
+  padding: 20rpx 40rpx;
+  color: #FF9900;
+  display: flex;
+  justify-content: space-between;
+  background: #f2f2f2;
+  opacity: 0.8
+}
+.orderpice view text{
+  font-size: 49rpx;
+}
