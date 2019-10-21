@@ -30,8 +30,12 @@
       </block>
     </view>
 </view>
-<view class="dialog" hidden="{{showDav}}" bindtap="hiddenAdv">
-  <view class="dialogitem">
-    <image src="../../utils/img/dav.png" bindtap="goNewGift"></image>
-  </view>
+<view wx:if="{{ version == '0'}}"></view>
+<view wx:else>
+  <view class="dialog" hidden="{{showDav}}" bindtap="hiddenAdv">
+    <view class="dialogitem">
+      <image src="../../utils/img/dav.png" bindtap="goNewGift"></image>
+    </view>
  </view>
+</view>
+

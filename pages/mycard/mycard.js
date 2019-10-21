@@ -16,12 +16,17 @@ Page({
     flagNav:0,
     datalist: [], //.wxml文件需要绑定的列表，我这里用的数据类型是数组
     pagenum: 1, //初始页默认值为1
+    navHeight:0,
+    flagArr:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      navHeight: app.globalData.navgationHeight
+    })
     wx.request({
       url: 'https://ttwx.169kang.com/applet/user/cards',
       header: { unionid: app.globalData.unionid},
@@ -48,9 +53,15 @@ Page({
         pagesize: 6, //每页显示条数
       },
       method: "POST",
+      header: { unionid: app.globalData.unionid },
       success: function (res) {
         var arr1 = that.data.datalist; //从data获取当前datalist数组
         var arr2 = res.data.data; //从此次请求返回的数据中获取新数组
+        if(arr2.length==0){
+          this.setData({
+            flagArr:false
+          })
+        }
         arr1 = arr1.concat(arr2); //合并数组
         that.setData({
           datalist: arr1 //合并后更新datalist
@@ -64,16 +75,19 @@ Page({
     this.setData({
       flagNav: e.currentTarget.dataset.flagindex,
       datalist:[],
-      pagenum:1
+      pagenum:1,
+      flagArr:true
     });
    this.getdatalist()
   },
   onReachBottom: function () { //触底开始下一页
     var that = this;
-    var pagenum = that.data.pagenum + 1; //获取当前页数并+1
-    that.setData({
-      pagenum: pagenum, //更新当前页数
-    })
-    that.getdatalist();//重新调用请求获取下一页数据
+    if(that.data.flagArr){
+      var pagenum = that.data.pagenum + 1; //获取当前页数并+1
+      that.setData({
+        pagenum: pagenum, //更新当前页数
+      })
+      that.getdatalist();//重新调用请求获取下一页数据
+    }
   },
 })

@@ -12,23 +12,50 @@ Page({
       { "name": '全部' }, { "name": '待支付' }, { "name": '已支付' }, { "name": '已完成/退款' }
     ],
     flag: 0,
-    pagenum:0,
+    pagenum:1,
     header: {
       title: '全部订单',
       hiddenBlock: '',
       homeCapsule: '',
       tubiao: true
     },
-    datalist:[]
+    flagArr:true,
+    datalist:[],
+    waitPay:false,
+    navHeight: 0
   },
-  onLoad:function(){
-    this.getdatalist()
+  onLoad:function(options){
+    var that=this
+    if(app.globalData.unionid){
+      that.getdatalist()
+      that.setData({
+        navHeight: app.globalData.navgationHeight
+      })
+    }else{
+      setTimeout(function(){
+        if (app.globalData.unionid){
+          that.getdatalist()
+          that.setData({
+            navHeight: app.globalData.navgationHeight
+          })
+        }
+      },2000)
+    }
+    
   },
   flagFun: function (e) { //切换点击事件
     this.setData({
       flag: e.currentTarget.dataset.flagindex,
-      datalist:[]
+      datalist:[],
+      waitPay:false,
+      pagenum:1,
+      flagArr:true
     });
+    if (e.currentTarget.dataset.flagindex==1){
+      this.setData({
+        waitPay: true
+      })
+    }
     this.getdatalist()
   },
   
@@ -48,7 +75,7 @@ Page({
     wx.request({
       url: 'https://ttwx.169kang.com/applet/user/orders',
       data: {
-        type: this.data.flag,
+        state: this.data.flag-1,
         page: that.data.pagenum, //从数据里获取当前页数
         pagesize: 6, //每页显示条数
       },
@@ -57,20 +84,25 @@ Page({
       success: function (res) {
         var arr1 = that.data.datalist; //从data获取当前datalist数组
         var arr2 = res.data.data; //从此次请求返回的数据中获取新数组
-        arr1 = arr1.concat(arr2); //合并数组
-        for(var i=0;i<arr1.length;i++){
-          arr1[i].original_price = (arr1[i].original_price/100).toFixed(2)
-          arr1[i].total_fee = (arr1[i].total_fee / 100).toFixed(2)
-          if (arr1[i].state==0){
-            arr1[i].state='全部'
-          } else if (arr1[i].state == 1) {
-            arr1[i].state = '待支付'
-          } else if (arr1[i].state == 2) {
-            arr1[i].state = '已支付'
-          } else if (arr1[i].state == 3) {
-            arr1[i].state = '已完成'
-          } 
+        if(arr2.length==0){
+          that.setData({
+            flagArr:false
+          })
         }
+        for (var i = 0; i < arr2.length; i++) {
+          arr2[i].original_price = (arr2[i].original_price / 100).toFixed(2)
+          arr2[i].total_fee = (arr2[i].total_fee / 100).toFixed(2)
+          if (arr2[i].state == -1) {
+            arr2[i].state = '全部'
+          } else if (arr2[i].state == 0) {
+            arr2[i].state = '待支付'
+          } else if (arr2[i].state == 1) {
+            arr2[i].state = '已支付'
+          } else if (arr2[i].state == 2) {
+            arr2[i].state = '已完成'
+          }
+        }
+        arr1 = arr1.concat(arr2); //合并数组
         that.setData({
           datalist: arr1 //合并后更新datalist
         })
@@ -81,10 +113,44 @@ Page({
   },
   onReachBottom: function () { //触底开始下一页
     var that = this;
-    var pagenum = that.data.pagenum + 1; //获取当前页数并+1
-    that.setData({
-      pagenum: pagenum, //更新当前页数
-    })
-    that.getdatalist();//重新调用请求获取下一页数据
+    if (that.data.flagArr){
+      var pagenum = that.data.pagenum + 1; //获取当前页数并+1
+      that.setData({
+        pagenum: pagenum, //更新当前页数
+      })
+      that.getdatalist();//重新调用请求获取下一页数据
+    }
   },
+  //继续付款
+  continuePay:function(e){
+    wx.request({
+      url: 'https://ttwx.169kang.com/applet/purchase/respread',
+      method:'post',
+      header: { unionid: app.globalData.unionid },
+      data:{
+        order_id: e.currentTarget.dataset.id
+      },
+      success: res => {
+        const resData = res.data.data
+        wx.requestPayment({
+          timeStamp: resData.timeStamp,
+          nonceStr: resData.nonceStr,
+          package: resData.package,
+          signType: resData.signType,
+          paySign: resData.paySign,
+          success(res) {
+            if (res.errMsg == "requestPayment:ok") {
+              for (var i = 0; i < this.data.datalist.length;i++){
+                if (this.data.datalist[i].id == e.currentTarget.dataset.id){
+                  this.data.datalist.splice(i,1)
+                }
+              }
+            }
+          },
+          fail(res) { }
+        })
+
+      }
+    })
+  }
 })

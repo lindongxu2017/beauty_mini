@@ -29,7 +29,8 @@ Page({
   onShow: function (options){
     if (app.globalData.userInfo){
        this.setData({
-         userInfo: app.globalData.userInfo
+         userInfo: app.globalData.userInfo,
+         allMoney: ((app.globalData.userInfo.give_balance + app.globalData.userInfo.invest_balance) / 100).toFixed(2)
        })
     }
   },

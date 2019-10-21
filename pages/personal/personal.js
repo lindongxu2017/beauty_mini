@@ -65,31 +65,33 @@ Page({
   //性别修改
   bindSexChange:function(e){
         this.setData({
-          index: e.detail.value+1
+          index: e.detail.value-0+1
         })
     if (this.data.index == 1) {
       this.setData({
         sex: '男'
       })
-    } else if (this.data.index == 2) {
-      this.setData({
-        sex: '女'
-      })
     } else {
       this.setData({
-        sex: ''
+        sex: '女'
       })
     }
   },
   storeData:function(){
-    console.log(this.data)
+   
+    var num=0
+    if(this.data.sex=="女"){
+      num=2
+    }else{
+      num = 1
+    }
     wx.request({
       url: 'https://ttwx.169kang.com/applet/user/edit',
       method:'post',
       header: { unionid: app.globalData.unionid},
       data:{
         nickname: app.globalData.userInfo.nickname,
-        gender: this.data.index-0,
+        gender: num,
         birthday: this.data.birthday,
       },
       success:res=>{
@@ -101,11 +103,11 @@ Page({
               app.globalData.userInfo = res.data.data
             }
           })
-          wx.switchTab({
-            url: '../mine/mine',
-          })
         }
+        wx.switchTab({
+          url: '../mine/mine',
+        })
       }
-    })
+   })
   }
 })

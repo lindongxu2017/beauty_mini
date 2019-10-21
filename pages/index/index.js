@@ -20,63 +20,78 @@ Page({
     showNav:false,
     cardData:null,
     scrollTopNum:null,
-    showDav:true
+    showDav:true,
+    version: 0
   },
   onLoad:function(){
     var self = this
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        var code = res.code
-        app.globalData.code = res.code
-        if (code) {
-          wx.getSetting({
-            success: res => {
-              if (res.authSetting['scope.userInfo']) {
-                // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                wx.getUserInfo({
-                  success: res => {
-                    // 可以将 res 发送给后台解码出 unionId
-                    wx.request({
-                      url: 'https://ttwx.169kang.com/applet/auth/message',
-                      method: 'POST',
-                      data: {
-                        code: code,
-                        encryptedData: res.encryptedData,
-                        iv: res.iv
-                      },
-                      success: res => {
-                        app.globalData.unionid = res.data.data.unionid
-                        wx.request({
-                          url: 'https://ttwx.169kang.com/applet/user/details',
-                          header: { unionid: app.globalData.unionid },
-                          success: res => {
-                            app.globalData.userInfo = res.data.data
-                            self.setData({
-                              showDav: true
-                            })
-                          }
-                        })
-                      }
-                    })
-                    // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                    // 所以此处加入 callback 以防止这种情况
-                    if (self.userInfoReadyCallback) {
-                      self.userInfoReadyCallback(res)
-                    }
-                  }
-                })
-              } else {
-                app.globalData.userInfo = null
-                self.setData({
-                  showDav: false
-                })
-              }
-            }
-          })
-        }
+    setTimeout(function(){
+      if (app.globalData.userInfo) {
+        self.setData({
+          showDav: true
+        })
+      } else {
+        self.setData({
+          showDav: false
+        })
       }
-    })
+    },2000)
+    
+    // if(!app.globalData.userInfo){
+    //   wx.login({
+    //     success: res => {
+    //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //       var code = res.code
+    //       app.globalData.code = res.code
+    //       if (code) {
+    //         wx.getSetting({
+    //           success: res => {
+    //             if (res.authSetting['scope.userInfo']) {
+    //               // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //               wx.getUserInfo({
+    //                 success: res => {
+    //                   // 可以将 res 发送给后台解码出 unionId
+    //                   wx.request({
+    //                     url: 'https://ttwx.169kang.com/applet/auth/message',
+    //                     method: 'POST',
+    //                     data: {
+    //                       code: code,
+    //                       encryptedData: res.encryptedData,
+    //                       iv: res.iv
+    //                     },
+    //                     success: res => {
+    //                       app.globalData.unionid = res.data.data.unionid
+    //                       wx.request({
+    //                         url: 'https://ttwx.169kang.com/applet/user/details',
+    //                         header: { unionid: app.globalData.unionid },
+    //                         success: res => {
+    //                           app.globalData.userInfo = res.data.data
+    //                           self.setData({
+    //                             showDav: true
+    //                           })
+    //                         }
+    //                       })
+    //                     }
+    //                   })
+    //                   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //                   // 所以此处加入 callback 以防止这种情况
+    //                   if (self.userInfoReadyCallback) {
+    //                     self.userInfoReadyCallback(res)
+    //                   }
+    //                 }
+    //               })
+    //             } else {
+    //               app.globalData.userInfo = null
+    //               self.setData({
+    //                 showDav: false
+    //               })
+    //             }
+    //           }
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
     // wx.request({
     //   url: 'https://ttwx.169kang.com/applet/product/invests',
     //   method:'post',

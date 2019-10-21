@@ -30,7 +30,7 @@ Page({
         data.original_price = ((data.original_price-0)/100).toFixed(2)
         data.current_price = ((data.current_price - 0)/100).toFixed(2)
         for (var i = 0; i < data.sub_projects.length;i++){
-          data.sub_projects[i].price = (data.sub_projects[i].price - 0).toFixed(2)
+          data.sub_projects[i].price = ((data.sub_projects[i].price - 0)/100).toFixed(2)
         }
         this.setData({
           pdData:data
@@ -51,24 +51,31 @@ Page({
         header: { unionid: app.globalData.unionid },
         data: { package_id: e.currentTarget.dataset.id },
         success: res => {
-          const resData = res.data.data
-          wx.requestPayment({
-            timeStamp: resData.timeStamp,
-            nonceStr: resData.nonceStr,
-            package: resData.package,
-            signType: resData.signType,
-            paySign: resData.paySign,
-            success(res) {
-              if (res.errMsg == "requestPayment:ok") {
-                wx.navigateTo({
-                  url: '../index/index',
-                })
-               // app.globalData.userInfo.sum_balance = app.globalData.userInfo.sum_balance + this.data.chooseMoney.invest_amount + this.data.chooseMoney.give_amount
-              }
-            },
-            fail(res) { }
-          })
-
+          if (res.data.status !== 200) {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 1000
+            })
+          }else{
+            const resData = res.data.data
+            wx.requestPayment({
+              timeStamp: resData.timeStamp,
+              nonceStr: resData.nonceStr,
+              package: resData.package,
+              signType: resData.signType,
+              paySign: resData.paySign,
+              success(res) {
+                if (res.errMsg == "requestPayment:ok") {
+                  wx.navigateTo({
+                    url: '../index/index',
+                  })
+                  // app.globalData.userInfo.sum_balance = app.globalData.userInfo.sum_balance + this.data.chooseMoney.invest_amount + this.data.chooseMoney.give_amount
+                }
+              },
+              fail(res) { }
+            })
+          }
         }
       })
     } else {

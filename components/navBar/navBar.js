@@ -1,4 +1,5 @@
 // components/navBar/navBar.js
+const app=getApp()
 Component({
  
   properties: {
@@ -18,7 +19,7 @@ Component({
     }
   },
   data: {
-
+    navheight:0
   },
   methods: {
     backClick() {
@@ -49,8 +50,10 @@ Component({
         var isIos = res.system.indexOf('iOS') > -1;
         self.setData({
           statusHeight: res.statusBarHeight,
-          navHeight: isIos ? 44 : 48
+          navHeight: isIos ? 44 : 48,
+          navheight: res.statusBarHeight + (isIos ? 44 : 48)
         })
+        app.globalData.navgationHeight = self.data.navheight
       }
     })
   }

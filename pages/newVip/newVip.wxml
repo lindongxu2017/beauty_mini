@@ -5,7 +5,7 @@
 <view class="cantain">
   <block wx:for="{{pdInfo}}" wx:key="index">
   <view class="pdItem">
-    <image src="../../utils/img/1562910940024.jpg"></image>
+    <image src="{{item.img_url}}"></image>
     <view class="titelPd">{{item.title}}</view>
     <view class="sogonPd">{{item.describe}}</view>
     <view class="price">

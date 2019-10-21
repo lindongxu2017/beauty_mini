@@ -27,13 +27,13 @@ Page({
         var obj=res.data.data
         obj.original_price = (obj.original_price / 100).toFixed(2)
         obj.total_fee = (obj.total_fee / 100).toFixed(2)
-        if (obj.state == 0) {
+        if (obj.state == -1) {
           obj.state = '全部'
-        } else if (obj.state == 1) {
+        } else if (obj.state == 0) {
           obj.state = '待支付'
-        } else if (obj.state == 2) {
+        } else if (obj.state == 1) {
           obj.state = '已支付'
-        } else if (obj.state == 3) {
+        } else if (obj.state == 2) {
           obj.state = '已完成'
         } 
         this.setData({

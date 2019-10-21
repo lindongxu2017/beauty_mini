@@ -18,7 +18,8 @@ Page({
     testCode:false,
     tel:'',
     code:'',
-    getText2:'获取验证码'
+    getText2:'获取验证码',
+    timeChangeNum:true
   },
   //验证手机号
   getTel:function(e){
@@ -65,10 +66,11 @@ Page({
   },
   //点击获取验证码按钮
   getCodeBtn:function(){
+    var that=this
     if (!this.data.testPhone){
       wx.showToast({
         title: '手机号有误',
-        icon: 'success',
+        icon: 'none',
         duration: 1000
       })
     }else{
@@ -84,11 +86,20 @@ Page({
           },
           success:res=>{
             if (res.data.status==200){
-              let timeGo = setInterval(function () {
-                this.setData({
-                  timeChange: false
+              var num=60
+              var codeTIme=setInterval(function(){
+                --num
+                that.setData({
+                  getText2:'还剩余'+num+'秒'
                 })
-              }, 600000);
+                if(num==-1){
+                  that.setData({
+                    timeChange: false,
+                    getText2:'获取验证码'
+                  })
+                  clearInterval(codeTIme) 
+                }
+              },1000)
             }  
           }
         })
@@ -96,6 +107,7 @@ Page({
     }
   },
   submit:function(){
+    var that=this
     if(this.data.testCode&&this.data.testPhone){
       wx.request({
         url: 'https://ttwx.169kang.com/applet/user/account',
@@ -107,9 +119,9 @@ Page({
         },
         success:res=>{
           if (res.data.status==200){
-            app.globalData.userInfo.phone = this.data.tel
-            wx.navigateTo({
-              url: '../indexindex',
+            app.globalData.userInfo.phone = that.data.tel
+            wx.switchTab({
+              url: '../index/index',
             })
           }else{
             wx.showToast({
