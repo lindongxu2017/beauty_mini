@@ -40,11 +40,15 @@ page{
   font-size: 26rpx
 }
 .cardArea{
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
   margin-top:20rpx;
+  margin-bottom:20rpx;
   color: #9b9b99;
   line-height: 32rpx;
-   font-size: 28rpx
+   font-size: 28rpx;
+   overflow: hidden
 }
 .cardArea .title{
   padding: 32rpx 40rpx;
@@ -60,6 +64,9 @@ page{
   display: flex;
   justify-content: space-between;
   font-weight: 700
+}
+.productName text:nth-child(1){
+  
 }
 .productName text:nth-child(2){
   color: #a0a09e;

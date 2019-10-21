@@ -3,10 +3,10 @@
 <view class="container">
     <view class="scroll-wrap"  scroll-x="true" style="width:100%;top:{{navHeight}}px">
         <view class="{{flag==index?'active':''}}" bindtap="flagFun" wx:for="{{typeApp}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
-      </view>
+    </view>
     <view class='normal'>
-      <block  wx:if="{{datalist.length==0?'':datalist}}">
-        <view  class="cardArea" wx:for="{{datalist}}" wx:key="index">
+      <block  wx:if="{{datalist.length}}">
+        <view  class="cardArea" wx:for="{{datalist}}" wx:key="id">
           <view>
             <view class="cardItem" bindtap="goOrderMore" data-id="{{item.id}}">
               <view class="title"><text decode="true">{{item.create_time}}</text><text class="status">{{item.state}}</text></view>
@@ -20,7 +20,7 @@
                   <text>¥</text>
                   <text>{{item.total_fee}}</text>
                 </view>
-                <text class="monetItem2">共{{item.money}}件商品</text>
+                <text class="monetItem2">共1件商品</text>
               </view>
             </view>
             <view class="buttonGroup" wx:if="{{waitPay}}">

@@ -15,7 +15,8 @@ page{
   height: 120rpx;
   position: fixed;
   background: #fff;
-  width: 100%
+  width: 100%;
+  z-index:999
 }
 .cardNav view{
   width: 27.3%;
@@ -41,7 +42,7 @@ page{
 .picItem .shengyu{
   position: absolute;
   left: 80%;
-  bottom: 10%;
+  bottom: 5%;
   color: #999999;
   font-size: 28rpx
 }
@@ -67,7 +68,7 @@ page{
 .picItem .time{
   position: absolute;
   left: 30rpx;
-  bottom: 10%;
+  bottom: 5%;
   color: #999999;
   font-size: 20rpx
 }
