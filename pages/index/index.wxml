@@ -2,7 +2,7 @@
 
 <header header='{{header}}'></header>
 <view class="indexItem">
-    <view class="banner">
+    <!-- <view class="banner">
       <swiper indicator-dots="{{indicatorDots}}"
         autoplay="{{autoplay}}" interval="{{interval}}"
         duration="{{duration}}"  indicator-active-color="#6e6158"
@@ -14,28 +14,31 @@
           </swiper-item>
         </block>
       </swiper>
-    </view>
-    <view class="conentNav">
+    </view> -->
+    <!-- <view class="conentNav">
       <view class="navItem" bindtap="goNewGift"><image src="../../utils/img/shouyetypea.png"></image><text>新人专享</text></view>
-      <!-- <view class="navItem" bindtap="godeposit"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view> -->
+      <view class="navItem" bindtap="godeposit"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view>
+    </view> -->
+    <block wx:for="{{pdInfo}}" wx:key="index">
+    <view class="pdItem"  bindtap="goForLook" data-id="{{item.id}}">
+      <image src="{{item.img_url}}"></image>
+      <view class="titelPd">{{item.title}}</view>
+      <view class="sogonPd">{{item.describe}}</view>
+      <view class="price">
+        <view class="priceItem"><text class="current_price">￥{{item.current_price}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
+        <view class="goForLook">去看看</view>
+      </view>
     </view>
-    <view class="functionArea" wx:if="{{cardData}}">
-      <block wx:for="{{cardData}}" wx:key="index">
-        <view class="functionItem">
-          <view class="storecard">{{item.title}}</view>
-          <view class="money">{{item.invest_amount}}元</view>
-          <view class="giveMoney">送{{item.give_amount}}元</view>
-          <view class="depositMoney" bindtap="handleDeposit" data-invest_amount="{{item.invest_amount}}" data-give_amount="{{item.give_amount}}" data-index="{{index}}">去充值</view>
-        </view>
-      </block>
-    </view>
+  </block>
 </view>
-<view wx:if="{{ version == '0'}}"></view>
-<view wx:else>
-  <view class="dialog" hidden="{{showDav}}" bindtap="hiddenAdv">
-    <view class="dialogitem">
-      <image src="../../utils/img/dav.png" bindtap="goNewGift"></image>
-    </view>
- </view>
-</view>
-
+<block  wx:if="{{version}}">
+  <view class="dialog" wx:if="{{showDav}}">
+      <view class="headImageView" >
+        <image src="../../utils/img/logo.png"></image>
+      </view>
+      <view class="titleText">申请获取以下权限</view>
+      <view class="contentText">获得您的公开信息（昵称，头像等）</view>
+      <button class="authBtn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+ </block>
+<loadingSelf id="loadingSelf"></loadingSelf>

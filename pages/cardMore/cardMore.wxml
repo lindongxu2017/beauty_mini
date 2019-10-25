@@ -37,3 +37,14 @@
    </button>
    <view class="buyBtn" bindtap="bugNow" data-id="{{pdData.id}}">立即购买</view>
 </view>
+<block  wx:if="{{version}}">
+  <view class="dialog" wx:if="{{showDav}}">
+      <view class="headImageView" >
+        <image src="../../utils/img/logo.png"></image>
+      </view>
+      <view class="titleText">申请获取以下权限</view>
+      <view class="contentText">获得您的公开信息（昵称，头像等）</view>
+      <button class="authBtn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+ </block>
+<loadingSelf wx:if="{{showL}}" id="loadingSelf"></loadingSelf>

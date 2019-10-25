@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/mycard/mycard",
     "pages/ordermore/ordermore",
@@ -14,8 +15,8 @@
     "pages/detail/detail",
     "pages/mine/mine",
     "pages/setPage/setPage",
-    "pages/deposit/deposit"
-   
+    "pages/deposit/deposit",
+    "components/loading/loading"
   ],
   "tabBar": {
     "color": "#999999",

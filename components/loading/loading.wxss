@@ -1,0 +1,29 @@
+/* components/loading/loading.wxss */
+.loadingCss {
+  padding: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  font-size: 16px;
+}
+
+.loadingCss .content {
+  padding: 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+.loadingCss .content image{
+    width: 360rpx;
+    height: 360rpx
+}
+
+
+

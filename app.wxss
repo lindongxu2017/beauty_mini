@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import "./font/font.wxss";
 @import "/components/tabbar/tabbar.wxss";
+@import "/components/loading/loading.wxss";
 button{
   padding: 0;
   margin: 0;

@@ -140,3 +140,50 @@ page{
 .pdForm .pdFormItem:last-child{
   border-bottom: none
 }
+.dialog{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index:1000
+}
+
+.headImageView {
+  height: 162rpx;
+  width: 163rpx
+}
+
+.headImageView image{
+  height: 162rpx;
+  width: 162rpx
+}
+
+.titleText {
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
+  font-size: 38rpx;
+  color: #020e0f;
+}
+
+.contentText {
+  margin-bottom: 0px;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.authBtn {
+  margin-top: 70rpx;
+  height: 80rpx;
+  font-size: 38rpx;
+  width: 330rpx;
+  background: #a0856a;
+  color: #fff;
+  line-height: 80rpx;
+  border-radius: 50rpx
+}

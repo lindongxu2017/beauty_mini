@@ -1,4 +1,3 @@
-// pages/setPage/setPage.js
 Page({
 
   /**
@@ -9,10 +8,11 @@ Page({
       title: '设置',
       hiddenBlock: '',
       homeCapsule: '',
-      tubiao:true
+      tubiao: true,
+      backURL: "/pages/mine/mine"
     },
   },
-  personal:function(){
+  personal: function () {
     wx.navigateTo({
       url: '../personal/personal'
     })

@@ -11,13 +11,15 @@ Page({
       hiddenBlock: '',
       homeCapsule: '',
       background: '',
-      tubiao: true
+      tubiao: true,
+      backURL: ""
     },
-    orderData:{}
+    orderData:{},
+    flagNum:-1,
   },
   onLoad:function(options){
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/order',
+      url: 'https://skin.169kang.com/applet/user/order',
       method: "POST",
       header: { unionid: app.globalData.unionid },
       data: {
@@ -41,6 +43,18 @@ Page({
         })
       }
     })
+  },
+  handleShow:function(e){
+    if (e.currentTarget.dataset.state==0){
+      if (this.data.flagNum == e.currentTarget.dataset.index) {
+        this.setData({
+          flagNum: -1
+        })
+      } else {
+        this.setData({
+          flagNum: e.currentTarget.dataset.index
+        })
+      }
+    } 
   }
-  
 })

@@ -13,123 +13,80 @@ Page({
       hiddenBlock: '',
       homeCapsule: '',
     },
-    indicatorDots:true,
-    autoplay: true,
     interval: 3000,
     duration: 1000,
     showNav:false,
     cardData:null,
     scrollTopNum:null,
-    showDav:true,
-    version: 0
+    showDav:false,
+    version: 0,
   },
   onLoad:function(){
     var self = this
-    setTimeout(function(){
-      if (app.globalData.userInfo) {
+    if(app.globalData.userInfo){
+      //从别的页面进来的
+      self.setData({
+        showDav: false,
+        version:1
+      })
+     wx.request({
+      url: 'https://skin.169kang.com/applet/product/spreads',
+      header: { 'content-type': 'json' },
+      success: res => {
+        var arr = res.data.data
+        for (var i = 0; i < arr.length; i++) {
+          arr[i].original_price = ((arr[i].original_price - 0) / 100).toFixed(2)
+          arr[i].current_price = ((arr[i].current_price - 0) / 100).toFixed(2)
+        }
         self.setData({
-          showDav: true
+          pdInfo: arr
         })
-      } else {
-        self.setData({
-          showDav: false
-        })
+        setTimeout(function(){
+          self.loadingSelf = self.selectComponent('#loadingSelf')
+          self.loadingSelf.closeLoading()
+        },1000)
       }
-    },2000)
-    
-    // if(!app.globalData.userInfo){
-    //   wx.login({
-    //     success: res => {
-    //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //       var code = res.code
-    //       app.globalData.code = res.code
-    //       if (code) {
-    //         wx.getSetting({
-    //           success: res => {
-    //             if (res.authSetting['scope.userInfo']) {
-    //               // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //               wx.getUserInfo({
-    //                 success: res => {
-    //                   // 可以将 res 发送给后台解码出 unionId
-    //                   wx.request({
-    //                     url: 'https://ttwx.169kang.com/applet/auth/message',
-    //                     method: 'POST',
-    //                     data: {
-    //                       code: code,
-    //                       encryptedData: res.encryptedData,
-    //                       iv: res.iv
-    //                     },
-    //                     success: res => {
-    //                       app.globalData.unionid = res.data.data.unionid
-    //                       wx.request({
-    //                         url: 'https://ttwx.169kang.com/applet/user/details',
-    //                         header: { unionid: app.globalData.unionid },
-    //                         success: res => {
-    //                           app.globalData.userInfo = res.data.data
-    //                           self.setData({
-    //                             showDav: true
-    //                           })
-    //                         }
-    //                       })
-    //                     }
-    //                   })
-    //                   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //                   // 所以此处加入 callback 以防止这种情况
-    //                   if (self.userInfoReadyCallback) {
-    //                     self.userInfoReadyCallback(res)
-    //                   }
-    //                 }
-    //               })
-    //             } else {
-    //               app.globalData.userInfo = null
-    //               self.setData({
-    //                 showDav: false
-    //               })
-    //             }
-    //           }
-    //         })
-    //       }
-    //     }
-    //   })
-    // }
-    // wx.request({
-    //   url: 'https://ttwx.169kang.com/applet/product/invests',
-    //   method:'post',
-    //   success:res=>{
-    //     this.setData({
-    //       cardData:res.data.data
-    //     })
-    //   app.globalData.cardData = res.data.data
-    //   }
-    // })
-  },
-  // onPageScroll: function (e) {
-    //   if (e.scrollTop < 300) {
-    //     this.setData({ showNav: false })
-    //   }
-    //   if(e.scrollTop>=300){
-    //     this.setData({showNav:true})
-    //   }
-    //   if (e.scrollTop >= 300 && e.scrollTop < 1300) {
-    //     this.setData({ activeName: ['active', '', '', ''] })
-    //   }
-    //   if (e.scrollTop >= 1300 && e.scrollTop < 2100){
-    //     this.setData({ activeName: ['', 'active', '', '']})
-    //   }
-    //   if (e.scrollTop >= 2100 && e.scrollTop < 2900) {
-    //     this.setData({ activeName: ['', '', 'active', ''] })
-    //   }
-    //   if (e.scrollTop >= 2900) {
-    //     this.setData({ activeName: ['', '', '', 'active'] })
-    //   }
-    // },
-  moveNav:function(e){
-    console.log(e)
-  },
-  handleAppointe:function(){
-    wx.navigateTo({
-      url: '../appointServe/appointServe'
     })
+    }else{
+      app.wxlogin().then(res => {
+        self.setData({
+          version: app.globalData.advSwitch
+        })
+        if (app.globalData.userInfo) {
+          self.setData({
+            showDav: false
+          })
+          setTimeout(function () {
+            self.loadingSelf = self.selectComponent('#loadingSelf')
+            self.loadingSelf.closeLoading()
+          }, 1000)
+        } else {
+          self.setData({
+            showDav: true
+          })
+          setTimeout(function () {
+            self.loadingSelf = self.selectComponent('#loadingSelf')
+            self.loadingSelf.closeLoading()
+          }, 1000)
+        }
+        wx.request({
+          url: 'https://skin.169kang.com/applet/product/spreads',
+          header: { 'content-type': 'json' },
+          success: res => {
+            // self.loadingSelf = self.selectComponent('#loadingSelf')
+            // self.loadingSelf.closeLoading()
+            var arr = res.data.data
+            for (var i = 0; i < arr.length; i++) {
+              arr[i].original_price = ((arr[i].original_price - 0) / 100).toFixed(2)
+              arr[i].current_price = ((arr[i].current_price - 0) / 100).toFixed(2)
+            }
+            self.setData({
+              pdInfo: arr
+            })
+          }
+        })
+      })
+    }
   },
   handleDeposit:function(e){
     var invest_amount = e.currentTarget.dataset.invest_amount
@@ -139,22 +96,73 @@ Page({
         url: '../deposit/deposit?invest_amount=' + invest_amount + '&give_amount=' + give_amount + '&index=' + index
       })
   },
-  hiddenAdv:function(){
-    this.setData({
-      showDav: true
-    })
+  bindGetUserInfo:function(res){
+    if (res.detail.userInfo) {
+      //用户按了允许授权按钮
+      var that = this;
+      //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
+        wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          var code = res.code
+          app.globalData.code = res.code
+                  wx.getUserInfo({
+                    success: res => {
+                      // 可以将 res 发送给后台解码出 unionId
+                      wx.request({
+                        url: 'https://skin.169kang.com/applet/auth/message',
+                        method: 'POST',
+                        data: {
+                          code: code,
+                          encryptedData: res.encryptedData,
+                          iv: res.iv
+                        },
+                        success: res => {
+                          app.globalData.unionid = res.data.data.unionid
+                          wx.request({
+                            url: 'https://skin.169kang.com/applet/user/details',
+                            header: { unionid: app.globalData.unionid },
+                            success: res => {
+                              app.globalData.userInfo = res.data.data
+                              that.setData({
+                                showDav: false
+                              })
+                            }
+                          })
+                        }
+                      })
+                     
+                    }
+                  })
+                }
+        })
+    } else {
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          // 用户没有授权成功，不需要改变 isHide 的值
+          if (res.confirm) {
+            console.log('用户点击了“返回授权”');
+          }
+        }
+
+      });
+    }
   },
-  goNewGift:function(){
-    console.log(111)
+  onShow:function(){
+    if(app.globalData.userInfo){
+      this.setData({
+        showDav: false
+      })
+    }
   },
-  goNewGift:function(){
+  goForLook: function (e) {
     wx.navigateTo({
-      url: "../newVip/newVip",
+      url: '../cardMore/cardMore?id=' + e.currentTarget.dataset.id,
     })
-  },
-  godeposit: function () {
-    wx.navigateTo({
-      url: "../deposit/deposit",
-    })
-  },
+  }
 })

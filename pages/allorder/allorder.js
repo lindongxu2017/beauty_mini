@@ -17,7 +17,8 @@ Page({
       title: '全部订单',
       hiddenBlock: '',
       homeCapsule: '',
-      tubiao: true
+      tubiao: true,
+      backURL:"/pages/mine/mine"
     },
     flagArr:true,
     datalist:[],
@@ -73,7 +74,7 @@ Page({
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/orders',
+      url: 'https://skin.169kang.com/applet/user/orders',
       data: {
         state: this.data.flag-1,
         page: that.data.pagenum, //从数据里获取当前页数
@@ -123,8 +124,9 @@ Page({
   },
   //继续付款
   continuePay:function(e){
+    var that=this
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/purchase/respread',
+      url: 'https://skin.169kang.com/applet/purchase/respread',
       method:'post',
       header: { unionid: app.globalData.unionid },
       data:{
@@ -140,11 +142,15 @@ Page({
           paySign: resData.paySign,
           success(res) {
             if (res.errMsg == "requestPayment:ok") {
-              for (var i = 0; i < this.data.datalist.length;i++){
-                if (this.data.datalist[i].id == e.currentTarget.dataset.id){
-                  this.data.datalist.splice(i,1)
+              var arrList=that.data.datalist
+              for (var i = 0; i < arrList.length;i++){
+                if (arrList[i].id == e.currentTarget.dataset.id){
+                  arrList.splice(i,1)
                 }
               }
+              that.setData({
+                datalist:arrList
+              })
             }
           },
           fail(res) { }

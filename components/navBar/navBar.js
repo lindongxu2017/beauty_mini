@@ -10,7 +10,8 @@ Component({
         hiddenBlock: '',
         homeCapsule:'',
         tubiao:true,
-        background:""
+        background:"",
+        backURL:""
       }
     },
     customBackReturn: {
@@ -31,9 +32,23 @@ Component({
             url: '/pages/index/index',
           })
         } else {
-          wx.navigateBack({
-            delta: 1
-          })
+          console.log(this.data.header.backURL)
+          if (this.data.header.backURL){
+            if (this.data.header.backURL == '/pages/index/index' || this.data.header.backURL == '/pages/mine/mine') {
+              wx.switchTab({
+                url: this.data.header.backURL,
+              })
+            } else {
+              wx.navigateTo({
+                url: this.data.header.backURL,
+              })
+            }
+          }else{
+            wx.navigateBack({
+              delta: 1
+            })
+            
+          }
         }
       }
     },

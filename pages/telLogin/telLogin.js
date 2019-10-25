@@ -10,7 +10,8 @@ Page({
       title: '手机号登录',
       hiddenBlock: '',
       homeCapsule: '',
-      tubiao: true
+      tubiao: true,
+      backURL:''
     },
     //验证手机号
     testPhone:false,
@@ -19,7 +20,16 @@ Page({
     tel:'',
     code:'',
     getText2:'获取验证码',
-    timeChangeNum:true
+    timeChangeNum:true,
+    beforeUrl:''
+  },
+  onLoad: function (options){
+    let pages = getCurrentPages();
+    let prevpage = pages[pages.length - 2];
+    this.setData({
+      beforeUrl: prevpage.route
+    })
+    console.log(prevpage.route)
   },
   //验证手机号
   getTel:function(e){
@@ -79,7 +89,7 @@ Page({
           timeChange:true
         })
         wx.request({
-          url: 'https://ttwx.169kang.com/applet/auth/code',
+          url: 'https://skin.169kang.com/applet/auth/code',
           data:{
             phone:this.data.tel,
             flag:'replace'
@@ -110,7 +120,7 @@ Page({
     var that=this
     if(this.data.testCode&&this.data.testPhone){
       wx.request({
-        url: 'https://ttwx.169kang.com/applet/user/account',
+        url: 'https://skin.169kang.com/applet/user/account',
         header: { unionid: app.globalData.unionid},
         method:'post',
         data:{
@@ -120,9 +130,15 @@ Page({
         success:res=>{
           if (res.data.status==200){
             app.globalData.userInfo.phone = that.data.tel
-            wx.switchTab({
-              url: '../index/index',
-            })
+            if (this.data.beforeUrl =='pages/cardMore/cardMore'){
+              wx.navigateBack({
+                delta:1
+              })
+            }else{
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }
           }else{
             wx.showToast({
               title: res.data.msg,

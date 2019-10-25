@@ -15,7 +15,15 @@
    <view class="prderPD">
       <view class="productName"><text>{{orderData.package_title}}</text><text>￥{{orderData.original_price}}</text></view>
       <view class="payWay"><text>{{orderData.package_describe}}</text><text>✖1</text></view>
+   </view>
+   <view class="prderPD" wx:if="{{orderData.sub_projects.length!==0}}">
+    <block wx:for="{{orderData.sub_projects}}" wx:key="index">
+      <view class="productItemName" bindtap="handleShow" data-index="{{index}}" data-state="{{item.state}}"><text>{{item.title}}</text>
+      <text wx:if="{{item.state}}">已使用</text><text wx:else>未使用></text>
     </view>
+      <view class="productcode {{item.state==0?'':'hexiao'}}" wx:if="{{flagNum===index}}" >核销码：{{item.code}}</view>
+    </block> 
+   </view>
   <view class="orderTC1">
     <view class="orderTime">
       <text>订单金额：</text>

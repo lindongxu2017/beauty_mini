@@ -1,6 +1,6 @@
 <!--pages/allorder/allorder.wxml-->
 <header header='{{header}}'></header>
-<view class="container">
+<view class="container" style="top:0">
     <view class="scroll-wrap"  scroll-x="true" style="width:100%;top:{{navHeight}}px">
         <view class="{{flag==index?'active':''}}" bindtap="flagFun" wx:for="{{typeApp}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
     </view>

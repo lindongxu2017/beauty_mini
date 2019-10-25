@@ -30,7 +30,7 @@ page{
   color: #999999;
   font-size: 28rpx
 }
-.prderPD .productName{
+.prderPD .productName,.productItemName{
   font-size: 32rpx;
   color: #000;
   display: flex;
@@ -65,4 +65,27 @@ page{
 }
 .orderpice view text{
   font-size: 49rpx;
+}
+.productItemName{
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: space-around
+}
+.productcode{
+  height: 80rpx;
+  line-height: 80rpx
+}
+.hexiao{
+  text-decoration: line-through
+}
+.productItemName text:nth-child(1){
+   width: 500rpx;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.productItemName text:nth-child(2){
+  color: #a0a09e
 }

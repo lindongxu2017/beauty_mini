@@ -10,7 +10,8 @@ Page({
       title: '新人专享',
       hiddenBlock: '',
       homeCapsule: '',
-      tubiao: true
+      tubiao: true,
+      backURL: "/pages/index/index"
     },
     pdInfo:[]
   },
@@ -21,7 +22,7 @@ Page({
   onLoad: function (options) {
     template.tabbar("tabBar", 0, this)//0表示第一个tabbar
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/product/spreads',
+      url: 'https://skin.169kang.com/applet/product/spreads',
       header:{'content-type':'json'},
       success:res=>{
         var arr=res.data.data

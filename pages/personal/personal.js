@@ -86,7 +86,7 @@ Page({
       num = 1
     }
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/edit',
+      url: 'https://skin.169kang.com/applet/user/edit',
       method:'post',
       header: { unionid: app.globalData.unionid},
       data:{
@@ -97,7 +97,7 @@ Page({
       success:res=>{
         if(res.data.status==200){
           wx.request({
-            url: 'https://ttwx.169kang.com/applet/user/details',
+            url: 'https://skin.169kang.com/applet/user/details',
             header: { unionid: app.globalData.unionid },
             success:res=>{
               app.globalData.userInfo = res.data.data

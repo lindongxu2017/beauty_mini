@@ -10,14 +10,12 @@ Page({
       title: '登录',
       hiddenBlock: '',
       background: '',
-      tubiao:true
+      tubiao:true,
+      backURL: ""
     },
     opacityNum1: 1,
-    opacityNum2:0.5,
     handleBtn1:false,
-    handleBtn2: true,
     promiseWords1:'授权',
-    promiseWords2: '授权',
     showTel:true,
   },
   // 点击了弹出框的确认
@@ -34,7 +32,7 @@ Page({
                 success: res => {
                   // 可以将 res 发送给后台解码出 unionId
                   wx.request({
-                    url: 'https://ttwx.169kang.com/applet/auth/message',
+                    url: 'https://skin.169kang.com/applet/auth/message',
                     method: 'POST',
                     data: {
                       code: app.globalData.code,
@@ -44,20 +42,24 @@ Page({
                     success: res => {
                       app.globalData.unionid = res.data.data.unionid
                       wx.request({
-                        url: 'https://ttwx.169kang.com/applet/user/details',
+                        url: 'https://skin.169kang.com/applet/user/details',
                         header: { unionid: app.globalData.unionid },
                         success: res => {
                           app.globalData.userInfo = res.data.data
+                          self.setData({
+                            opacityNum1: 0.5,
+                            handleBtn1: true,
+                            promiseWords1: '已授权',
+                            showTel: false,
+                          })
+                          if (app.globalData.userInfo.phone){
+                            self.setData({
+                              showTel: true,
+                            })
+                          }
                         }
                       })
-                      self.setData({
-                        opacityNum2: 1,
-                        opacityNum1: 0.5,
-                        handleBtn1: true,
-                        handleBtn2: false,
-                        promiseWords1: '已授权',
-                        showTel: false,
-                      })
+                      
                     }
                   })
                 }
@@ -78,7 +80,7 @@ Page({
           var code = res.code
           app.globalData.code = res.code
           wx.request({
-            url: 'https://ttwx.169kang.com/applet/auth/phone',
+            url: 'https://skin.169kang.com/applet/auth/phone',
             data: {
               encryptedData: e.detail.encryptedData,
               iv: e.detail.iv,

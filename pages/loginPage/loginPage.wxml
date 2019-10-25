@@ -1,0 +1,11 @@
+<!--components/loginPage/loginPage.wxml-->
+<view  wx:if="1">
+  <view class="dialog" hidden="1">
+      <view class="headImageView" >
+        <image src="../../utils/img/logo.png"></image>
+      </view>
+      <view class="titleText">申请获取以下权限</view>
+      <view class="contentText">获得您的公开信息（昵称，头像等）</view>
+      <button class="authBtn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+ </view>
