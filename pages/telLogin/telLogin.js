@@ -89,7 +89,7 @@ Page({
           timeChange:true
         })
         wx.request({
-          url: 'https://skin.169kang.com/applet/auth/code',
+          url: 'https://ttwx.169kang.com/applet/auth/code',
           data:{
             phone:this.data.tel,
             flag:'replace'
@@ -120,7 +120,7 @@ Page({
     var that=this
     if(this.data.testCode&&this.data.testPhone){
       wx.request({
-        url: 'https://skin.169kang.com/applet/user/account',
+        url: 'https://ttwx.169kang.com/applet/user/account',
         header: { unionid: app.globalData.unionid},
         method:'post',
         data:{

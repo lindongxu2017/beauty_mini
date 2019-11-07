@@ -2,7 +2,7 @@
 <header header='{{header}}'></header>
 <view class="contian">
   <view class="imgBox">
-    <image src="{{pdData.img_url}}"></image>
+    <image src="{{pdData.img_url}}" mode="widthFix"></image>
     <view>*每位用户限购1次</view>
   </view>
   <view class="infoBox">
@@ -22,6 +22,7 @@
      <view class="pdFormItem" wx:for="{{pdData.sub_projects}}" wx:key="index">
       <text>{{item.title}}</text>
       <text>￥{{item.price}}</text>
+      <text class="iconfont iconyoujiantou"></text>
      </view>
     </view>
   </view>

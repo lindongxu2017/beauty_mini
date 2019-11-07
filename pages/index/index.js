@@ -30,7 +30,7 @@ Page({
         version:1
       })
      wx.request({
-      url: 'https://skin.169kang.com/applet/product/spreads',
+      url: 'https://ttwx.169kang.com/applet/product/spreads',
       header: { 'content-type': 'json' },
       success: res => {
         var arr = res.data.data
@@ -70,7 +70,7 @@ Page({
           }, 1000)
         }
         wx.request({
-          url: 'https://skin.169kang.com/applet/product/spreads',
+          url: 'https://ttwx.169kang.com/applet/product/spreads',
           header: { 'content-type': 'json' },
           success: res => {
             // self.loadingSelf = self.selectComponent('#loadingSelf')
@@ -110,7 +110,7 @@ Page({
                     success: res => {
                       // 可以将 res 发送给后台解码出 unionId
                       wx.request({
-                        url: 'https://skin.169kang.com/applet/auth/message',
+                        url: 'https://ttwx.169kang.com/applet/auth/message',
                         method: 'POST',
                         data: {
                           code: code,
@@ -120,7 +120,7 @@ Page({
                         success: res => {
                           app.globalData.unionid = res.data.data.unionid
                           wx.request({
-                            url: 'https://skin.169kang.com/applet/user/details',
+                            url: 'https://ttwx.169kang.com/applet/user/details',
                             header: { unionid: app.globalData.unionid },
                             success: res => {
                               app.globalData.userInfo = res.data.data

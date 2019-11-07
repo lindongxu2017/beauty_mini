@@ -74,7 +74,7 @@ Page({
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     wx.request({
-      url: 'https://skin.169kang.com/applet/user/orders',
+      url: 'https://ttwx.169kang.com/applet/user/orders',
       data: {
         state: this.data.flag-1,
         page: that.data.pagenum, //从数据里获取当前页数
@@ -126,7 +126,7 @@ Page({
   continuePay:function(e){
     var that=this
     wx.request({
-      url: 'https://skin.169kang.com/applet/purchase/respread',
+      url: 'https://ttwx.169kang.com/applet/purchase/respread',
       method:'post',
       header: { unionid: app.globalData.unionid },
       data:{

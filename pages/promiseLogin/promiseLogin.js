@@ -32,7 +32,7 @@ Page({
                 success: res => {
                   // 可以将 res 发送给后台解码出 unionId
                   wx.request({
-                    url: 'https://skin.169kang.com/applet/auth/message',
+                    url: 'https://ttwx.169kang.com/applet/auth/message',
                     method: 'POST',
                     data: {
                       code: app.globalData.code,
@@ -42,7 +42,7 @@ Page({
                     success: res => {
                       app.globalData.unionid = res.data.data.unionid
                       wx.request({
-                        url: 'https://skin.169kang.com/applet/user/details',
+                        url: 'https://ttwx.169kang.com/applet/user/details',
                         header: { unionid: app.globalData.unionid },
                         success: res => {
                           app.globalData.userInfo = res.data.data
@@ -80,7 +80,7 @@ Page({
           var code = res.code
           app.globalData.code = res.code
           wx.request({
-            url: 'https://skin.169kang.com/applet/auth/phone',
+            url: 'https://ttwx.169kang.com/applet/auth/phone',
             data: {
               encryptedData: e.detail.encryptedData,
               iv: e.detail.iv,

@@ -1,11 +1,10 @@
 /**index.wxss**/
 /* xxxxxxxxxx */
 page{
-  width: 100%;
-  height: 100%
+  background-color: #F0F0F0;
 }
 .indexItem{
-  height: 100%
+  padding: 20rpx;
 }
 /* .indexItem{
   height: 1500rpx;
@@ -108,21 +107,21 @@ page{
 }
 
 .pdItem{
-  height: 490rpx;
   background: #fff;
   padding: 30rpx 20rpx;
   border-radius: 10rpx;
-  margin-bottom: 25rpx
+  margin-bottom: 25rpx;
+  box-shadow: 4rpx 4rpx 4rpx rgba(0, 0, 0, 0.05);
 }
 .pdItem image{
   height: 300rpx;
   width: 100%;
-  border-radius: 20rpx
+  border-radius: 16rpx
 }
 .titelPd{
   height: 42rpx;
   font-size: 32rpx;
-  font-weight: 700;
+  /* font-weight: 700; */
   margin: 20rpx 0 0;
    white-space: nowrap;
   overflow: hidden;/*超出部分隐藏*/
@@ -141,14 +140,16 @@ page{
 .current_price{
   font-size: 32rpx;
   color: #FF9900;
+  font-weight: bold;
 }
 .price{
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  align-items: center;
 }
 .original_price{
   font-size: 26rpx;
-  color: #333333;
+  color: #999;
   margin-left: 20rpx
 }
 .original_price text{
@@ -156,11 +157,11 @@ page{
 }
 .goForLook{
   font-size: 26rpx;
-  width: 150rpx;
-  height: 50rpx;
+  width: 180rpx;
+  height: 70rpx;
   text-align: center;
-  line-height: 50rpx;
-  background: #7b6e5b;
-  border-radius: 25rpx;
+  line-height: 70rpx;
+  background: #A0856A;
+  border-radius: 70rpx;
   color: #fff
 }

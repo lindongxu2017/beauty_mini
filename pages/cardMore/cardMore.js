@@ -69,7 +69,7 @@ Page({
     if (app.globalData.userInfo){
       if (app.globalData.userInfo.phone) {
         wx.request({
-          url: 'https://skin.169kang.com/applet/purchase/spread',
+          url: 'https://ttwx.169kang.com/applet/purchase/spread',
           method: 'post',
           header: { unionid: app.globalData.unionid },
           data: { package_id: e.currentTarget.dataset.id },
@@ -127,7 +127,7 @@ Page({
   },
   loadingData:function(that){
     wx.request({
-      url: 'https://skin.169kang.com/applet/product/spread?id=' + that.data.orderId,
+      url: 'https://ttwx.169kang.com/applet/product/spread?id=' + that.data.orderId,
       success: res => {
         let data = res.data.data
         data.original_price = ((data.original_price - 0) / 100).toFixed(2)
@@ -155,7 +155,7 @@ Page({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               wx.request({
-                url: 'https://skin.169kang.com/applet/auth/message',
+                url: 'https://ttwx.169kang.com/applet/auth/message',
                 method: 'POST',
                 data: {
                   code: code,
@@ -165,7 +165,7 @@ Page({
                 success: res => {
                   app.globalData.unionid = res.data.data.unionid
                   wx.request({
-                    url: 'https://skin.169kang.com/applet/user/details',
+                    url: 'https://ttwx.169kang.com/applet/user/details',
                     header: { unionid: app.globalData.unionid },
                     success: res => {
                       app.globalData.userInfo = res.data.data

@@ -19,7 +19,7 @@ Page({
   },
   onLoad:function(options){
     wx.request({
-      url: 'https://skin.169kang.com/applet/user/order',
+      url: 'https://ttwx.169kang.com/applet/user/order',
       method: "POST",
       header: { unionid: app.globalData.unionid },
       data: {

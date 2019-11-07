@@ -21,7 +21,7 @@
     </view> -->
     <block wx:for="{{pdInfo}}" wx:key="index">
     <view class="pdItem"  bindtap="goForLook" data-id="{{item.id}}">
-      <image src="{{item.img_url}}"></image>
+      <image src="{{item.img_url}}" mode="widthFix"></image>
       <view class="titelPd">{{item.title}}</view>
       <view class="sogonPd">{{item.describe}}</view>
       <view class="price">
