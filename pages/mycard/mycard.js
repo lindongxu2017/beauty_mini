@@ -28,7 +28,7 @@ Page({
       navHeight: app.globalData.navgationHeight
     })
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/cards',
+      url: app.bash_url + 'applet/user/cards',
       header: { unionid: app.globalData.unionid},
       method: 'POST',
       data:{
@@ -46,7 +46,7 @@ Page({
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/cards',
+      url: app.bash_url + 'applet/user/cards',
       data: {
         type: this.data.flagNav,
         page: that.data.pagenum, //从数据里获取当前页数

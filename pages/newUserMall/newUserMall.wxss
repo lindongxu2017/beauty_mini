@@ -1,0 +1,8 @@
+/* pages/newUserMall/newUserMall.wxss */
+@import "../index/index.wxss";
+.pdItem {
+	padding: 30rpx;
+}
+.pdItem image {
+	border-radius: 10rpx;
+}

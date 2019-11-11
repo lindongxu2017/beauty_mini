@@ -1,8 +1,74 @@
 <!--index.wxml-->
 
 <header header='{{header}}'></header>
+<swiper class="swiper-wrapper">
+	<swiper-item>
+		<image src="../../utils/img/1568777964097.jpg" class="swiper-img" mode="aspectFill"></image>
+	</swiper-item>
+</swiper>
+<view class="grid-wrapper">
+	<view class="grid-item" wx:for="{{gridlist}}" wx:key="{{index}}" data-index="{{index}}" bindtap="gridTo">
+		<image src="{{item.icon}}" class="gird-item-img"></image>
+		<view class="grid-item-text">{{item.text}}</view>
+	</view>
+</view>
+<view class="speciallist-wrapper">
+	<view class="special-item-wrapper" wx:for="{{speciallist}}" wx:key="{{index}}" style="background-image: url({{item.backbg}});">
+		<view class="special-content">
+			<view class="title-text">
+				<view class="title">{{item.title}}</view>
+				<view class="subtitle">{{item.subtitle}}</view>
+			</view>
+			<view class="items" wx:for="{{item.list}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
+				<view class="title-time">
+					<view class="title">
+						<text>{{obj.title}}</text>
+					</view>
+					<view class="time">{{obj.time}}</view>
+				</view>
+				<view class="subtitle">{{obj.subtitle}}</view>
+				<view class="price-order">
+					<view class="items-price">
+						<text class="unit">￥</text>
+						<text class="text">{{obj.price}}</text>
+						<text class="point">.00</text>
+					</view>
+					<view class="appointment-btn">去预约</view>
+				</view>
+			</view>
+		</view>
+		<view class="product-wrapper">
+			<view class="title-wrapper">
+				<view class="title">家居产品</view>
+				<view class="subtitle">专注肌肤健康，全面守护颜值</view>
+			</view>
+			<view class="list-wrapper">
+				<view class="items">
+					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
+					<view class="product-text">产品名称</view>
+					<view class="product-price">￥100.00</view>
+				</view>
+				<view class="items">
+					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
+					<view class="product-text">产品名称</view>
+					<view class="product-price">￥100.00</view>
+				</view>
+				<view class="items">
+					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
+					<view class="product-text">产品名称</view>
+					<view class="product-price">￥100.00</view>
+				</view>
+				<view class="items">
+					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
+					<view class="product-text">产品名称</view>
+					<view class="product-price">￥100.00</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
 <view class="indexItem">
-    <!-- <view class="banner">
+	<!-- <view class="banner">
       <swiper indicator-dots="{{indicatorDots}}"
         autoplay="{{autoplay}}" interval="{{interval}}"
         duration="{{duration}}"  indicator-active-color="#6e6158"
@@ -15,30 +81,33 @@
         </block>
       </swiper>
     </view> -->
-    <!-- <view class="conentNav">
+	<!-- <view class="conentNav">
       <view class="navItem" bindtap="goNewGift"><image src="../../utils/img/shouyetypea.png"></image><text>新人专享</text></view>
       <view class="navItem" bindtap="godeposit"><image src="../../utils/img/shouyetypeb.png"></image><text>储值活动</text></view>
     </view> -->
-    <block wx:for="{{pdInfo}}" wx:key="index">
-    <view class="pdItem"  bindtap="goForLook" data-id="{{item.id}}">
-      <image src="{{item.img_url}}" mode="widthFix"></image>
-      <view class="titelPd">{{item.title}}</view>
-      <view class="sogonPd">{{item.describe}}</view>
-      <view class="price">
-        <view class="priceItem"><text class="current_price">￥{{item.current_price}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
-        <view class="goForLook">去看看</view>
-      </view>
-    </view>
-  </block>
+	<block wx:for="{{pdInfo}}" wx:key="index">
+		<view class="pdItem" bindtap="goForLook" data-id="{{item.id}}">
+			<image src="{{item.img_url}}" mode="widthFix"></image>
+			<view class="titelPd">{{item.title}}</view>
+			<view class="sogonPd">{{item.describe}}</view>
+			<view class="price">
+				<view class="priceItem"><text class="current_price">￥{{item.current_price}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
+				<view class="goForLook">去看看</view>
+			</view>
+		</view>
+	</block>
 </view>
-<block  wx:if="{{version}}">
-  <view class="dialog" wx:if="{{showDav}}">
-      <view class="headImageView" >
-        <image src="../../utils/img/logo.png"></image>
-      </view>
-      <view class="titleText">申请获取以下权限</view>
-      <view class="contentText">获得您的公开信息（昵称，头像等）</view>
-      <button class="authBtn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-  </view>
- </block>
+<block wx:if="{{version}}">
+	<view class="dialog" wx:if="{{showDav}}">
+		<view class="headImageView">
+			<image src="../../utils/img/logo.png"></image>
+		</view>
+		<view class="titleText">申请获取以下权限</view>
+		<view class="contentText">获得您的公开信息（昵称，头像等）</view>
+		<button class="authBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+	</view>
+</block>
+<view class="ad-wrapper" wx:if="{{isShowAd}}" bindtap="hideAd">
+	<image src="../../utils/img/dav.png" mode="widthFix" class="fade-in" catchtap="linkTo"></image>
+</view>
 <loadingSelf id="loadingSelf"></loadingSelf>

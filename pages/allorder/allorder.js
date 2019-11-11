@@ -26,6 +26,11 @@ Page({
     navHeight: 0
   },
   onLoad:function(options){
+    if (options.flag){
+        this.setData({
+            flag: options.flag
+        })
+    }
     var that=this
     if(app.globalData.unionid){
       that.getdatalist()
@@ -42,7 +47,6 @@ Page({
         }
       },2000)
     }
-    
   },
   flagFun: function (e) { //切换点击事件
     this.setData({
@@ -74,7 +78,7 @@ Page({
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/orders',
+      url: app.bash_url + 'applet/user/orders',
       data: {
         state: this.data.flag-1,
         page: that.data.pagenum, //从数据里获取当前页数
@@ -126,7 +130,7 @@ Page({
   continuePay:function(e){
     var that=this
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/purchase/respread',
+      url: app.bash_url + 'applet/purchase/respread',
       method:'post',
       header: { unionid: app.globalData.unionid },
       data:{

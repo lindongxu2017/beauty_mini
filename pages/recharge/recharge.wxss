@@ -1,0 +1,56 @@
+/* pages/recharge/recharge.wxss */
+page {
+	background-color: rgba(242, 242, 242, 1);
+}
+.userinfo {
+	background-color: #fff;
+	height: 180rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 20rpx;
+}
+.cell {
+	display: flex;
+	padding: 0 30rpx;
+	margin-bottom: 30rpx;
+	font-size: 28rpx;
+	align-items: flex-end;
+}
+.lable, .value {
+	line-height: 1;
+}
+.price {
+	font-size: 40rpx;
+	color: #FF9900;
+	font-weight: 700;
+}
+.panel {
+	background-color: #fff;
+	padding: 0 30rpx;
+}
+.cell-title {
+	padding: 20rpx 0 30rpx;
+	font-size: 28rpx;
+	color: #999;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 30rpx;
+}
+.list {
+	font-size: 0;
+}
+.list .item:nth-child(3n-1) {
+	margin: 0 21rpx 20rpx;
+	box-sizing: border-box;
+}
+.item {
+	border: 1px solid #A0856A;
+	color: #A0856A;
+	display: inline-block;
+	width: calc(33.33% - 14rpx);
+	text-align: center;
+	font-size: 28rpx;
+	box-sizing: border-box;
+	padding: 20rpx;
+	border-radius: 10rpx;
+}

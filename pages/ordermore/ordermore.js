@@ -19,7 +19,7 @@ Page({
   },
   onLoad:function(options){
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/user/order',
+      url: app.bash_url + 'applet/user/order',
       method: "POST",
       header: { unionid: app.globalData.unionid },
       data: {

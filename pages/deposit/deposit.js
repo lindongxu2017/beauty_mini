@@ -48,7 +48,7 @@ Page({
   addmoney:function(){
     if(app.globalData.unionid){
       wx.request({
-        url: 'https://ttwx.169kang.com/applet/purchase/invest',
+        url: app.bash_url + 'applet/purchase/invest',
         method: 'post',
         header: { unionid: app.globalData.unionid },
         data: { product_id: this.data.moneyActive - 0 + 1 },

@@ -17,6 +17,12 @@ Page({
     handleBtn1:false,
     promiseWords1:'授权',
     showTel:true,
+    authback: false
+  },
+  onLoad (options) {
+      if (options.back) {
+          this.data.authback = true
+      }
   },
   // 点击了弹出框的确认
   onGotUserInfo() {
@@ -32,7 +38,7 @@ Page({
                 success: res => {
                   // 可以将 res 发送给后台解码出 unionId
                   wx.request({
-                    url: 'https://ttwx.169kang.com/applet/auth/message',
+                    url: app.bash_url + 'applet/auth/message',
                     method: 'POST',
                     data: {
                       code: app.globalData.code,
@@ -42,7 +48,7 @@ Page({
                     success: res => {
                       app.globalData.unionid = res.data.data.unionid
                       wx.request({
-                        url: 'https://ttwx.169kang.com/applet/user/details',
+                        url: app.bash_url + 'applet/user/details',
                         header: { unionid: app.globalData.unionid },
                         success: res => {
                           app.globalData.userInfo = res.data.data
@@ -52,11 +58,14 @@ Page({
                             promiseWords1: '已授权',
                             showTel: false,
                           })
-                          if (app.globalData.userInfo.phone){
-                            self.setData({
-                              showTel: true,
-                            })
-                          }
+                            if (app.globalData.userInfo.phone) {
+                                self.setData({
+                                    showTel: true,
+                                })
+                            } else {
+                                // 未绑定手机号码
+                                self.goTel()
+                            }
                         }
                       })
                       
@@ -80,7 +89,7 @@ Page({
           var code = res.code
           app.globalData.code = res.code
           wx.request({
-            url: 'https://ttwx.169kang.com/applet/auth/phone',
+            url: app.bash_url + 'applet/auth/phone',
             data: {
               encryptedData: e.detail.encryptedData,
               iv: e.detail.iv,

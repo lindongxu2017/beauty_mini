@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     template.tabbar("tabBar", 0, this)//0表示第一个tabbar
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/product/spreads',
+      url: app.bash_url + 'applet/product/spreads',
       header:{'content-type':'json'},
       success:res=>{
         var arr=res.data.data

@@ -1,0 +1,8 @@
+<!--pages/activity/activity_1.wxml-->
+<header header='{{header}}'></header>
+<view class="img-wrapper">
+    <image class="activity-img" mode="widthFix" src="https://tcdn.169kang.com/skincare/activity/499.png"></image>
+    <view class="btn-buy" bindtap="pay">
+        <button hidden="{{isAuth}}" class="promise" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+    </view>
+</view>

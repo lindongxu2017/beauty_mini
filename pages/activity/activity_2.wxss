@@ -1,0 +1,27 @@
+/* pages/activity/activity_1.wxss */
+.img-wrapper {
+    position: relative;
+}
+.btn-buy {
+    position: absolute;
+    width: 60%;
+    top: 72.2%;
+    left: 20%;
+    height: 100rpx;
+    background-color: transparent;
+    font-size: 32rpx;
+    line-height: 100rpx;
+    color: #fff;
+    text-align: center;
+}
+.promise {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.activity-img {
+    width: 100%;
+}

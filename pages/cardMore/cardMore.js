@@ -10,7 +10,7 @@ Page({
       hiddenBlock: '',
       homeCapsule: '',
       tubiao: true,
-      backURL: "/pages/index/index"
+      // backURL: "/pages/index/index"
     },
     pdData:{},
     orderId:null,
@@ -69,7 +69,7 @@ Page({
     if (app.globalData.userInfo){
       if (app.globalData.userInfo.phone) {
         wx.request({
-          url: 'https://ttwx.169kang.com/applet/purchase/spread',
+          url: app.bash_url + 'applet/purchase/spread',
           method: 'post',
           header: { unionid: app.globalData.unionid },
           data: { package_id: e.currentTarget.dataset.id },
@@ -127,7 +127,7 @@ Page({
   },
   loadingData:function(that){
     wx.request({
-      url: 'https://ttwx.169kang.com/applet/product/spread?id=' + that.data.orderId,
+      url: app.bash_url + 'applet/product/spread?id=' + that.data.orderId,
       success: res => {
         let data = res.data.data
         data.original_price = ((data.original_price - 0) / 100).toFixed(2)
@@ -155,7 +155,7 @@ Page({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               wx.request({
-                url: 'https://ttwx.169kang.com/applet/auth/message',
+                url: app.bash_url + 'applet/auth/message',
                 method: 'POST',
                 data: {
                   code: code,
@@ -165,7 +165,7 @@ Page({
                 success: res => {
                   app.globalData.unionid = res.data.data.unionid
                   wx.request({
-                    url: 'https://ttwx.169kang.com/applet/user/details',
+                    url: app.bash_url + 'applet/user/details',
                     header: { unionid: app.globalData.unionid },
                     success: res => {
                       app.globalData.userInfo = res.data.data

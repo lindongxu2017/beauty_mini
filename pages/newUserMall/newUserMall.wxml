@@ -1,0 +1,15 @@
+<!--pages/newUserMall/newUserMall.wxml-->
+<header header='{{header}}'></header>
+<view class="indexItem">
+	<block wx:for="{{list}}" wx:key="{{index}}">
+		<view class="pdItem" bindtap="goForLook" data-id="{{item.id}}">
+			<image src="{{item.img_url}}" mode="widthFix"></image>
+			<view class="titelPd">{{item.title}}</view>
+			<view class="sogonPd">{{item.describe}}</view>
+			<view class="price">
+				<view class="priceItem"><text class="current_price">￥{{item.current_price}}</text><text class="original_price">原价：<text>￥{{item.original_price}}</text></text></view>
+				<view class="goForLook">去看看</view>
+			</view>
+		</view>
+	</block>
+</view>
