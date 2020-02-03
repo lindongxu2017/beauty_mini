@@ -1,0 +1,26 @@
+<!--pages/cash_detail/index.wxml-->
+<header header='{{header}}'></header>
+
+<view class="number">
+    <view class="title">
+        <view class="text">美肌工坊KKONE店</view>
+        <view class="time">{{detail.time}}</view>
+    </view>
+    <view class="no">{{detail.order_no}}</view>
+</view>
+
+<view class="table">
+    <view class="thead flex">
+        <view class="name">名称</view>
+        <view class="num">数量</view>
+        <view class="money">金额</view>
+    </view>
+    <block wx:for="{{detail.items}}" wx:key="{{index}}">
+        <view class="tbody flex">
+            <view class="name-item">{{item.title}}</view>
+            <view class="num-item">{{item.count}}</view>
+            <view class="money-item">￥{{item.price}}</view>
+        </view>
+    </block>
+    <view class="total">￥{{detail.subtotal}}</view>
+</view>

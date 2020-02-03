@@ -1,176 +1,234 @@
 /* pages/mine/mine.wxss */
-page{
-  height: 100%
-}
-.info{
-  margin: 20rpx 50rpx;
-  height: 150rpx;
-  /* border-bottom: 2rpx solid #f2f2f2 */
+
+page {
+    height: 100%;
 }
 
-.imgBox{
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
-  margin-right: 26rpx;
-  float: left;
+.info {
+    margin: 20rpx 50rpx;
+    height: 150rpx;
+    border-bottom: 2rpx solid #f2f2f2;
 }
-.imgBox image{
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
+
+.imgBox {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+    margin-right: 26rpx;
+    float: left;
 }
-.personalInfo{
-  float: left;
-  width: 450rpx
+
+.imgBox image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
 }
-.infoBox{
-  width: 100%;
-  height: 84rpx;
-  line-height: 84rpx
+
+.personalInfo {
+    float: left;
+    width: 450rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.nameBox{
-  float: left;
-  font-size: 32rpx;
-  margin-right: 10rpx
+
+.infoBox {
+    width: 100%;
 }
-.personalInfo .iconfont{
-  float: left;
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 20rpx;
-  color: #ffffff;
-  font-size:18rpx;
-  line-height: 40rpx;
-  text-align: center;
-  margin-top:26rpx;
+
+.nameBox {
+    float: left;
+    font-size: 32rpx;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
 }
-.personalTel{
-  float: left;
-  font-size: 20rpx; 
-  color: #979797
+
+.personalInfo .iconfont {
+    float: left;
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 20rpx;
+    color: #fff;
+    font-size: 18rpx;
+    line-height: 40rpx;
+    text-align: center;
+    margin-top: 26rpx;
 }
-.iconshezhi{
-  height: 120rpx;
-  line-height: 120rpx;
-  color: #a0a0a0
+
+.personalTel {
+    float: left;
+    font-size: 20rpx;
+    color: #979797;
 }
-.card{
- height: 300rpx;
- width: 100%;
- display: flex;
-  flex-direction: row;
- white-space: nowrap;
- background: #f3f3f1
+
+.iconshezhi {
+    height: 120rpx;
+    line-height: 120rpx;
+    color: #a0a0a0;
 }
-.cardItem{
-  display: inline-block;
-  margin:20rpx 0rpx 0rpx 50rpx;
+
+.card {
+    height: 300rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    background: #f3f3f1;
 }
-.cardItem image{
-  width: 573rpx;
-  height: 280rpx;
-  border-radius: 30rpx
+
+.cardItem {
+    display: inline-block;
+    margin: 20rpx 0rpx 0rpx 50rpx;
 }
-.muneItem{
-  height: 260rpx;
-  width: 100%; 
-  display: flex
+
+.cardItem image {
+    width: 573rpx;
+    height: 280rpx;
+    border-radius: 30rpx;
 }
-.menuChild{
-  height: 260rpx;
-  width: 180rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column
+
+.muneItem {
+    height: 260rpx;
+    width: 100%;
+    display: flex;
 }
-.menuChild image{
-  width: 100rpx;
-  height: 100rpx;
+
+.menuChild {
+    height: 260rpx;
+    width: 180rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
-.menuChild view{
-  width: 100rpx;
-  height: 100rpx;
-  text-align: center;
-  font-size: 28rpx;
-  white-space: nowrap;
+
+.menuChild .nums {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30rpx;
+    background-color: #FFA963;
+    color: #fff;
+    font-size: 24rpx;
+    right: 45rpx;
+    top: 45rpx;
 }
-.noSIgn{
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  background: #f4f4f2
+
+.menuChild image {
+    width: 100rpx;
+    height: 100rpx;
 }
-.noSIgn image{
-  display: block;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50rpx;
-  margin: 40rpx 0
+
+.menuChild .iconfont {
+    font-size: 60rpx;
+    color: #A0856A;
 }
-.statusTip{
-  font-size: 24rpx;
-  color: #dfdfdb;
-  margin-bottom: 70rpx
+
+.menuChild view {
+    width: 100rpx;
+    height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+    white-space: nowrap;
 }
-.signBTn{
-  width: 240rpx;
-  height: 80rpx;
-  background: #7b6e5b;
-  color: #fff;
-  font-size:28rpx;
-  text-align: center;
-  line-height: 80rpx;
-  border-radius: 40rpx;
-  margin-bottom: 40rpx;
+
+.noSIgn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f4f2;
 }
-.message{
-  margin:0 50rpx;
-  height: 130rpx;
+
+.noSIgn image {
+    display: block;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    margin: 40rpx 0;
 }
-.zhanghao{
-  line-height: 40rpx;
-  margin-bottom: 15rpx;
-  font-size: 28rpx
+
+.statusTip {
+    font-size: 24rpx;
+    color: #dfdfdb;
+    margin-bottom: 70rpx;
 }
-.yue{
-  font-size: 28rpx;
-  float: left
+
+.signBTn {
+    width: 240rpx;
+    height: 80rpx;
+    background: #7b6e5b;
+    color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    margin-bottom: 40rpx;
 }
-.yue text{
-  font-size: 34rpx;
-  color: #ffa31a;
-  font-weight: bold
+
+.message {
+    margin: 0 50rpx;
+    height: 130rpx;
 }
-.depositBtn{
-  float: right;
-  width: 130rpx;
-  height: 50rpx;
-  text-align: center;
-  line-height: 50rpx;
-  color: #fff;
-  font-size: 24rpx;
-  background: #a0856a;
-  border-radius: 20rpx
+
+.zhanghao {
+    line-height: 40rpx;
+    margin-bottom: 15rpx;
+    font-size: 28rpx;
 }
-.gap{
-  width: 100%;
-  height: 20rpx;
-  background: #f2f2f2
+
+.yue {
+    font-size: 28rpx;
+    float: left;
 }
-.mingxi{
-  margin:20rpx 50rpx;
-  font-size: 34rpx;
-  color: #979797;
-  height: 70rpx;
-  border-bottom: 2rpx solid #f2f2f2
+
+.yue text {
+    font-size: 34rpx;
+    color: #ffa31a;
+    font-weight: bold;
 }
-.mingxi text{
-  margin-left: 20rpx;
-  font-size:30rpx
+
+.depositBtn {
+    float: right;
+    width: 180rpx;
+    height: 70rpx;
+    text-align: center;
+    line-height: 70rpx;
+    color: #fff;
+    font-size: 24rpx;
+    background: #a0856a;
+    border-radius: 70rpx;
+    margin-top: -20rpx;
 }
-.iconyoujiantou{
-  float: right;
-  line-height: 70rpx
+
+.gap {
+    width: 100%;
+    height: 20rpx;
+    background: #f2f2f2;
+}
+
+.mingxi {
+    margin: 20rpx 50rpx;
+    font-size: 34rpx;
+    color: #979797;
+    height: 70rpx;
+    border-bottom: 2rpx solid #f2f2f2;
+}
+
+.mingxi text {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+}
+
+.iconyoujiantou {
+    float: right;
+    line-height: 70rpx;
+}
+
+.detail {
+    margin-left: 20rpx;
+    color: #A0856A;
 }

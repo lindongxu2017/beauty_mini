@@ -1,6 +1,10 @@
 {
     "navigationStyle": "custom",
     "usingComponents": {
-      "header": "../../components/navBar/navBar"
+        "header": "../../components/navBar/navBar",
+        "order-product": "../../components/order_product/index",
+        "appoint-product": "../../components/appoint_product/index",
+        "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+        "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index"
     }
-  }
+}

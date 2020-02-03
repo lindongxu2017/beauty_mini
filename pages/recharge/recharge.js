@@ -1,4 +1,5 @@
 // pages/recharge/recharge.js
+const app = getApp()
 Page({
 
 	/**
@@ -11,22 +12,117 @@ Page({
 			homeCapsule: '',
 			tubiao: true
 		},
-		quotalist: [
-			{id: 1, money: 2000, reward: '200', need: '2000', total: '2200'},
-			{id: 12, money: 3000, reward: '500', need: '3000', total: '3500'},
-			{id: 1, money: 5000, reward: '1000', need: '5000', total: '6000'},
-			{id: 1, money: 8000, reward: '2000', need: '8000', total: '10000'},
-			{id: 1, money: 10000, reward: '3000', need: '10000', total: '13000'},
-			{id: 1, money: 20000, reward: '7000', need: '20000', total: '27000'},
-		]
+		quotalist: [],
+		selected: 0,
+		userInfo: {}
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-
+		this.getdata()
+		if (app.globalData.userInfo) {
+			this.setData({
+				userInfo: app.globalData.userInfo
+			})
+            console.log(app.globalData.userInfo)
+		}
 	},
+	
+	getdata () {
+        app.ajax('POST', '/applet/invest/lists').then(res => {
+			// console.log(res)
+			if(res.status == 200) {
+                res.data.map((item, index) => {
+                    item.disc_str = '尊享会员价' +  (item.discount / 10) + '折'
+                })
+				this.setData({
+					quotalist: res.data
+				})
+			}
+		})
+	},
+	
+	select (e) {
+		let index = e.currentTarget.dataset.index
+		this.setData({
+			selected: index
+		})
+	},
+	
+	pay () {
+		// TODO
+        var that = this
+        wx.showLoading({
+            title: '发起支付',
+        })
+        const id = this.data.quotalist[this.data.selected].invest_id
+        if (app.globalData.userInfo) {
+            if (app.globalData.userInfo.phone) {
+                app.ajax('POST', '/applet/purchase/invest', { invest_id: id }).then(res => {
+                    // console.log(res)
+                    wx.hideLoading()
+                    if (res.status == 200) {
+                        wx.requestPayment({
+                            timeStamp: res.data.timeStamp,
+                            nonceStr: res.data.nonceStr,
+                            package: res.data.package,
+                            signType: res.data.signType,
+                            paySign: res.data.paySign,
+                            timeStamp: res.data.timeStamp,
+                            success(res) {
+                                // console.log(res)
+                                that.getuserinfo()
+                                wx.showToast({
+                                    title: '充值成功',
+                                    icon: 'none'
+                                })
+                            },
+                            fail(err) {
+                                // console.log(err)
+                            }
+                        })
+                    }
+                }).catch(error =>{
+                    wx.hideLoading()
+                })
+            } else {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '您还没有绑定手机号，为了更好的为您服务，请绑定手机后购买!',
+                    icon: 'none'
+                })
+                setTimeout(function () {
+                    wx.navigateTo({
+                        url: '../telLogin/telLogin',
+                    })
+                }, 1000)
+            }
+        } else {
+            wx.hideLoading()
+            wx.showToast({
+                title: '您还没有授权，请授权后购买!',
+                icon: 'none'
+            })
+            setTimeout(function () {
+                wx.navigateTo({
+                    url: '../promiseLogin/promiseLogin',
+                })
+            }, 1000)
+        }
+	},
+
+    getuserinfo () {
+        app.ajax('post', '/applet/user/details').then(res => {
+            if (res.status == 200) {
+                this.setData({
+                    userInfo: res.data
+                })
+                app.globalData.userInfo = res.data
+            }
+        })
+    },
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

@@ -1,0 +1,35 @@
+<!--pages/comment/index.wxml-->
+<header header='{{header}}'></header>
+
+<view class="star">
+    <block wx:for="{{5}}" wx:key="{{index}}">
+        <text class="iconfont iconwuxing {{active >= index ? 'active' : ''}}" data-index="{{index}}" bindtap="star"></text>
+    </block>
+</view>
+
+<view class="score" wx:if="{{active > -1}}">
+    <view class="label">
+        <text>您的评分：</text>
+        <text class="text">{{score[active].value}}</text>
+        <text>分</text>
+    </view>
+    <view class="value">{{score[active].name}}</view>
+</view>
+
+<view wx:else class="default">请您对本次服务做出评价</view>
+
+<view class="tips" wx:if="{{active > -1}}">
+    <text>您对本次服务印象如何</text>
+</view>
+
+<view class="options" wx:if="{{active > -1}}">
+    <block wx:for="{{options[active]}}" wx:key="{{index}}">
+        <view class="item {{item.is_check ? 'active' : ''}}" data-index="{{index}}" bindtap="select">{{item.name}}</view>
+    </block>
+</view>
+
+<view class="mark">
+    <textarea placeholder="还有什么要补充的可以写在这里~" placeholder-style="color: #ccc;" value="{{postdata.content}}"  bindinput="inputValue"></textarea>
+</view>
+
+<view class="submit" bindtap="set_comment">提交</view>

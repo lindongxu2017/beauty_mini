@@ -35,7 +35,7 @@
 .navbar_title {
   position: absolute;
   left: 0;
-  top: 0;
+  /* top: 0; */
   width: 100%;
   
   display: flex;
@@ -43,13 +43,14 @@
   align-items: center;
   z-index: -1; 
 }
-.navbar_title view {
-  word-break: break-all;
+.navbar_title cover-view {
+  /* word-break: break-all;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   white-space: nowrap;
   font-size: 36rpx;
-  margin-left: 40rpx
+  margin-left: 40rpx;
+  display: block;
 }
 .navbar_home {
   margin-left: 32rpx;
@@ -63,19 +64,19 @@
   padding: 10rpx 0;
 }
 
-.navbar_home image:first-child {
+.navbar_home cover-image:first-child {
   width: 32rpx;
   height: 32rpx;
   padding: 0 20rpx;
   border-right: 1px solid #ffffff;
 }
 
-.navbar_home image:last-child {
+.navbar_home cover-image:last-child {
   width: 32rpx;
   height: 32rpx;
   padding: 0 20rpx;
 }
-.navbar_back image{
+.navbar_back cover-image{
   width: 32rpx;
   height: 32rpx;
 }

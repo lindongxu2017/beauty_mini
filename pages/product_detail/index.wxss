@@ -1,0 +1,175 @@
+/* pages/product_detail/index.wxss */
+page {
+    background-color: rgba(242, 242, 242, 1);
+    padding-bottom: 50px;
+}
+.swiper-height {
+    height: 80vw;
+}
+.swiper-item-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.product > image {
+    width: 100%;
+    display: block;
+}
+.info {
+    font-size: 0;
+    padding: 30rpx;
+    background-color: #fff;
+    margin-bottom: 7px;
+}
+.title-time {
+    display: flex;
+    align-items: flex-start
+}
+.title-time .title {
+    flex: 1;
+    padding-right: 10px;
+    font-size: 36rpx;
+}
+.title-time .time {
+    font-size: 28rpx;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+.desc {
+    font-size: 28rpx;
+    color: #999;
+}
+.flex-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.current {
+    font-size: 24rpx;
+    color: #FF9900;
+    margin-right: 10px;
+}
+.current .text {
+    font-size: 48rpx;
+    font-weight: bold;
+}
+.origin, .num {
+    font-size: 28rpx;
+    color: #ccc;
+}
+.origin .text {
+    text-decoration: line-through;
+}
+.details {
+    background-color: #fff;
+    margin-bottom: 7px;
+}
+.cell {
+    font-size: 32rpx;
+    color: #666;
+    padding: 30rpx;
+}
+.details image {
+    width: 100%;
+    display: block;
+}
+.comment {
+    background-color: #fff;
+    margin-bottom: 70px;
+}
+.comment-item {
+    padding-bottom: 30rpx;
+}
+.comment-title {
+    font-size: 32rpx;
+    color: #666;
+    padding: 30rpx;
+}
+.checkmore {
+    font-size: 28rpx;
+    color: #666;
+}
+.userinfo {
+    display: flex;
+    padding: 0 30rpx 30rpx;
+}
+.avatar image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+.content {
+    flex: 1;
+    padding-left: 20rpx;
+}
+.info-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.name-phone .name {
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.name-phone .phone {
+    font-size: 28rpx;
+    color: #ccc;
+}
+.star-date {
+    text-align: right;
+}
+.star {
+    color: #EFB336;
+}
+.star-date .date {
+    font-size: 28rpx;
+    color: #ccc;
+}
+.content-text {
+    font-size: 28rpx;
+}
+
+.color {
+    color: #a0856a;
+    border: 0;
+    padding: 0 30rpx;
+}
+.bg-color-o {
+    background-color: #A99178!important;
+    border-color: #A99178!important;
+}
+.bg-color {
+    background-color: #a0856a!important;
+    border-color: #a0856a!important;
+}
+.van-hairline--right:after {
+    display: none!important;
+}
+van-goods-action-icon {
+    width: 120rpx!important;
+}
+
+.footer-num {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-label {
+    font-size: 24rpx;
+    color: #999;
+}
+.steps {
+    color: #9F846B;
+}
+.nums {
+    width: 60rpx;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.iconfont {
+    display: inline-block;
+    vertical-align: middle;
+}

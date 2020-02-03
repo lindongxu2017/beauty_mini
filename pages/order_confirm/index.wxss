@@ -1,0 +1,8 @@
+/* pages/order_confirm/index.wxss */
+@import '../service_confirm/index.wxss';
+.section {
+    margin: 20rpx;
+}
+.agreement {
+    padding: 0 20rpx 20rpx;
+}

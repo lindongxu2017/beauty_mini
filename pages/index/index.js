@@ -3,8 +3,8 @@
 
 const app = getApp()
 if (!app.bash_url) {
-	app.bash_url = 'https://skin.169kang.com/'
-	// app.bash_url = 'https://ttwx.169kang.com/'
+	// app.bash_url = 'https://skin.169kang.com/'
+	app.bash_url = 'https://ttwx.169kang.com/'
 }
 Page({
 	data: {
@@ -25,25 +25,16 @@ Page({
 		version: 0,
 		isShowAd: false,
 		gridlist: [
-			{path: '/pages/newUserMall/newUserMall', icon: '../../utils/img/shouyetypea.png', text: '新人专享'},
-			{path: '', icon: '../../utils/img/shouyetypeb.png', text: '储值活动'},
-			{path: '', icon: '../../utils/img/shouyetypea.png', text: '服务项目'},
-			{path: '', icon: '../../utils/img/shouyetypec.png', text: '家居产品'}
+			{is_show: 0, path: '/pages/newUserMall/newUserMall', icon: '../../utils/img/youhui.png', text: '优惠套餐'},
+            {is_show: 0, path: '/pages/recharge/recharge', icon: '../../utils/img/shouyetypeb.png', text: '储值活动'},
+            {is_show: 0, path: '/pages/service/service?type=0', icon: '../../utils/img/shouyetypea.png', text: '服务项目'},
+            {is_show: 0, path: '/pages/service/service?type=1', icon: '../../utils/img/shouyetypec.png', text: '家居产品'}
 		],
-		speciallist: [
-			{
-				title: '服务项目',
-				subtitle: '精选护肤好物，爱美不分场合',
-				backbg: '/utils/img/1562166341037.jpg',
-				list: [
-					{title: '标题描述标题描述标题描述标题描述标题描述', subtitle: '内容描述内容描述内容描述内容描述', price: '100', time: '1小时'},
-					{title: '标题描述', subtitle: '内容描述内容描述内容描述内容描述', price: '100', time: '1小时'},
-					{title: '标题描述', subtitle: '内容描述内容描述内容描述内容描述', price: '100', time: '1小时'},
-					{title: '标题描述', subtitle: '内容描述内容描述内容描述内容描述', price: '100', time: '1小时'},
-					{title: '标题描述', subtitle: '内容描述内容描述内容描述内容描述', price: '100', time: '1小时'}
-				],
-			}
-		]
+		details: {
+            banners: [],
+            enter: {},
+            navs: []
+        },
 	},
 	onLoad: function() {
 		var self = this
@@ -53,27 +44,7 @@ Page({
 				showDav: false,
 				version: 1
 			})
-			wx.request({
-				url: app.bash_url + 'applet/product/spreads',
-				header: {
-					'content-type': 'json'
-				},
-				success: res => {
-					var arr = res.data.data
-					for (var i = 0; i < arr.length; i++) {
-						arr[i].original_price = ((arr[i].original_price - 0) / 100).toFixed(2)
-						arr[i].current_price = ((arr[i].current_price - 0) / 100).toFixed(2)
-					}
-					self.setData({
-						pdInfo: arr
-					})
-					setTimeout(function() {
-						self.loadingSelf = self.selectComponent('#loadingSelf')
-						self.loadingSelf.closeLoading()
-						self.showAd()
-					}, 1000)
-				}
-			})
+            this.getdatas()
 		} else {
 			app.wxlogin().then(res => {
 				self.setData({
@@ -86,7 +57,10 @@ Page({
 					setTimeout(function() {
 						self.loadingSelf = self.selectComponent('#loadingSelf')
 						self.loadingSelf.closeLoading()
-						self.showAd()
+						// self.showAd()
+                        self.setData({
+                            isShowAd: app.globalData.new_people,
+                        })
 					}, 1000)
 				} else {
 					self.setData({
@@ -95,37 +69,79 @@ Page({
 					setTimeout(function() {
 						self.loadingSelf = self.selectComponent('#loadingSelf')
 						self.loadingSelf.closeLoading()
-						self.showAd()
+						// self.showAd()
+                        self.setData({
+                            isShowAd: app.globalData.new_people,
+                        })
 					}, 1000)
 				}
-				wx.request({
-					url: app.bash_url + 'applet/product/spreads',
-					header: {
-						'content-type': 'json'
-					},
-					success: res => {
-						// self.loadingSelf = self.selectComponent('#loadingSelf')
-						// self.loadingSelf.closeLoading()
-						var arr = res.data.data
-						for (var i = 0; i < arr.length; i++) {
-							arr[i].original_price = ((arr[i].original_price - 0) / 100).toFixed(2)
-							arr[i].current_price = ((arr[i].current_price - 0) / 100).toFixed(2)
-						}
-						self.setData({
-							pdInfo: arr
-						})
-					}
-				})
+                this.getdatas()
 			})
 		}
-		
-		this.data.speciallist.map((item, index) => {
-			var key = 'speciallist['+index+'].backbg'
-			this.setData({
-				[key]: this.img2base64(this.data.speciallist[index].backbg)
-			})
-		})
+        // this.getdatas()
 	},
+    getdatas () {
+        // version: 'v1.0'
+        app.ajax('post', 'applet/home', { version: this.data.version }).then(res => {
+            this.setData({
+                details: {...res.data}
+            })
+            let packages = 'gridlist[0].is_show'
+            let invest = 'gridlist[1].is_show'
+            let service = 'gridlist[2].is_show'
+            let product = 'gridlist[3].is_show'
+
+            this.setData({
+                [packages]: res.data.enter.package,
+                [invest]: res.data.enter.invest,
+                [service]: res.data.enter.service,
+                [product]: res.data.enter.product
+            })
+            setTimeout(() =>{
+                this.loadingSelf = this.selectComponent('#loadingSelf')
+                this.loadingSelf.closeLoading()
+                this.user_is_new()
+            }, 1000)
+        })
+    },
+    godetail (e) {
+        let {item} = e.currentTarget.dataset
+        let url = ''
+        switch (item.wares_type) {
+            case 1:
+                url = '/pages/service_detail/index?id=' + item.wares_id
+                break
+            case 2:
+                url = '/pages/product_detail/index?id=' + item.wares_id
+                break
+            case 4:
+                url = '/pages/cardMore/cardMore?id=' + item.wares_id
+                break
+        }
+        wx.navigateTo({ url })
+    },
+    user_is_new () {
+        app.ajax('post', '/applet/config').then(res => {
+            if (res.data.new_people == 1) {
+                this.showAd()
+            } else {
+                this.hideAd()
+            }
+        })
+    },
+    goappointment (e) {
+        let {id} = e.currentTarget.dataset
+        wx.navigateTo({
+            url: '/pages/service_detail/index?id=' + id,
+        })
+        // console.log(id)
+    },
+    goproduct(e) {
+        let { id } = e.currentTarget.dataset
+        wx.navigateTo({
+            url: '/pages/product_detail/index?id=' + id,
+        })
+    },
 	gridTo (e) {
 		let index = e.currentTarget.dataset.index
 		wx.navigateTo({
@@ -146,10 +162,10 @@ Page({
 		})
 	},
 	linkTo() {
-		console.log('跳转新人专享')
-		// wx.navigateTo({
-		//  url: '/pages/'
-		// })
+		// console.log('跳转新人专享')
+		wx.navigateTo({
+            url: '/pages/newUserMall/newUserMall'
+		})
 	},
 	handleDeposit: function(e) {
 		var invest_amount = e.currentTarget.dataset.invest_amount

@@ -1,0 +1,17 @@
+<!--pages/recharge_detail/index.wxml-->
+<header header="{{header}}"></header>
+<view class="userinfo">
+    <view class="name">账号：{{userInfo.id}}</view>
+    <view class="balance">余额：<text>￥{{userInfo.balance}}</text></view>
+    <!-- <view class="tips">*其中包含（基础￥80.00+赠送￥20.00）</view> -->
+</view>
+
+<view class="list">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <van-cell use-label-slot center is-link url="/pages/cash_detail/index?order_no={{item.order_no}}&type={{item.type}}">
+            <view slot="title" class="title">{{item.title}}</view>
+            <view slot="label" class="label">{{item.time}}</view>
+            <view class="value">￥{{item.money}}</view>
+        </van-cell>
+    </block>
+</view>

@@ -1,0 +1,4 @@
+/* pages/comment_product/index.wxss */
+page {
+    background-color: #f2f2f2;
+}

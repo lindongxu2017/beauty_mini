@@ -1,0 +1,142 @@
+/* pages/service/service.wxss */
+page {
+	background-color: rgba(242, 242, 242, 1);
+}
+.search {
+	padding: 10px 40rpx;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+}
+.tab-wrapper {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+}
+.control {
+	background-color: #F2F2F2;
+	display: flex;
+	align-items: center;
+	line-height: 40px;
+	box-sizing: border-box;
+	padding: 0 30rpx;
+	border-radius: 40px;
+	color: #ccc;
+	flex: 1;
+}
+.control.center {
+	justify-content: center;
+}
+.control .iconfont.iconsousuo {
+	margin-right: 10rpx;
+}
+.control input {
+	font-size: 28rpx;
+	color: #333;
+}
+.control input.all {
+	flex: 1;
+}
+.gray {
+	color: #ccc;
+	font-size: 24rpx;
+}
+.search .text {
+	padding-left: 30rpx;
+	color: #ccc;
+}
+.search .text.active {
+	color: #A0856A;
+}
+.product-list {
+	padding: 20rpx;
+    font-size: 0;
+}
+.product-list .item {
+    width: calc(50% - 5px);
+    display: inline-block;
+    box-sizing: border-box;
+}
+.product-list .item:nth-child(2n) {
+    margin-left: 10px;
+}
+.category {
+    white-space: nowrap;
+    background-color: #fff;
+}
+.category .item {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 28rpx;
+    color: #999;
+    margin: 0 20rpx;
+}
+.category .item.active {
+    color: #333;
+}
+.category .item:first-child {
+    margin-left: 40rpx;
+}
+.category .item:last-child {
+    margin-right: 40rpx;
+}
+.ShoppingCart {
+    position: fixed;
+    right: 0;
+    bottom: 10%;
+    transform: translateX(80px);
+    transition: all 0.5s ease;
+}
+.ShoppingCart.active {
+    transform: translateX(-15px);
+}
+.ShoppingCart image {
+    width: 80px;
+    height: 80px;
+}
+.ShoppingCart .inline {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 23px;
+    left: 23px;
+}
+.ShoppingCart text {
+    position: absolute;
+    right: 40rpx;
+    top: 28rpx;
+    display: inline-block;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 24rpx;
+    color: #EFB36A;
+}
+.iconfont.inline {
+  font-size: 32px;
+  color: #fff;
+}
+.empty {
+    text-align: center;
+    padding: 50px 0;
+}
+.empty image {
+    width: 30%;
+    margin-bottom: 10rpx;
+    opacity: 0.85;
+}
+.empty .tips {
+    color: #999;
+    font-size: 28rpx;
+}

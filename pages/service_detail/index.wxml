@@ -1,0 +1,93 @@
+<!--pages/service_detail/index.wxml-->
+<header header='{{header}}'></header>
+
+<view class="product">
+    <image src="{{detail.image_src}}" mode="widthFix"></image>
+    <view class="info">
+        <view class="title-time">
+            <view class="title">{{detail.title}}</view>
+            <view class="time">{{detail.duration}}分钟</view>
+        </view>
+        <view class="desc">{{detail.describe}}</view>
+        <view class="flex-cell">
+            <view class="flex-cell price">
+                <view class="current">
+                    <text>￥</text>
+                    <text class="text">{{detail.price}}</text>
+                    <text>.00</text>
+                </view>
+                <view class="origin">
+                    <text>原价:</text>
+                    <text class="text">￥{{detail.origin_price}}.00</text>
+                </view>
+            </view>
+            <view class="num">已售{{detail.purchase_times}}件</view>
+        </view>
+    </view>
+</view>
+
+<view class="step">
+    <view class="tips">
+        <text>护理流程</text>
+        <text class="xs">美丽不停~</text>
+    </view>
+    <view class="item" wx:for="{{detail.steps}}" wx:key="{{index}}">
+        <view class="flex-cell order">
+            <view class="text">{{index + 1}}.{{item.title}}</view>
+            <view class="time">{{item.duration}}分钟</view>
+        </view>
+        <view class="desc">{{item.describe}}</view>
+        <view class="use-product" wx:if="{{item.products.length}}">
+            <view class="title">使用产品</view>
+            <view class="produsct-list">
+                <view class="products" wx:for="{{item.products}}" wx:key="order" wx:for-item="obj" wx:for-index="order" catchtap="message">
+                    <view class="images-wrapper">
+                        <image src="{{obj.image_src}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="products-title">{{obj.title}}</view>
+                    <view class="products-price">￥{{obj.price}}.00</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="comment" wx:if="{{comment.length > 0}}">
+    <view class="flex-cell comment-title">
+        <view>买过的人这么说</view>
+        <view class="checkmore" catchtap="checkmore">查看全部</view>
+    </view>
+    <view class="comment-item" wx:for="{{comment}}" wx:key="{{index}}" wx:if="{{index == 0}}">
+        <view class="userinfo">
+            <view class="avatar">
+                <image src="{{item.headimgurl}}" mode="aspectFill"></image>
+            </view>
+            <view class="content">
+                <view class="info-text">
+                    <view class="name-phone">
+                        <view class="name">{{item.nickname}}</view>
+                        <view class="phone">{{item.phone}}</view>
+                    </view>
+                    <view class="star-date">
+                        <view class="star">
+                            <van-icon name="star" wx:for="{{item.score}}" wx:key="{{order}}" wx:for-item="obj" wx:for-index="order" />
+                            <van-icon name="star-o" wx:for="{{5 - item.score}}" wx:key="{{order}}" wx:for-item="obj" wx:for-index="order" />
+                            <text>{{item.score}}.0</text>
+                        </view>
+                        <view class="date">{{item.create_time}}</view>
+                    </view>
+                </view>
+                <view class="content-text">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view></view>
+
+<van-goods-action>
+    <van-goods-action-icon icon="bag-o" text="商城" bind:click="home" icon-class="color" />
+    <van-goods-action-icon icon="chat-o" open-type="contact" text="客服" icon-class="color" />
+    <van-goods-action-icon icon="share" open-type="share" text="分享" icon-class="color" />
+    <van-goods-action-button text="立即预约" bind:click="appointment" custom-class="bg-color" />
+</van-goods-action>

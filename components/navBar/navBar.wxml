@@ -1,19 +1,23 @@
-<view>
-<view style="height:{{statusHeight+navHeight}}px" hidden='{{header.hiddenBlock}}'></view>
-<view class='topbar'style="background:{{header.background}}">
-  <view class='status' style="height:{{statusHeight}}px"></view>
-  <view class='navbar' style="height:{{navHeight}}px">
-    <view wx:if="{{header.tubiao}}">
-      <view class='navbar_home' wx:if="{{header.homeCapsule}}">
-        <image src='../../utils/img/zuojiantou.png' bindtap='backClick'></image>
-        <image src='../../utils/img/huidaoshouye.png' bindtap='homeClick'></image>
-      </view>
-      <view class='navbar_back' bindtap='backClick' wx:else>
-        <image src='../../utils/img/zuojiantou.png'></image>
-      </view>
-      <view class='navbar_title navbar_title1'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
-    </view>
-    <view wx:else class='navbar_title'style="line-height:{{navHeight}}px"><view>{{header.title}}</view></view>
-  </view>
-</view>
-</view>
+<cover-cover-view>
+    <cover-view style="height:{{statusHeight+navHeight}}px" hidden='{{header.hiddenBlock}}'></cover-view>
+    <cover-view class='topbar' style="background:{{header.background}}">
+        <cover-view class='status' style="height:{{statusHeight}}px"></cover-view>
+        <cover-view class='navbar' style="height:{{navHeight}}px;">
+            <block wx:if="{{header.tubiao}}">
+                <cover-view class='navbar_home' wx:if="{{header.homeCapsule}}">
+                    <cover-image src='../../utils/img/zuojiantou.png' bindtap='backClick'></cover-image>
+                    <cover-image src='../../utils/img/huidaoshouye.png' bindtap='homeClick'></cover-image>
+                </cover-view>
+                <cover-view class='navbar_back' bindtap='backClick' wx:else>
+                    <cover-image src='../../utils/img/zuojiantou.png'></cover-image>
+                </cover-view>
+                <cover-view class='navbar_title navbar_title1' style="line-height:{{navHeight}}px">
+                    <cover-view>{{header.title}}</cover-view>
+                </cover-view>
+            </block>
+            <cover-view wx:else class='navbar_title' style="line-height:{{navHeight}}px">
+                <cover-view>{{header.title}}</cover-view>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</cover-cover-view>

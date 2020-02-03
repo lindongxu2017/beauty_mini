@@ -1,51 +1,85 @@
 <!--pages/cardMore/cardMore.wxml-->
 <header header='{{header}}'></header>
 <view class="contian">
-  <view class="imgBox">
-    <image src="{{pdData.img_url}}" mode="widthFix"></image>
-    <view>*每位用户限购1次</view>
-  </view>
-  <view class="infoBox">
-    <view class="title">{{pdData.title}}</view>
-    <view class="sogon">{{pdData.describe}}</view>
-    <view class="price">
-      <view class="priceBox">
-        <view class="currentprice">￥<text>{{pdData.current_price}}</text></view>
-        <view class="originprice">原价：<text>￥{{pdData.original_price}}</text></view>
-      </view>
-      <view class="soldNum">已售{{pdData.purchase_times}}件</view>
+    <view class="imgBox">
+        <image src="{{pdData.image_src}}" mode="widthFix"></image>
+        <!-- <view>*每位用户限购1次</view> -->
     </view>
-  </view>
-  <view class="cardItem">
-    <view class="title">卡项包含项目<text>（有效期12个月）</text></view>
-    <view class="pdForm">
-     <view class="pdFormItem" wx:for="{{pdData.sub_projects}}" wx:key="index">
-      <text>{{item.title}}</text>
-      <text>￥{{item.price}}</text>
-      <text class="iconfont iconyoujiantou"></text>
-     </view>
+    <view class="infoBox">
+        <view class="title">{{pdData.title}}</view>
+        <view class="sogon">{{pdData.describe}}</view>
+        <view class="price">
+            <view class="priceBox">
+                <view class="currentprice">￥
+                    <text>{{pdData.price}}</text>
+                </view>
+                <view class="originprice">原价：
+                    <text>￥{{pdData.origin_price}}</text>
+                </view>
+            </view>
+            <view class="soldNum">已售{{pdData.purchase_times}}件</view>
+        </view>
     </view>
-  </view>
+    <view class="cardItem">
+        <view class="title">卡项包含项目
+            <text>（以下项目任选，有效期12个月）</text>
+        </view>
+        <view class="pdForm">
+            <view class="pdFormItem" wx:for="{{pdData.services}}" wx:key="index" data-id="{{item.service_id}}" catchtap="godetail">
+                <text>{{item.title}}</text>
+                <text>￥{{item.price}}</text>
+                <text class="iconfont iconyoujiantou"></text>
+            </view>
+        </view>
+    </view>
 </view>
 <view class="tabBarCard">
-   <view class="iconf" bindtap="goMall">
-     <text class="iconfont iconshangcheng2"></text>
-    <text>商城</text>
-   </view>
-   <button class="iconf" open-type="share">
-    <text class="iconfont iconfenxiang"></text>
-    <text >分享</text>
-   </button>
-   <view class="buyBtn" bindtap="bugNow" data-id="{{pdData.id}}">立即购买</view>
+    <view class="iconf" bindtap="goMall">
+        <text class="iconfont iconshangcheng2"></text>
+        <text>商城</text>
+    </view>
+    <button class="iconf" open-type="contact">
+        <text class="iconfont iconlianxikefu"></text>
+        <text>客服</text>
+    </button>
+    <button class="iconf" open-type="share">
+        <text class="iconfont iconfenxiang"></text>
+        <text>分享</text>
+    </button>
+    <view class="buyBtn" bindtap="bugNow" data-id="{{pdData.id}}">立即购买</view>
 </view>
-<block  wx:if="{{version}}">
-  <view class="dialog" wx:if="{{showDav}}">
-      <view class="headImageView" >
-        <image src="../../utils/img/logo.png"></image>
-      </view>
-      <view class="titleText">申请获取以下权限</view>
-      <view class="contentText">获得您的公开信息（昵称，头像等）</view>
-      <button class="authBtn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-  </view>
- </block>
+
+<van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" bind:cancel="onClose" cancel-text="取消" />
+
+<van-popup show="{{ popup }}" position="bottom" custom-style="height: 340px">
+    <view class="popup-title">
+        <text>余额支付</text>
+        <text catchtap="cancel_pay" class="iconfont iconqingkong close-icon"></text>
+    </view>
+    <view class="order-no">订单号：{{order_detail.out_trade_no}}</view>
+    <view class="balance">
+        <text class="unit">￥</text>
+        <text>{{order_detail.total_amount}}</text>
+    </view>
+    <view class="popup-form">
+        <van-field disabled label="手机号" value="{{order_detail.phone}}"></van-field>
+        <van-field value="{{ sms }}" center clearable label="短信验证码" placeholder="请输入短信验证码" border="{{ false }}" use-button-slot bind:change="onCodeChange">
+            <van-button custom-class="code-btn" slot="button" size="small" type="primary" disabled="{{code_flag}}" catchtap="getcode">{{code_text}}</van-button>
+        </van-field>
+    </view>
+    <view class="balance-btn">
+        <van-button type="primary" block disabled="{{sms.length == 0}}" catchtap="pay_order">确认支付</van-button>
+    </view>
+</van-popup>
+
+<block wx:if="{{version}}">
+    <view class="dialog" wx:if="{{showDav}}">
+        <view class="headImageView">
+            <image src="../../utils/img/logo.png"></image>
+        </view>
+        <view class="titleText">申请获取以下权限</view>
+        <view class="contentText">获得您的公开信息（昵称，头像等）</view>
+        <button class="authBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    </view>
+</block>
 <loadingSelf wx:if="{{showL}}" id="loadingSelf"></loadingSelf>

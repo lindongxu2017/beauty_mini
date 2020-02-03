@@ -1,0 +1,62 @@
+<!--pages/verification/index.wxml-->
+<header header='{{header}}'></header>
+<cover-view class="tips" style="top: {{navgationHeight}}px" wx:if="{{list.length > 0}}">
+    <cover-view class="text">*超过预约时间15分钟未到店，预约将自动取消，请及时到店</cover-view>
+</cover-view>
+<view class="list">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <!-- <verification item="{{item}}"></verification> -->
+        <view class="item" data-item="{{item}}" bindtap="godetail">
+            <view class="_tips" hidden="{{item.is_show}}" data-index="{{index}}" catchtap="change">点击可查看核销码数字</view>
+            <view class="_tips text" hidden="{{!item.is_show}}" data-index="{{index}}" catchtap="change">{{item.code}}</view>
+            <canvas canvas-id="barcode_{{item.code}}" class="barcode" data-index="{{index}}" catchtap="change" />
+            <!-- <image class="code" src="/utils/img/u224.png" catchtap="change" mode="widthFix"></image> -->
+            <view class="cell">
+                <view class="lable">预约门店</view>
+                <view class="value">美肌工坊福田KKONE店</view>
+            </view>
+            <view class="cell">
+                <view class="lable hide">预约门店</view>
+                <view class="value addr">沙头街道下沙社区滨河路9289号下沙村京基滨河时代广场A座1807</view>
+            </view>
+            <view class="cell">
+                <view class="lable">预约时间</view>
+                <view class="value">{{item.reserve_date}} {{item.interval}}</view>
+            </view>
+            <view class="cell">
+                <view class="lable">预约服务</view>
+                <view class="value">{{item.title}}</view>
+            </view>
+            <view class="cell">
+                <view class="lable">皮肤管家</view>
+                <view class="value">{{item.staff_name}}</view>
+            </view>
+            <view class="operate">
+                <view class="phone">
+                    <van-icon name="phone-o" size="20px" color="#A0856A" />
+                    <text catchtap="call">联系门店</text>
+                </view>
+                <view class="address">
+                    <van-icon name="location-o" size="20px" color="#A0856A" />
+                    <text catchtap="location">立即到店</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+
+<view class="nothing" wx:if="{{list.length == 0}}">
+    <image src="../../utils/img/kabaokong.png" mode="aspectFill"></image>
+    <text>空空如也~</text>
+</view>
+
+<block wx:if="{{version}}">
+    <view class="dialog" wx:if="{{showDav}}">
+        <view class="headImageView">
+            <image src="../../utils/img/logo.png"></image>
+        </view>
+        <view class="titleText">申请获取以下权限</view>
+        <view class="contentText">获得您的公开信息（昵称，头像等）</view>
+        <button class="authBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    </view>
+</block>

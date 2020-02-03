@@ -1,0 +1,3 @@
+/* components/pay_module/index.wxss */
+@import '/font/font.wxss';
+@import '/pages/cardMore/cardMore.wxss';

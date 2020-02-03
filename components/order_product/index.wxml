@@ -1,0 +1,37 @@
+<!--components/order_product/index.wxml-->
+<view class="item" bindtap="godetail">
+    <view class="cell-flex border pad">
+        <view class="gray">{{item.order_time}}</view>
+        <view class="theme" wx:if="{{item.state == 1}}">待支付</view>
+        <view class="theme" wx:if="{{item.state == 2}}">
+            {{item.order_type == 4 ? '待消耗' : '待提货'}}
+        </view>
+        <view class="theme" wx:if="{{item.state == 3}}">
+            {{item.order_type == 4 ? '已消耗' : '已提货'}}
+        </view>
+        <view class="theme" wx:if="{{item.state == 4}}">已评价</view>
+        <view class="theme" wx:if="{{item.state == 5}}">已取消</view>
+        <view class="theme" wx:if="{{item.state == 6}}">已退款</view>
+        <view class="theme" wx:if="{{item.state == 7}}">已付定金</view>
+    </view>
+    <view class="info">
+        <view class="cell-flex">
+            <view class="title">{{item.order_title}}</view>
+            <view class="gray">￥{{item.price}}</view>
+        </view>
+        <view class="cell-flex">
+            <view class="gray"></view>
+            <view class="gray">x1</view>
+        </view>
+    </view>
+    <view class="cell-flex right pad">
+        <view class="gray">共1件商品 </view>
+        <view class="gray label" wx:if="{{item.state == 1}}">应付金额</view>
+        <view class="gray label" wx:else>实付金额</view>
+        <view class="gray price">￥{{item.pay_amount}}</view>
+    </view>
+    <view class="cell-flex right pad" wx:if="{{item.state == 1}}">
+        <view class="btn plain" catchtap="cancel">取消订单</view>
+        <view class="btn" catchtap="pay">继续付款</view>
+    </view>
+</view>

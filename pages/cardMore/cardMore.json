@@ -2,6 +2,10 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "header": "../../components/navBar/navBar",
-    "loadingSelf": "../../components/loading/loading"
+    "loadingSelf": "../../components/loading/loading",
+    "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index"
   }
 }

@@ -1,0 +1,35 @@
+<!--pages/comment_details/index.wxml-->
+<header header='{{header}}'></header>
+
+<view class="star">
+    <block wx:for="{{5}}" wx:key="{{index}}">
+        <text class="iconfont iconwuxing {{active >= index ? 'active' : ''}}" data-index="{{index}}" bindtap="star"></text>
+    </block>
+</view>
+
+<view class="default">感谢您对本次服务做出的评价</view>
+
+<view class="score" wx:if="{{active > -1}}">
+    <view class="label">
+        <text>您的评分：</text>
+        <text class="text">{{score[active].value}}</text>
+        <text>分</text>
+    </view>
+    <view class="value">{{score[active].name}}</view>
+</view>
+
+<view class="tips" wx:if="{{active > -1}}">
+    <text>服务的印象</text>
+</view>
+
+<view class="options" wx:if="{{active > -1}}">
+    <block wx:for="{{options}}" wx:key="{{index}}">
+        <view class="item" data-index="{{index}}" bindtap="select">{{item}}</view>
+    </block>
+</view>
+
+<view class="tips" wx:if="{{active > -1}}">
+    <text>评价补充</text>
+</view>
+
+<view class="content">{{content}}</view>

@@ -5,7 +5,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             wx.request({
                 header: {
-                    unionid: app.globalData.unionid
+                    unionid: app.globalData.unionid || 'ouImPxIv6ClZwNepZCfa0hoMPiBw'
                 },
                 method: method ? method : 'POST',
                 data,
@@ -20,6 +20,7 @@ module.exports = {
                             content: res.data.msg,
                             showCancel: false
                         })
+                        reject(res)
                     }
                 }
             })

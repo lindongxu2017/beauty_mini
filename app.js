@@ -2,8 +2,8 @@
 
 var appId = "wx6fcef9e5c43a13b3";
 var secret = '09056f9a15c46869c2dbaf6b211196ca';
-// var base_url = 'https://ttwx.169kang.com/' // 测试环境
-var base_url = 'https://skin.169kang.com/' // 正式环境
+var base_url = 'https://ttwx.169kang.com/' // 测试环境
+// var base_url = 'https://skin.169kang.com/' // 正式环境
 var api = require('./utils/api.js')
 App({
     onLaunch: function() {
@@ -61,7 +61,8 @@ App({
         wx.request({
             url: base_url + '/applet/config',
             success: res => {
-                slef.globalData.advSwitch = res.data.data.new_people
+                slef.globalData.advSwitch = res.data.data.auth
+                slef.globalData.new_people = res.data.data.new_people
             }
         })
 
@@ -137,7 +138,8 @@ App({
             wx.request({
                 url: base_url + '/applet/config',
                 success: res => {
-                    slef.globalData.advSwitch = res.data.data.new_people
+                    slef.globalData.advSwitch = res.data.data.auth
+                    slef.globalData.new_people = res.data.data.new_people
                     resolve()
                 }
             })

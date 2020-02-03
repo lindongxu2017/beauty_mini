@@ -1,0 +1,57 @@
+<!--pages/shoppingcart/index.wxml-->
+<header header='{{header}}'></header>
+<view class="list">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="item">
+            <view class="icon {{item.is_select ? 'active' : false}} {{item.state == 0 ? 'disable' : ''}}" data-index="{{index}}" catchtap="select">
+                <text class="iconfont iconduigou" color="#999"></text>
+            </view>
+            <image class="avatar" src="{{item.image_src}}" mode="aspectFill"></image>
+            <view class="info">
+                <view class="top">
+                    <view class="name">
+                        <view class="text">{{item.title}}</view>
+                        <van-icon size="18px" color="#999" name="delete" data-index="{{index}}" data-id="{{item.cart_id}}" catchtap="del" />
+                    </view>
+                    <view class="price">{{item.price}}x{{item.amount}}</view>
+                </view>
+                <view class="bottom">
+                    <view class="price">
+                        <block wx:if="{{item.state == 1}}">
+                            <text class="unit">￥</text>
+                            <text>{{item.price}}</text>
+                        </block>
+                        <block wx:if="{{item.state == 0}}">
+                            <text class="danger">商品已下架</text>
+                        </block>
+                    </view>
+                    <view class="steps" wx:if="{{item.state == 1}}">
+                        <text class="iconfont iconjian" data-type="-1" data-index="{{index}}" catchtap="change_num"></text>
+                        <text class="nums">{{item.amount}}</text>
+                        <text class="iconfont iconjia" data-type="1" data-index="{{index}}" catchtap="change_num"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+
+<view class="submit-bar">
+    <view class="select" catchtap="select_all">
+        <view class="icon {{is_all ? 'active' : ''}}" catchtap="select_all">
+            <text class="iconfont iconduigou" color="#999"></text>
+        </view>
+        <text>全选</text>
+    </view>
+    <view class="sum">
+        <text>合计：</text>
+        <text class="unit">￥</text>
+        <text class="total">{{total}}</text>
+    </view>
+    <view class="submit" catchtap="submit">结算</view>
+</view>
+
+<view class="no-data" wx:if="{{list.length == 0}}">
+    <image src="/utils/img/gouwuchekong.png" mode="widthFix"></image>
+    <view class="tips">购物车空空如也</view>
+</view>

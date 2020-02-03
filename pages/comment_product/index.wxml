@@ -1,0 +1,5 @@
+<!--pages/comment_product/index.wxml-->
+<header header='{{header}}'></header>
+<block wx:for="{{list}}" wx:key="{{index}}">
+    <item ordertype="{{type}}" bindcomment="getlist" item="{{item}}"/>
+</block>

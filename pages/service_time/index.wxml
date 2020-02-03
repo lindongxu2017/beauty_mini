@@ -1,0 +1,72 @@
+<!--pages/service_time/index.wxml-->
+<header header='{{header}}'></header>
+<view class="store-info">
+    <view class="item">
+        <view class="label">已约门店：</view>
+        <view class="value">美肌工坊皮肤管理（福田KKONE店）</view>
+    </view>
+    <view class="item">
+        <view class="label">已约项目：</view>
+        <view class="value">{{title}}</view>
+    </view>
+</view>
+
+<view class="cell-title">选择皮肤管家</view>
+
+<view class="swiper-wrapper">
+    <swiper previous-margin="40rpx" next-margin="30px" bindanimationfinish="switchchange" style="height: 95px">
+        <block wx:for="{{staffs}}" wx:key="{{index}}">
+            <swiper-item>
+                <view class="item">
+                    <view class="content">
+                        <image src="{{item.image_src || '/utils/img/yonghumorentouxiang.png'}}" mode="aspectFill"></image>
+                        <view class="info">
+                            <view class="name">{{item.name}}</view>
+                            <view class="position">{{item.role_name}}</view>
+                            <view class="nums">已服务{{item.service_times}}次</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </block>
+      </swiper>
+</view>
+
+<view class="cell-title">选择预约时间</view>
+
+<view class="time-area">
+    <view class="week">
+        <block wx:for="{{dates}}" wx:key="{{index}}">
+            <view class="item {{index == date_active ? 'active' : ''}}" data-index="{{index}}" bindtap="select_date">
+                <view class="text">{{item.week}}</view>
+                <view class="date">{{item.date}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="shifts">
+        <block wx:for="{{shifts}}" wx:key="{{index}}">
+            <view class="item {{index == shifts_active ? 'active' : ''}}" data-index="{{index}}" bindtap="select_shifts">
+                <text wx:if="{{item.segment == 'n'}}" class="iconfont iconwanshang"></text>
+                <text wx:else class="iconfont iconbaitian"></text>
+                {{item.start_time}}-{{item.end_time}}
+            </view>
+        </block>
+    </view>
+</view>
+
+<view class="schedule">
+    <block wx:for="{{schedule}}" wx:key="{{index}}">
+        <view class="item {{(item.is_reserve == -1 || item.is_allow == 0) ? 'disable' : ''}} {{(index == schedule_active || item.is_reserve == 1) ?'active':''}}" data-index="{{index}}" data-allow="{{item.is_allow}}"  data-is_reserve="{{item.is_reserve}}" bindtap="select_shecdule">
+            <text wx:if="{{item.is_reserve == 0}}">{{item.interval}}</text>
+            <text wx:if="{{item.is_reserve == 1}}">已预约</text>
+            <text wx:if="{{item.is_reserve == 2}}">预约中</text>
+            <text wx:if="{{item.is_reserve == -1}}">未排班</text>
+        </view>
+    </block>
+</view>
+
+<view class="next" bindtap="next">
+    下一步，确认预约
+    <text class="iconfont iconyoujiantou"></text>
+</view>
+

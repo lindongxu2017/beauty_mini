@@ -1,0 +1,24 @@
+{
+  "name": "vant-weapp",
+  "version": "1.0.0",
+  "description": "vant-weapp",
+  "main": "app.js",
+  "dependencies": {
+    "vant": "^2.2.13-beta.0",
+    "vant-weapp": "^0.5.23",
+    "wxbarcode": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.169kang.com:62200/root/beautyworkshop.git"
+  },
+  "keywords": [
+    "@@a3268326"
+  ],
+  "author": "steven",
+  "license": "ISC"
+}

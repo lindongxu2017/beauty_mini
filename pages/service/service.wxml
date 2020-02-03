@@ -1,0 +1,56 @@
+<!--pages/service/service.wxml-->
+<header header='{{header}}'></header>
+
+<view class="search" style="top: {{status_height}}px">
+    <view class="control {{control ? '' : 'center'}}">
+        <text class="iconfont iconsousuo"></text>
+        <input value="{{inputValue}}" class="{{isfocus ? 'all' : ''}}" confirm-type="search" bindconfirm="search" bindinput="print" bindblur="blur" bindfocus="focus" type="text" placeholder="请输入你想购买的商品名称" placeholder-class="gray"></input>
+    </view>
+    <view class="text {{inputValue.length ? 'active' : ''}}" bindtap="search" hidden="{{!isfocus}}">搜索</view>
+</view>
+
+<view class="tab-wrapper" style="top: {{status_height + 60}}px">
+    <van-tabs active="{{ active }}" color="#A0856A" border="{{false}}" bind:change="onChange">
+        <van-tab title="服务项目" wx:if="{{enter.service == 1}}">
+            <scroll-view scroll-x class="category">
+                <view class="item {{category_id == item.cid ? 'active' : ''}}" wx:for="{{category}}" wx:key="{{index}}" data-type="1" data-id="{{item.cid}}" catchtap="select">{{item.name}}</view>
+            </scroll-view>
+        </van-tab>
+        <van-tab title="家居产品" wx:if="{{enter.product == 1}}">
+            <scroll-view scroll-x class="category">
+                <view class="item {{category_id2 == item.cid ? 'active' : ''}}" wx:for="{{category2}}" wx:key="{{index}}" data-type="2" data-id="{{item.cid}}" catchtap="select">{{item.name}}</view>
+            </scroll-view>
+        </van-tab>
+    </van-tabs>
+</view>
+
+<view class="product-list" style="padding-top: {{status_height + 89}}px" wx:if="{{enter.service == 1 && active == 0}}">
+    <block wx:for="{{list}}" wx:key="index">
+        <product item="{{item}}"></product>
+    </block>
+</view>
+
+<view class="empty" wx:if="{{enter.service == 1 && active == 0  && list.length == 0}}">
+    <image mode="widthFix" src="/utils/img/gouwuchekong.png"></image>
+    <view class="tips">暂无数据...</view>
+</view>
+
+<view class="product-list" style="padding-top: {{status_height + 89}}px" wx:if="{{(enter.product == 1 && active == 0 && enter.service == 0) || (enter.product == 1 && active == 1)}}">
+    <block wx:for="{{list2}}" wx:key="index">
+        <view class="item">
+            <product2 bindjoin="join" item="{{item}}"></product2>
+        </view>
+    </block>
+</view>
+
+<view class="empty" wx:if="{{((enter.product == 1 && active == 0 && enter.service == 0) || (enter.product == 1 && active == 1)) && list2.length == 0}}">
+    <image mode="widthFix" src="/utils/img/gouwuchekong.png"></image>
+    <view class="tips">暂无数据...</view>
+</view>
+
+<view class="ShoppingCart {{active == 1 ? 'active' : ''}}" catchtap="goshoppingcart">
+    <image src="/utils/img/u299.png" mode="widthFix"></image>
+    <!-- <image class="inline" src="/utils/img/u301.png" mode="widthFix"></image> -->
+    <view class="iconfont iconcart inline"></view>
+    <text wx:if="nums > 0">{{nums}}</text>
+</view>

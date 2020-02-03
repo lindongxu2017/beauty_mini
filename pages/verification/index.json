@@ -1,0 +1,8 @@
+{   
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "header": "../../components/navBar/navBar",
+        "verification": "/components/verification/index"
+    },
+    "enablePullDownRefresh": true
+}

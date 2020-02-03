@@ -1,0 +1,90 @@
+/* components/comment_item/index.wxss */
+@import "../../font/font.wxss";
+
+.item {
+    padding: 20rpx 30rpx;
+    margin-top: 20rpx;
+    background-color: #fff;
+    position: relative;
+}
+.info {
+    display: flex;
+    align-items: stretch;
+}
+.info .avatar {
+    width: 160rpx;
+    height: 160rpx;
+}
+.comment {
+    padding-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+}
+.comment .text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #666;
+    height: 24px;
+    box-sizing: border-box;
+}
+.currnet {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #FF9900;
+}
+.title {
+    font-size: 28rpx;
+    color: #333;
+}
+.star .iconfont {
+    margin-right: 20rpx;
+    color: #E6E6E6;
+}
+.iconfont.active {
+    color: #FF9900;
+}
+.content {
+    font-size: 28rpx;
+    color: #666666;
+    margin: 20rpx 0;
+}
+.time {
+    color: #ccc;
+    font-size: 28rpx;
+}
+.iconyipingjia {
+    font-size: 120rpx;
+    color: #ccc;
+    position: absolute;
+    top: 0rpx;
+    right: 10rpx;
+}
+.textarea {
+    width: 100%;
+    margin: 20rpx 0;
+    border: 2rpx solid #ccc;
+    padding: 20rpx;
+    box-sizing: border-box;
+    height: 160rpx;
+    color: #666;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+}
+.btn-wrapper {
+    text-align: right;
+}
+.btn-wrapper .text {
+    width: 160rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    background-color: #A0856A;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    display: inline-block;
+}

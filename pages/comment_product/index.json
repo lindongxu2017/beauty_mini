@@ -1,0 +1,7 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "header": "../../components/navBar/navBar",
+        "item": "../../components/comment_item/index"
+    }
+}

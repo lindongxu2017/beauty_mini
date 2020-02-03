@@ -1,22 +1,27 @@
 <!--pages/mycard/mycard.wxml-->
 <header header='{{header}}'></header>
 <view class="cantain">
-  <view class="cardNav" style="top:{{navHeight}}px">
-    <view class="{{flagNav==index?'activeBorder':''}}"  bindtap="handleNav" wx:for="{{typeNav}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
-  </view>
-  <view class="content">
-    <block wx:if="{{datalist.length==0?'':datalist}}">
-      <view class="picItem" wx:for="{{datalist}}" wx:key="index">
-        <image src="{{item.img_url}}"></image>
-        <view class="shengyu">剩余<text>{{item.amount}}</text>次</view>
-        <view class="time">到期时间:<text>{{item.expires}}</text></view>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="nothing">
-        <image src="../../utils/img/kabaokong.png"></image>
-        <text>空空如也~</text>
-      </view>
-    </block>
-  </view>
+    <view class="cardNav" style="top:{{navHeight}}px">
+        <view class="{{flagNav==index?'activeBorder':''}}" bindtap="handleNav" wx:for="{{typeNav}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
+    </view>
+    <view class="content">
+        <block wx:if="{{datalist.length==0?'':datalist}}">
+            <view class="picItem" wx:for="{{datalist}}" wx:key="index" data-id="{{item.order_package_id}}" bindtap="router">
+                <image src="{{item.image_url}}" mode="aspectFill"></image>
+                <view class="footer-info">
+                    <view class="shengyu">剩余
+                        <text>{{item.surplus_count}}</text>次</view>
+                    <view class="time">过期时间:
+                        <text>{{item.expires}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="nothing">
+                <image src="../../utils/img/kabaokong.png"></image>
+                <text>空空如也~</text>
+            </view>
+        </block>
+    </view>
 </view>

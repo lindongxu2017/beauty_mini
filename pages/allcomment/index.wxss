@@ -1,0 +1,6 @@
+/* pages/allcomment/index.wxss */
+@import '../product_detail/index.wxss';
+.comment {
+    margin-top: 20rpx;
+    padding-top: 20rpx;
+}

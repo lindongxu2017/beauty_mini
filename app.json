@@ -1,10 +1,24 @@
 {
     "pages": [
-        "pages/recharge/recharge",
         "pages/index/index",
-        "pages/mycard/mycard",
+        "pages/cash_detail/index",
+        "pages/product_detail/index",
         "pages/ordermore/ordermore",
+        "pages/order_detail/index",
+        "pages/order_confirm/index",
+        "pages/comment/index",
+        "pages/comment_details/index",
+        "pages/comment_product/index",
+        "pages/verification/index",
+        "pages/mine/mine",
         "pages/allorder/allorder",
+        "pages/recharge_detail/index",
+        "pages/shoppingcart/index",
+        "pages/service/service",
+        "pages/service_detail/index",
+        "pages/service_time/index",
+        "pages/service_confirm/index",
+        "pages/mycard/mycard",
         "pages/cardMore/cardMore",
         "pages/newVip/newVip",
         "pages/identity/identity",
@@ -13,13 +27,15 @@
         "pages/promiseLogin/promiseLogin",
         "pages/detailmore/detailmore",
         "pages/detail/detail",
-        "pages/mine/mine",
         "pages/setPage/setPage",
         "pages/deposit/deposit",
         "components/loading/loading",
         "pages/activity/activity_1",
         "pages/activity/activity_2",
-        "pages/newUserMall/newUserMall"
+        "pages/recharge/recharge",
+        "pages/newUserMall/newUserMall",
+        "pages/protrol/index",
+        "pages/allcomment/index"
     ],
     "tabBar": {
         "color": "#999999",
@@ -32,6 +48,12 @@
                 "text": "美肌商城",
                 "iconPath": "utils/img/shangcheng.png",
                 "selectedIconPath": "utils/img/shangcheng1.png"
+            },
+            {
+                "pagePath": "pages/verification/index",
+                "text": "预约",
+                "iconPath": "utils/img/time-o.png",
+                "selectedIconPath": "utils/img/time.png"
             },
             {
                 "pagePath": "pages/mine/mine",

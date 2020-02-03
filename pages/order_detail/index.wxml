@@ -1,0 +1,204 @@
+<!--pages/order_detail/index.wxml-->
+<header header='{{header}}'></header>
+
+<block wx:if="{{order_type == 1 && detail.state == 2}}">
+    <cover-view class="bar-tips" style="top: {{status_height}}px">*超过预约时间15分钟未到店，预约将自动取消，请及时到店</cover-view>
+    <view class="bar-palce"></view>
+</block>
+<view class="status" wx:if="{{detail.state == 1}}">
+    <view class="text">待支付</view>
+    <view class="tips" wx:if="{{order_type == 1}}">
+        <text>请在</text>
+        <text class="time">{{expires}}</text>
+        <text>分钟内完成支付，超时订单将被取消</text>
+    </view>
+</view>
+
+<view class="status" wx:if="{{detail.state == 4}}">
+    <view class="text">已完成</view>
+</view>
+
+<view class="status cancel" wx:if="{{detail.state == 5}}">
+    <view class="text">已取消</view>
+    <view class="tips">该订单超时未完成支付，已被取消</view>
+</view>
+
+<view class="code-wrapper" catchtap="change" wx:if="{{order_type !=4 && detail.state == 2}}">
+    <view class="num">
+        <text wx:if="{{!show_code}}">点击可查看核销码数字</text>
+        <text wx:else class="text">{{detail.code}}</text>
+    </view>
+    <canvas canvas-id="barcode" class="barcode" />
+</view>
+
+<view class="cell-flex space {{order_type == 4 ? 'pad' : ''}}">
+    <view class="order-cell gray" wx:if="{{detail.order_title}}">
+        <view class="label">套餐名称</view>
+        <view class="value">{{detail.order_title}}</view>
+    </view>
+    <view class="order-cell gray">
+        <view class="label">下单日期</view>
+        <view class="value">{{detail.order_time}}</view>
+    </view>
+    <view class="order-cell gray">
+        <view class="label">订单编号</view>
+        <view class="value">{{detail.order_no}}</view>
+    </view>
+    <view class="order-cell gray">
+        <view class="label">核销码</view>
+        <view class="value">{{detail.code}}</view>
+    </view>
+</view>
+
+<view class="product-info space">
+    <block wx:if="{{order_type == 2}}" wx:for="{{detail.products}}" wx:key="{{index}}">
+        <view class="order-cell">
+            <view class="label title">{{item.title}}</view>
+            <view class="value">￥{{item.price}}</view>
+        </view>
+        <view class="order-cell gray">
+            <view class="label">{{item.describe}}</view>
+            <view class="value">x{{item.count}}</view>
+        </view>
+    </block>
+
+    <block wx:if="{{order_type == 4}}" wx:for="{{detail.services}}" wx:key="{{index}}">
+        <view class="order-cell">
+            <view class="label title">{{item.title}}</view>
+            <view class="value">￥{{item.price}}</view>
+        </view>
+        <view class="order-cell gray">
+            <view class="label">{{item.describe}}</view>
+            <view class="value">x{{item.count}}</view>
+        </view>
+    </block>
+
+    <block wx:if="{{order_type == 1}}">
+        <view class="mark">
+            <view class="label gray">
+                <text>预</text>
+                <text>约</text>
+                <text>门</text>
+                <text>店</text>
+            </view>
+            <view class="text">美肌工坊福田KKONE店</view>
+        </view>
+        <view class="mark">
+            <view class="label gray">
+                <text>预</text>
+                <text>约</text>
+                <text>服</text>
+                <text>务</text>
+            </view>
+            <view class="text">
+                <block wx:for="{{detail.services}}" wx:key="{{item.service_id}}">
+                    <view>{{item.title}}</view>
+                </block>
+            </view>
+        </view>
+        <view class="mark">
+            <view class="label gray">
+                <text>皮</text>
+                <text>肤</text>
+                <text>管</text>
+                <text>家</text>
+            </view>
+            <view class="text">{{detail.staff_name}}</view>
+        </view>
+        <view class="mark">
+            <view class="label gray">
+                <text>预</text>
+                <text>约</text>
+                <text>时</text>
+                <text>间</text>
+            </view>
+            <view class="text">{{detail.reserve_date}} {{detail.interval}}</view>
+        </view>
+        <view class="mark">
+            <view class="label gray">
+                <text>手</text>
+                <text>机</text>
+                <text>号</text>
+                <text>码</text>
+            </view>
+            <view class="text">{{detail.phone}}</view>
+        </view>
+    </block>
+    <view class="mark">
+        <view class="label gray">
+            <text>备</text>
+            <text>注</text>
+        </view>
+        <view class="text">{{detail.remarks}}</view>
+    </view>
+</view>
+
+<view class="cell-flex {{order_type == 4 ? 'pad' : ''}}">
+    <view class="order-cell gray">
+        <view class="label">订单金额</view>
+        <view class="value">￥{{detail.total_amount || detail.subtotal}}</view>
+    </view>
+    <view class="order-cell gray" wx:if="{{order_type ==4}}">
+        <view class="label">商品优惠</view>
+        <view class="value">-￥{{detail.discount_amount}}</view>
+    </view>
+    <view class="order-cell gray" wx:if="{{order_type ==4}}">
+        <view class="label">应付金额</view>
+        <view class="value">-￥{{detail.receivable_amount}}</view>
+    </view>
+    <view class="order-cell gray" wx:if="{{order_type ==4}}">
+        <view class="label">已付金额</view>
+        <view class="value">-￥{{detail.paid_amount}}</view>
+    </view>
+</view>
+
+<view class="need-pay">
+    <view class="order-cell price">
+        <view class="label">订单金额</view>
+        <view class="value">
+            <text class="unit">￥</text>
+            <text class="text">{{detail.total_amount || detail.subtotal}}</text>
+        </view>
+    </view>
+</view>
+
+<view class="place"></view>
+
+<view class="status-bar" wx:if="{{detail.state == 1}}">
+    <view class="item palin" bindtap="cancel">取消订单</view>
+    <view class="item" bindtap="pay">立即支付</view>
+</view>
+
+
+<view class="status-bar product" wx:if="{{order_type != 4 && (detail.state == 3 || detail.state == 4)}}" bindtap="gocomment_product">
+    <!-- <view class="starts">
+        <text class="iconfont iconwuxing" wx:for="{{5}}" wx:key="{{index}}"></text>
+    </view> -->
+    <view class="tips" wx:if="{{detail.state == 3}}">去评价</view>
+    <view class="tips" wx:else>查看评价详情</view>
+</view>
+
+<!-- <view class="status-bar comment" wx:if="{{ order_type == 1 && detail.state == 3}}" bindtap="gocomment">
+    <view class="starts">
+        <text class="iconfont iconwuxing" wx:for="{{5}}" wx:key="{{index}}"></text>
+    </view>
+    <view class="tips">您的评价会让我们做得更好</view>
+</view>
+
+<view class="status-bar comment" wx:if="{{order_type == 1 && detail.state == 4}}" bindtap="godetail">
+    <view class="starts">
+        <text class="iconfont iconwuxing {{score >= index ? 'active' : ''}}" wx:for="{{5}}" wx:key="{{index}}"></text>
+    </view>
+    <view class="tips">您的评价会让我们做得更好</view>
+</view> -->
+
+<view class="status-bar" wx:if="{{order_type == 1 && (detail.state == 2 || detail.state == 5)}}">
+    <view class="item theme" catchtap="gohome">
+        <text class="iconfont iconhuidaoshouye"></text>
+        <text>首页</text>
+    </view>
+    <view class="item theme">
+        <text class="iconfont iconbodadianhua"></text>
+        <text catchtap="call">联系门店</text>
+    </view>
+</view>

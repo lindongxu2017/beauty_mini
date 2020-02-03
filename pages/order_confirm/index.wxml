@@ -1,0 +1,91 @@
+<!--pages/order_confirm/index.wxml-->
+<header header="{{header}}" />
+<view class="section">
+    <view class="cell">
+        <view class="label">
+            <text class="iconfont iconmendian"></text>
+            <text>预约门店</text>
+        </view>
+        <view class="value">美肌工坊皮肤管理（福田KKONE店）</view>
+    </view>
+    <view class="cell">
+        <view class="label">
+            <text class="iconfont iconshijian"></text>
+            <text>选择自提时间</text>
+        </view>
+        <view class="value flex">
+            <text>请选择您的提货时间</text>
+            <text class="iconfont iconyoujiantou"></text>
+        </view>
+    </view>
+</view>
+
+<view class="section no-border">
+    <view class="cell">
+        <view class="label">
+            <text class="iconfont iconmendian"></text>
+            <text>商品清单</text>
+        </view>
+        <view class="value flex">
+            <text>商品名称xxx</text>
+            <text>￥499.00</text>
+        </view>
+        <view class="value flex">
+            <text>商品名称xxx</text>
+            <text>￥499.00</text>
+        </view>
+        <view class="value flex">
+            <text>商品名称xxx</text>
+            <text>￥499.00</text>
+        </view>
+    </view>
+    <view class="cell">
+        <view class="label">
+            <text class="iconfont iconmendian"></text>
+            <text>备注</text>
+        </view>
+        <view class="value border-b">
+            <textarea placeholder="填写您需要的一些其他帮助和服务"></textarea>
+        </view>
+        <view class="value flex">
+            <text>商品总额</text>
+            <text>$499.00</text>
+        </view>
+        <view class="value flex">
+            <text>优惠金额</text>
+            <text>-￥0.00</text>
+        </view>
+        <view class="value flex border-top">
+            <view>总计</view>
+            <view class="price">￥499.00</view>
+        </view>
+    </view>
+</view>
+
+<view class="agreement">
+    <text class="iconfont iconduigou {{is_arrge ? 'active' : ''}}" catchtap="arrge"></text>
+    <text class="gray" catchtap="arrge">我已阅读并同意</text>
+    <text class="protrol" data-type="1" catchtap="show_protrol">《美肌工坊平台服务协议》</text>
+    <text class="protrol" data-type="2" catchtap="show_protrol">《产品使用协议》</text>
+    <text class="protrol" data-type="3" catchtap="show_protrol">《卡项使用协议》</text>
+</view>
+<view class="place"></view>
+
+<view class="submit-bar">
+    <view class="info">
+        <view class="need-pay">
+            <text>应付：</text>
+            <text class="price">￥</text>
+            <text class="price text">499.00</text>
+        </view>
+        <view class="discount gray">
+            <text>优惠金额</text>
+            <text>￥0.00</text>
+        </view>
+    </view>
+    <view class="btn" catchtap="pay">
+        <text>立即支付</text>
+    </view>
+</view>
+
+<pay-module show="{{show}}" />

@@ -62,6 +62,7 @@ Page({
                                 self.setData({
                                     showTel: true,
                                 })
+                                wx.navigateBack()
                             } else {
                                 // 未绑定手机号码
                                 self.goTel()

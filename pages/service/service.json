@@ -1,0 +1,11 @@
+{
+	"navigationStyle": "custom",
+	"usingComponents": {
+		"header": "../../components/navBar/navBar",
+		"van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+		"van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+		"product": "../../components/product/index",
+		"product2": "../../components/product2/index"
+	},
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,65 @@
+/* components/verification/index.wxss */
+.item {
+    background-color: #fff;
+    padding: 40rpx 0 10rpx;
+    border-radius: 10rpx;
+    box-shadow: 4rpx 4rpx 4rpx rgba(0, 0, 0, 0.1);
+    margin-bottom: 20rpx;
+}
+.tips {
+    text-align: center;
+    font-size: 24rpx;
+    color: #ccc;
+    line-height: 34rpx;
+}
+.tips.text {
+    font-size: 26rpx;
+    color: #333;
+    font-weight: bold;
+    line-height: 34rpx;
+}
+.barcode {
+    width: 76.6%;
+    height: 82px;
+    display: block;
+    margin: 0 auto 10rpx;
+}
+.cell {
+    padding: 20rpx 30rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+.cell .lable {
+    color: #999;
+}
+.cell .lable.hide {
+    opacity: 0;
+}
+.cell .value {
+    flex: 1;
+    padding-left: 20rpx;
+}
+.cell .value.addr {
+    font-size: 24rpx;
+    color: #999;
+}
+.operate {
+    display: flex;
+    padding: 20rpx 0;
+}
+.operate > view {
+    flex: 1;
+    text-align: center;
+}
+.operate text {
+    font-size: 28rpx;
+    color: #A0856A;
+    vertical-align: text-top;
+    display: inline-block;
+    margin-left: 4rpx;
+}
+van-icon {
+    display: inline-block;
+    vertical-align: text-top;
+}

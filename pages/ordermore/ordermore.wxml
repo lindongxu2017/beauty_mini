@@ -1,41 +1,36 @@
 <!--pages/ordermore/ordermore.wxml-->
 <header header='{{header}}'></header>
-<view class="contain">
-  <view class="status">{{orderData.state}}</view>
-  <view class="orderTC">
-    <view class="orderTime">
-      <text>下单日期</text>
-      <text decode="true">{{orderData.create_time}}</text>
+
+<view class="status">
+    <view class="text">剩余{{orderData.surplus_count}}次</view>
+    <view class="tips">
+        <text>过期时间： {{orderData.expires}}</text>
     </view>
-    <view class="orderCode">
-      <text>订单编号</text>
-      <text decode="true">{{orderData.out_trade_no}}</text>
-    </view>
-  </view>
-   <view class="prderPD">
-      <view class="productName"><text>{{orderData.package_title}}</text><text>￥{{orderData.original_price}}</text></view>
-      <view class="payWay"><text>{{orderData.package_describe}}</text><text>✖1</text></view>
-   </view>
-   <view class="prderPD" wx:if="{{orderData.sub_projects.length!==0}}">
-    <block wx:for="{{orderData.sub_projects}}" wx:key="index">
-      <view class="productItemName" bindtap="handleShow" data-index="{{index}}" data-state="{{item.state}}"><text>{{item.title}}</text>
-      <text wx:if="{{item.state}}">已使用</text><text wx:else>未使用></text>
-    </view>
-      <view class="productcode {{item.state==0?'':'hexiao'}}" wx:if="{{flagNum===index}}" >核销码：{{item.code}}</view>
-    </block> 
-   </view>
-  <view class="orderTC1">
-    <view class="orderTime">
-      <text>订单金额：</text>
-      <text decode="true">￥{{orderData.original_price}}</text>
-    </view>
-    <view class="orderCode">
-      <text>商品优惠：</text>
-      <text decode="true">新人体验项目</text>
-    </view>
-  </view>
-  <view class="orderpice">
-    <text>实付金额：</text>
-    <view>￥<text>{{orderData.total_fee}}</text></view>
-  </view>
 </view>
+
+<!-- <view class="cell-title">服务套餐</view> -->
+
+<view class="list">
+    <view class="item">
+        <view class="item-duration">套餐名称</view>
+        <view class="item-title">{{orderData.title}}</view>
+    </view>
+</view>
+
+<view class="cell-title">套餐包含项目</view>
+
+<van-checkbox-group value="{{ result }}" max="{{orderData.surplus_count}}" bind:change="onChange">
+    <van-cell-group>
+        <block wx:for="{{orderData.services}}" wx:key="{{service_id}}">
+            <van-cell title="{{item.title}}" value-class="value-class" clickable data-name="{{item.service_id}}" data-index="{{ index }}" bind:click="toggle">
+                <van-checkbox disabled="{{orderData.state != 0}}" checked-color="#A0856A" catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.service_id }}" />
+            </van-cell>
+        </block>
+    </van-cell-group>
+</van-checkbox-group>
+
+<view class="button-wrapper" wx:if="{{orderData.state == 0}}">
+    <van-button type="primary" color="#A0856A" bind:click="go_appoint" block>新建预约</van-button>
+</view>
+
+

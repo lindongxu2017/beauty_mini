@@ -1,166 +1,223 @@
-// pages/allorder/allorder.js
-const app=getApp()
+const app = getApp()
 Page({
 
-  data: {
-    // typeNav: [{ "name": '卡项/产品订单' }, { "name": '预约订单' }],
-    flagNav: 0,
-    // typePD: [
-    //   { "name": '全部' }, { "name": '待支付' }, { "name": '待自取' }, { "name": '待评价' }, { "name": '已完成/退款' }
-    // ],
-    typeApp: [
-      { "name": '全部' }, { "name": '待支付' }, { "name": '已支付' }, { "name": '已完成/退款' }
-    ],
-    flag: 0,
-    pagenum:1,
-    header: {
-      title: '全部订单',
-      hiddenBlock: '',
-      homeCapsule: '',
-      tubiao: true,
-      backURL:"/pages/mine/mine"
+    data: {
+        header: {
+            title: '全部订单',
+            hiddenBlock: '',
+            homeCapsule: '',
+            tubiao: true,
+            backurl: ''
+        },
+        tab_active: 0,
+        package_active: 0,
+        type_active: 0,
+        appoint_active: 0,
+        cate: ['全部', '待支付', '待消耗', '已消耗', '已评价', '已取消', '已退款', '已付定金'],
+        cate_2: ['全部', '待支付', '待提货', '已提货', '已评价', '已取消', '已退款', '已付定金'],
+        cate_3: ['全部', '待支付', '待使用', '已使用', '已评价', '已取消', '已退款', '已付定金'],
+        package_list: [[], [], [], [], [], []],
+        product_list: [[], [], [], [], [], []],
+        appoint_list: [[], [], [], [], [], []]
     },
-    flagArr:true,
-    datalist:[],
-    waitPay:false,
-    navHeight: 0
-  },
-  onLoad:function(options){
-    if (options.flag){
-        this.setData({
-            flag: options.flag
-        })
-    }
-    var that=this
-    if(app.globalData.unionid){
-      that.getdatalist()
-      that.setData({
-        navHeight: app.globalData.navgationHeight
-      })
-    }else{
-      setTimeout(function(){
-        if (app.globalData.unionid){
-          that.getdatalist()
-          that.setData({
-            navHeight: app.globalData.navgationHeight
-          })
-        }
-      },2000)
-    }
-  },
-  flagFun: function (e) { //切换点击事件
-    this.setData({
-      flag: e.currentTarget.dataset.flagindex,
-      datalist:[],
-      waitPay:false,
-      pagenum:1,
-      flagArr:true
-    });
-    if (e.currentTarget.dataset.flagindex==1){
-      this.setData({
-        waitPay: true
-      })
-    }
-    this.getdatalist()
-  },
-  
-  // handleNav:function(e){
-  //   this.setData({
-  //     flag: e.currentTarget.dataset.flagindex
-  //   });
-    
-  // },
-  goOrderMore:function(e){
-    wx.navigateTo({
-      url: '../ordermore/ordermore?id='+e.currentTarget.dataset.id,
-    })
-  },
-  getdatalist: function () { //可在onLoad中设置为进入页面默认加载
-    var that = this;
-    wx.request({
-      url: app.bash_url + 'applet/user/orders',
-      data: {
-        state: this.data.flag-1,
-        page: that.data.pagenum, //从数据里获取当前页数
-        pagesize: 6, //每页显示条数
-      },
-      method: "POST",
-      header: { unionid: app.globalData.unionid },
-      success: function (res) {
-        var arr1 = that.data.datalist; //从data获取当前datalist数组
-        var arr2 = res.data.data; //从此次请求返回的数据中获取新数组
-        if(arr2.length==0){
-          that.setData({
-            flagArr:false
-          })
-        }
-        for (var i = 0; i < arr2.length; i++) {
-          arr2[i].original_price = (arr2[i].original_price / 100).toFixed(2)
-          arr2[i].total_fee = (arr2[i].total_fee / 100).toFixed(2)
-          if (arr2[i].state == -1) {
-            arr2[i].state = '全部'
-          } else if (arr2[i].state == 0) {
-            arr2[i].state = '待支付'
-          } else if (arr2[i].state == 1) {
-            arr2[i].state = '已支付'
-          } else if (arr2[i].state == 2) {
-            arr2[i].state = '已完成'
-          }
-        }
-        arr1 = arr1.concat(arr2); //合并数组
-        that.setData({
-          datalist: arr1 //合并后更新datalist
-        })
-      },
-      fail: function (err) { },//请求失败
-      complete: function () { }//请求完成后执行的函数
-    })
-  },
-  onReachBottom: function () { //触底开始下一页
-    var that = this;
-    if (that.data.flagArr){
-      var pagenum = that.data.pagenum + 1; //获取当前页数并+1
-      that.setData({
-        pagenum: pagenum, //更新当前页数
-      })
-      that.getdatalist();//重新调用请求获取下一页数据
-    }
-  },
-  //继续付款
-  continuePay:function(e){
-    var that=this
-    wx.request({
-      url: app.bash_url + 'applet/purchase/respread',
-      method:'post',
-      header: { unionid: app.globalData.unionid },
-      data:{
-        order_id: e.currentTarget.dataset.id
-      },
-      success: res => {
-        const resData = res.data.data
-        wx.requestPayment({
-          timeStamp: resData.timeStamp,
-          nonceStr: resData.nonceStr,
-          package: resData.package,
-          signType: resData.signType,
-          paySign: resData.paySign,
-          success(res) {
-            if (res.errMsg == "requestPayment:ok") {
-              var arrList=that.data.datalist
-              for (var i = 0; i < arrList.length;i++){
-                if (arrList[i].id == e.currentTarget.dataset.id){
-                  arrList.splice(i,1)
-                }
-              }
-              that.setData({
-                datalist:arrList
-              })
-            }
-          },
-          fail(res) { }
-        })
 
-      }
-    })
-  }
+    onLoad: function(options) {
+        this.setData({
+            tab_active: options.order_type,
+            'header.backURL': '/pages/mine/mine'
+        })
+        if (options.order_type == 2) {
+            this.setData({
+                appoint_active: options.order_state,
+                
+            })
+        }
+        if (options.order_type == 1) {
+            this.setData({
+                type_active: options.order_state
+            })
+        }
+        if (options.order_type == 0) {
+            this.setData({
+                package_active: options.order_state
+            })
+        }
+    },
+
+    onChange (e) {
+        // console.log(e.detail)
+        this.setData({
+            tab_active: e.detail.index
+        })
+    },
+
+    package_onChange (e) {
+        var index = e.detail.index
+        this.setData({
+            package_active: e.detail.index
+        })
+        let key = 'package_list[' + index + ']'
+        this.setData({
+            [key]: []
+        })
+        this.get_package_list()
+    },
+
+    product_onChange (e) {
+        var index = e.detail.index
+        this.setData({
+            type_active: e.detail.index
+        })
+        let key = 'product_list['+index+']'
+        this.setData({
+            [key]: []
+        })
+        this.get_product_list()
+    },
+
+    appoint_onChange(e) {
+        var index = e.detail.index
+        this.setData({
+            appoint_active: e.detail.index
+        })
+        let key = 'appoint_list[' + index + ']'
+        this.setData({
+            [key]: []
+        })
+        this.get_appoint_list()
+    },
+
+    get_package_list () {
+        wx.showLoading({
+            title: '正在加载...',
+        })
+        var active = this.data.package_active
+        app.ajax('post', 'applet/order/packages', {
+            state: active,
+            page: Math.ceil(this.data.package_list[active].length / 10) + 1
+        }).then(res => {
+            wx.hideLoading()
+            if (res.status == 200) {
+                if (res.data.length) {
+                    var arr = 'package_list[' + active + ']'
+                    var list = this.data.package_list[active].concat(res.data)
+                    this.setData({
+                        [arr]: list
+                    })
+                } else {
+                    // todo
+                }
+            }
+        })
+    },
+
+    get_product_list () {
+        wx.showLoading({
+            title: '正在加载...',
+        })
+        var active = this.data.type_active
+        app.ajax('post', 'applet/order/products', {
+            state: active,
+            page: Math.ceil(this.data.product_list[active].length / 10) + 1
+        }).then(res => {
+            wx.hideLoading()
+            if (res.status == 200) {
+                if(res.data.length) {
+                    var arr = 'product_list[' + active + ']'
+                    var list = this.data.product_list[active].concat(res.data)
+                    this.setData({
+                        [arr]: list
+                    })
+                } else {
+                    // todo
+                }
+            }
+        })
+    },
+
+    get_appoint_list() {
+        wx.showLoading({
+            title: '正在加载...',
+        })
+        var active = this.data.appoint_active
+        app.ajax('post', 'applet/order/reserves', {
+            state: active,
+            page: Math.ceil(this.data.appoint_list[active].length / 10) + 1
+        }).then(res => {
+            wx.hideLoading()
+            if (res.status == 200) {
+                if (res.data.length) {
+                    var arr = 'appoint_list[' + active + ']'
+                    var list = this.data.appoint_list[active].concat(res.data)
+                    this.setData({
+                        [arr]: list
+                    })
+                } else {
+                    // todo
+                }
+            }
+        })
+    },
+
+    package_cancel (e) {
+        let { index, order } = e.currentTarget.dataset
+        let arr = JSON.parse(JSON.stringify(this.data.package_list[index]))
+        arr.splice(order, 1)
+        let key = 'package_list[' + index + ']'
+        this.setData({
+            [key]: arr
+        })
+        wx.hideLoading()
+    },
+
+    product_cancel (e) {
+        let { index, order } = e.currentTarget.dataset
+        let arr = JSON.parse(JSON.stringify(this.data.product_list[index]))
+        arr.splice(order, 1)
+        let key = 'product_list['+index+']'
+        this.setData({
+            [key]: arr
+        })
+        wx.hideLoading()
+    },
+
+    appoint_cancel (e) {
+        let { index, order } = e.currentTarget.dataset
+        let arr = JSON.parse(JSON.stringify(this.data.appoint_list[index]))
+        arr.splice(order, 1)
+        let key = 'appoint_list[' + index + ']'
+        this.setData({
+            [key]: arr
+        })
+        wx.hideLoading()
+    },
+
+    onShow: function() {
+        this.setData({
+            package_list: [[], [], [], [], [], []],
+            product_list: [[], [], [], [], [], []],
+            appoint_list: [[], [], [], [], [], []]
+        })
+        this.get_package_list()
+        this.get_product_list()
+        this.get_appoint_list()
+    },
+
+    onUnload: function() {
+
+    },
+
+    onPullDownRefresh: function() {
+
+    },
+
+    onReachBottom: function() {
+        if (this.data.tab_active == 0) {
+            this.get_package_list()
+        } else if (this.data.tab_active == 1) {
+            this.get_product_list()
+        } else {
+            this.get_appoint_list()
+        }
+    },
 })

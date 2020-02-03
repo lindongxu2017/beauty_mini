@@ -3,20 +3,37 @@
 <view class="userinfo">
 	<div class="cell">
 		<view class="lable">账号： </view>
-		<view class="value">1000001</view>
+		<view class="value">{{userInfo.id}}</view>
 	</div>
 	<div class="cell">
 		<view class="lable">余额：</view>
-		<view class="value price">￥100.00</view>
+		<view class="value price">￥{{userInfo.balance}}</view>
 	</div>
 </view>
 
 <view class="panel">
 	<view class="cell-title">选择充值金额</view>
 	<view class="list">
-		<view class="item" wx:for="{{quotalist}}">
-			<view>2000元</view>
-			<view>送200元</view>
+		<view class="item {{index == selected ? 'active' : ''}}" wx:for="{{quotalist}}" wx:key="{{index}}" data-index="{{index}}" bindtap="select">
+			<view><text class="money">{{item.money}}</text>元</view>
+			<view class="discount">{{item.title}}</view>
 		</view>
 	</view>
+	<view class="cell-title">选择充值金额：<text>充值{{quotalist[selected].money}}元 {{quotalist[selected].title}}</text></view>
+	<!-- <div class="flex-cell">
+		<view class="lable">实际到账：</view>
+		<view class="value">￥<text>{{quotalist[selected].invest_amount + quotalist[selected].give_amount}}</text>元</view>
+	</div> -->
+	<div class="flex-cell">
+		<view class="lable">应付金额：</view>
+		<view class="value">￥<text>{{quotalist[selected].money}}</text>元</view>
+	</div>
+	<view class="tips">
+		<view class="title">温馨提示：</view>
+		<view class="items">1.充值实时到账</view>
+		<!-- <view class="items">2.消费时优先使用实际金额，赠送金额有效期为1年</view> -->
+		<view class="items">2.在法律允许的范围内，解释权归我公司所有</view>
+	</view>
 </view>
+
+<view class="comfirm" bindtap="pay">确认充值</view>

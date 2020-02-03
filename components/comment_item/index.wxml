@@ -1,0 +1,28 @@
+<!--components/comment_item/index.wxml-->
+<view class="item">
+    <view class="info">
+        <image class="avatar" src="{{item.image}}"></image>
+        <view class="comment">
+            <view class="title">{{item.title}}</view>
+            <view class="star">
+                <text class="iconfont iconwuxing {{active >= index ? 'active' : '' }}" wx:for="{{5}}" wx:key="{{index}}" data-index="{{index}}" catchtap="star"></text>
+            </view>
+            <view class="text" wx:if="{{active > -1}}">
+                <view>
+                    <text>您的评价：</text>
+                    <text class="currnet">{{score[active].value}}</text>
+                    <text>分</text>
+                </view>
+                <view>{{score[active].name}}</view>
+            </view>
+            <view class="text" wx:else>暂无评分</view>
+        </view>
+    </view>
+    <view class="content" wx:if="{{item.state == 1}}">{{item.content}}</view>
+    <view class="time" wx:if="{{item.state == 1}}">{{item.submit_time}}</view>
+    <text class="iconfont iconyipingjia" wx:if="{{item.state == 1}}"></text>
+    <textarea wx:if="{{item.state == 0}}" bindinput="input" class="textarea" placeholder="品质效果如何？谢谢你的感受分享一下吧！" placeholder-style="color: #ccc;"></textarea>
+    <view class="btn-wrapper" wx:if="{{item.state == 0}}">
+        <text class="text" bindtap="submit">提交</text>
+    </view>
+</view>

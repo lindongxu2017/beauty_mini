@@ -1,38 +1,41 @@
 <!--pages/allorder/allorder.wxml-->
 <header header='{{header}}'></header>
-<view class="container" style="top:0">
-    <view class="scroll-wrap"  scroll-x="true" style="width:100%;top:{{navHeight}}px">
-        <view class="{{flag==index?'active':''}}" bindtap="flagFun" wx:for="{{typeApp}}" wx:key="index" data-flagindex='{{index}}'>{{item.name}}</view>
-    </view>
-    <view class='normal'>
-      <block  wx:if="{{datalist.length}}">
-        <view  class="cardArea" wx:for="{{datalist}}" wx:key="id">
-          <view>
-            <view class="cardItem" bindtap="goOrderMore" data-id="{{item.id}}">
-              <view class="title"><text decode="true">{{item.create_time}}</text><text class="status">{{item.state}}</text></view>
-              <view class="title">
-                <view class="productName"><text>{{item.package_title}}</text><text>￥{{item.original_price}}</text></view>
-                <view class="payWay"><text>{{item.package_describe}}</text><text>✖1</text></view>
-              </view>
-              <view class="money">
-                <view class="monetItem1">
-                  实付金额：
-                  <text>¥</text>
-                  <text>{{item.total_fee}}</text>
-                </view>
-                <text class="monetItem2">共1件商品</text>
-              </view>
-            </view>
-            <view class="buttonGroup" wx:if="{{waitPay}}">
-              <view class="continue" bindtap="continuePay" data-id="{{item.id}}">继续付款</view>
-              <!-- <view class="cancel" bindtap="cancelOrder">取消订单</view> -->
-            </view>
-          </view>
-        </view>
-      </block>
-      <block wx:else>
-        <view class="not" >暂无数据</view>
-      </block>
-    </view>
-</view>
 
+<van-tabs active="{{ tab_active }}" border="{{false}}" swipeable line-height="{{2}}" bind:change="onChange">
+    <van-tab title="套餐">
+        <van-tabs active="{{ package_active }}" ellipsis="{{false}}" line-height="{{0}}" swipe-threshold="{{6}}" bind:change="package_onChange">
+            <block wx:for="{{cate}}" wx:key="{{index}}">
+                <van-tab title="{{item}}">
+                    <block wx:for="{{package_list[index]}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
+                        <order-product bindcancel="package_cancel" data-index="{{index}}" data-order="{{order}}" item="{{obj}}"></order-product>
+                    </block>
+                    <view class="nodata" wx:if="{{package_list[index].length == 0}}">暂无数据...</view>
+                </van-tab>
+            </block>
+        </van-tabs>
+    </van-tab>
+    <van-tab title="产品订单">
+        <van-tabs active="{{ type_active }}" ellipsis="{{false}}" line-height="{{0}}" swipe-threshold="{{6}}" bind:change="product_onChange">
+            <block wx:for="{{cate_2}}" wx:key="{{index}}">
+                <van-tab title="{{item}}">
+                    <block wx:for="{{product_list[index]}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
+                        <order-product bindcancel="product_cancel" data-index="{{index}}" data-order="{{order}}" item="{{obj}}"></order-product>
+                    </block>
+                    <view class="nodata" wx:if="{{product_list[index].length == 0}}">暂无数据...</view>
+                </van-tab>
+            </block>
+        </van-tabs>
+    </van-tab>
+    <van-tab title="预约订单">
+        <van-tabs active="{{ appoint_active }}" ellipsis="{{false}}" line-height="{{0}}" swipe-threshold="{{6}}" bind:change="appoint_onChange">
+            <block wx:for="{{cate_3}}" wx:key="{{index}}">
+                <van-tab title="{{item}}">
+                    <block wx:for="{{appoint_list[index]}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
+                        <appoint-product bindcancel="appoint_cancel" data-index="{{index}}" data-order="{{order}}" item="{{obj}}"></appoint-product>
+                    </block>
+                    <view class="nodata" wx:if="{{appoint_list[index].length == 0}}">暂无数据...</view>
+                </van-tab>
+            </block>
+        </van-tabs>
+    </van-tab>
+</van-tabs>

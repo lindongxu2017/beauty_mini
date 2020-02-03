@@ -1,0 +1,37 @@
+<!--components/verification/index.wxml-->
+<view class="item" bindtap="godetail">
+    <view class="tips" hidden="{{is_show}}" catchtap="change">点击可查看核销码数字</view>
+    <view class="tips text" hidden="{{!is_show}}" catchtap="change">{{item.code}}</view>
+    <canvas canvas-id="barcode" catchtap="change" />
+    <!-- <image class="code" src="/utils/img/u224.png" catchtap="change" mode="widthFix"></image> -->
+    <view class="cell">
+        <view class="lable">预约门店</view>
+        <view class="value">美肌工坊福田KKONE店</view>
+    </view>
+    <view class="cell">
+        <view class="lable hide">预约门店</view>
+        <view class="value addr">沙头街道下沙社区滨河路9289号下沙村京基滨河时代广场A座1807</view>
+    </view>
+    <view class="cell">
+        <view class="lable">预约时间</view>
+        <view class="value">{{item.reserve_date}} {{item.interval}}</view>
+    </view>
+    <view class="cell">
+        <view class="lable">预约服务</view>
+        <view class="value">{{item.title}}</view>
+    </view>
+    <view class="cell">
+        <view class="lable">皮肤管家</view>
+        <view class="value">{{item.staff_name}}</view>
+    </view>
+    <view class="operate">
+        <view class="phone">
+            <van-icon name="phone-o" size="20px" color="#A0856A"/>
+            <text catchtap="call">联系门店</text>
+        </view>
+        <view class="address">
+            <van-icon name="location-o" size="20px" color="#A0856A"/>
+            <text catchtap="location">立即到店</text>
+        </view>
+    </view>   
+</view>

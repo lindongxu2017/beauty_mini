@@ -2,46 +2,58 @@
 
 <header header='{{header}}'></header>
 <view>
-  <block wx:if="{{userInfo}}">
-    <view class="info">
-      <view class="imgBox">
-        <image wx:if="{{userInfo.headimgurl}}" src="{{userInfo.headimgurl}}"></image>
-        <image wx:else src="../../utils/img/yonghumorentouxiang.png"></image>
-      </view>
-      <view class="personalInfo">
-        <view class="infoBox">
-          <view class="nameBox">{{userInfo.nickname}}</view>
+    <block wx:if="{{userInfo}}">
+        <view class="info">
+            <view class="imgBox">
+                <image wx:if="{{userInfo.headimgurl}}" src="{{userInfo.headimgurl}}"></image>
+                <image wx:else src="../../utils/img/yonghumorentouxiang.png"></image>
+            </view>
+            <view class="personalInfo">
+                <view class="infoBox">
+                    <view class="nameBox">{{userInfo.nickname}}</view>
+                </view>
+                <view class="personalTel">
+                    <text wx:if="{{userInfo.phone}}">{{userInfo.phone}}</text>
+                    <text wx:else>暂无绑定手机号~</text>
+                </view>
+            </view>
+            <view class="iconfont iconshezhi" bindtap="goSet"></view>
         </view>
-        <view class="personalTel">
-          <text wx:if="{{userInfo.phone}}">{{userInfo.phone}}</text>
-          <text wx:else>暂无绑定手机号~</text>
+        <view class="message">
+            <view class="zhanghao">
+                <text>账号：{{userInfo.id}}</text>
+                <text class="detail" catchtap="godetail">明细</text>
+            </view>
+            <view class="yue">余额：
+                <text>￥{{allMoney}}</text>
+            </view>
+            <view class="depositBtn" bindtap="depositBtn">去充值</view>
         </view>
-      </view>
-      <view class="iconfont iconshezhi" bindtap="goSet"></view>
-    </view>
-    <!-- <view class="message">
-      <view class="zhanghao">账号：{{userInfo.id}}</view>
-      <view class="yue">余额：<text>￥{{allMoney}}</text></view>
-       <view class="depositBtn" bindtap="depositBtn">去充值</view> 
-    </view> -->
-    <view class="gap"></view>
-    <view class="muneItem">
-    <view class="menuChild" bindtap="goAllOrder">
-      <image src="../../utils/img/icon_order.png"></image>
-      <view>全部订单</view>
-    </view>
-    <view class="menuChild" bindtap="goCardCase">
-      <image src="../../utils/img/icon_card.png"></image>
-      <view>我的卡包</view>
-    </view>
-  </view>
-  </block>
-  <block wx:else>
-    <view class="noSIgn">
-        <image src="../../utils/img/yonghumorentouxiang.png"></image>
-        <view class="statusTip">您还没有登录哦</view>
-        <view class="signBTn" bindtap="promiseLogin">授权登录</view>
-    </view>
-  </block>
+        <view class="gap"></view>
+        <view class="muneItem">
+            <view class="menuChild" bindtap="goAllOrder">
+                <!-- <image src="../../utils/img/icon_order.png"></image> -->
+                <text class="iconfont iconquanbudingdan"></text>
+                <view>全部订单</view>
+            </view>
+            <view class="menuChild" bindtap="goCardCase">
+                <!-- <image src="../../utils/img/icon_card.png"></image> -->
+                <text class="iconfont iconwodekabao"></text>
+                <view>我的卡包</view>
+            </view>
+            <view class="menuChild" bindtap="goShoppingcart">
+                <text class="iconfont icongouwuche"></text>
+                <view>购物车</view>
+                <view class="nums">{{nums}}</view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="noSIgn">
+            <image src="../../utils/img/yonghumorentouxiang.png"></image>
+            <view class="statusTip">您还没有登录哦</view>
+            <view class="signBTn" bindtap="promiseLogin">授权登录</view>
+        </view>
+    </block>
 
 </view>

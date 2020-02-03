@@ -1,4 +1,5 @@
 // pages/newUserMall/newUserMall.js
+const app = getApp()
 Page({
 
 	/**
@@ -6,39 +7,29 @@ Page({
 	 */
 	data: {
 		header: {
-			title: '新人专享',
+			title: '优惠套餐',
 			hiddenBlock: '',
 			homeCapsule: '',
 			tubiao: true,
 			backURL: "/pages/index/index"
 		},
-		list: [
-			{
-				current_price: 9900,
-				describe: "腋下/唇部/发际线/手背/脚背五选一",
-				id: 8,
-				img_url: "https://tcdn.169kang.com/skincare/project/942cbba1f8b360ca337a77b719e5192b.png",
-				original_price: 19900,
-				purchase_times: 0,
-				title: "蓝宝石冰点无痛永久性脱毛1次",
-			},
-			{
-				current_price: 9900,
-				describe: "腋下/唇部/发际线/手背/脚背五选一",
-				id: 8,
-				img_url: "https://tcdn.169kang.com/skincare/project/942cbba1f8b360ca337a77b719e5192b.png",
-				original_price: 19900,
-				purchase_times: 0,
-				title: "蓝宝石冰点无痛永久性脱毛1次",
-			}
-		]
+		pdInfo: []
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-
+		this.getdata()
+	},
+	
+	getdata() {
+        app.ajax('POST', 'applet/package/lists', {version: 'v1.0'}).then(res => {
+			// console.log(res)
+            this.setData({
+                pdInfo: res.data
+            })
+		})
 	},
 	
 	goForLook: function(e) {

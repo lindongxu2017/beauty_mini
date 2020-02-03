@@ -1,0 +1,94 @@
+<!--pages/product_detail/index.wxml-->
+<header header='{{header}}'></header>
+
+<view class="product">
+    <swiper autoplay class="swiper-height" indicator-dots indicator-active-color="#A99178">
+        <swiper-item wx:for="{{detail.gallerys}}" wx:key="{{index}}">
+            <image class="swiper-item-img" src="{{item}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
+    <view class="info">
+        <view class="title-time">
+            <view class="title">{{detail.title}}</view>
+            <view class="time">{{detail.specs}}</view>
+        </view>
+        <view class="desc">{{detail.describe}}</view>
+        <view class="flex-cell">
+            <view class="flex-cell price">
+                <view class="current">
+                    <text>￥</text>
+                    <text class="text">{{detail.price}}</text>
+                    <text>.00</text>
+                </view>
+                <view class="origin">
+                    <text>原价:</text>
+                    <text class="text">￥{{detail.origin_price}}.00</text>
+                </view>
+            </view>
+            <view class="num">已售{{detail.purchase_times}}件</view>
+        </view>
+    </view>
+</view>
+
+<view class="details">
+    <view class="cell">商品详情</view>
+    <block wx:for="{{detail.details}}" wx:key="{{index}}">
+        <image src="{{item}}" mode="widthFix"></image>
+    </block>
+</view>
+
+<view class="comment" wx:if="{{comment.length > 0}}">
+    <view class="flex-cell comment-title">
+        <view>买过的人这么说</view>
+        <view class="checkmore" catchtap="checkmore">查看全部</view>
+    </view>
+    <view class="comment-item" wx:for="{{comment}}" wx:key="{{index}}" wx:if="{{index == 0}}">
+        <view class="userinfo">
+            <view class="avatar">
+                <image src="{{item.headimgurl}}" mode="aspectFill"></image>
+            </view>
+            <view class="content">
+                <view class="info-text">
+                    <view class="name-phone">
+                        <view class="name">{{item.nickname}}</view>
+                        <view class="phone">{{item.phone}}</view>
+                    </view>
+                    <view class="star-date">
+                        <view class="star">
+                            <van-icon name="star" wx:for="{{item.score}}" wx:key="{{order}}" wx:for-item="obj" wx:for-index="order" />
+                            <van-icon name="star-o" wx:for="{{5 - item.score}}" wx:key="{{order}}" wx:for-item="obj" wx:for-index="order" />
+                            <text>{{item.score}}.0</text>
+                        </view>
+                        <view class="date">{{item.create_time}}</view>
+                    </view>
+                </view>
+                <view class="content-text">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view></view>
+
+<van-goods-action>
+    <van-goods-action-icon icon="bag-o" text="商城" bind:click="home" icon-class="color" />
+    <van-goods-action-icon icon="chat-o" open-type="contact" text="客服" icon-class="color" />
+    <van-goods-action-icon icon="share" open-type="share" text="分享" icon-class="color" />
+    <van-goods-action-button text="加入购物车" bind:click="appointment" custom-class="bg-color-o" />
+    <van-goods-action-button text="立即购买" bind:click="onOpen" custom-class="bg-color" />
+</van-goods-action>
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+    <van-card price="{{detail.price}}" desc="{{detail.describe}}" title="{{detail.title}}" thumb="{{ detail.gallerys[0] }}">
+        <view slot="bottom" class="footer-num">
+            <text class="card-label">购买数量</text>
+            <view class="steps">
+                <text class="iconfont iconjian" data-type="-1" catchtap="change_num"></text>
+                <text class="nums">{{num}}</text>
+                <text class="iconfont iconjia" data-type="1" catchtap="change_num"></text>
+            </view>
+        </view>
+    </van-card>
+    <view class="commit-order">
+        <van-button color="#a0856a" type="primary" block catchtap="purchase">去下单</van-button>
+    </view>
+</van-popup>

@@ -1,72 +1,60 @@
 <!--index.wxml-->
 
 <header header='{{header}}'></header>
-<swiper class="swiper-wrapper">
-	<swiper-item>
-		<image src="../../utils/img/1568777964097.jpg" class="swiper-img" mode="aspectFill"></image>
+<swiper class="swiper-wrapper" autoplay circular indicator-dots indicator-active-color="#A99178" wx:if="{{details.banners.length}}">
+	<swiper-item wx:for="{{details.banners}}" wx:key="{{index}}">
+		<image src="{{item.image_src}}" class="swiper-img" mode="aspectFill" data-item="{{item}}" catchtap="godetail"></image>
 	</swiper-item>
 </swiper>
-<view class="grid-wrapper">
-	<view class="grid-item" wx:for="{{gridlist}}" wx:key="{{index}}" data-index="{{index}}" bindtap="gridTo">
+<view class="grid-wrapper" wx:if="{{details.enter.package == 1 || details.enter.invest == 1 || details.enter.service == 1 || details.enter.product == 1}}">
+	<view class="grid-item" wx:for="{{gridlist}}" wx:key="{{index}}" data-index="{{index}}" bindtap="gridTo" wx:if="{{item.is_show==1}}">
 		<image src="{{item.icon}}" class="gird-item-img"></image>
 		<view class="grid-item-text">{{item.text}}</view>
 	</view>
 </view>
 <view class="speciallist-wrapper">
-	<view class="special-item-wrapper" wx:for="{{speciallist}}" wx:key="{{index}}" style="background-image: url({{item.backbg}});">
+	<view class="special-item-wrapper" wx:for="{{details.navs}}" wx:key="{{index}}" style="background-image: url({{item.image_src}});">
 		<view class="special-content">
 			<view class="title-text">
-				<view class="title">{{item.title}}</view>
-				<view class="subtitle">{{item.subtitle}}</view>
+				<!-- <view class="title">{{item.title}}</view> -->
+				<view class="title">服务项目</view>
+				<!-- <view class="subtitle">{{item.subtitle || '精选护肤好物，爱美不分场合'}}</view> -->
+				<view class="subtitle">精选护肤好物，爱美不分场合</view>
 			</view>
-			<view class="items" wx:for="{{item.list}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
+			<view class="items" wx:for="{{item.services}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}">
 				<view class="title-time">
 					<view class="title">
 						<text>{{obj.title}}</text>
 					</view>
-					<view class="time">{{obj.time}}</view>
+					<view class="time">{{obj.duration}}min</view>
 				</view>
-				<view class="subtitle">{{obj.subtitle}}</view>
+				<view class="subtitle">{{obj.describe}}</view>
 				<view class="price-order">
 					<view class="items-price">
 						<text class="unit">￥</text>
 						<text class="text">{{obj.price}}</text>
 						<text class="point">.00</text>
 					</view>
-					<view class="appointment-btn">去预约</view>
+					<view data-id="{{obj.service_id}}" catchtap="goappointment" class="appointment-btn">去预约</view>
 				</view>
 			</view>
 		</view>
-		<view class="product-wrapper">
+		<view class="product-wrapper" wx:if="{{item.products.length}}">
 			<view class="title-wrapper">
 				<view class="title">家居产品</view>
 				<view class="subtitle">专注肌肤健康，全面守护颜值</view>
 			</view>
 			<view class="list-wrapper">
-				<view class="items">
-					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
-					<view class="product-text">产品名称</view>
-					<view class="product-price">￥100.00</view>
-				</view>
-				<view class="items">
-					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
-					<view class="product-text">产品名称</view>
-					<view class="product-price">￥100.00</view>
-				</view>
-				<view class="items">
-					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
-					<view class="product-text">产品名称</view>
-					<view class="product-price">￥100.00</view>
-				</view>
-				<view class="items">
-					<image class="product-img" mode="aspectFill" src="../../utils/img/u120.png.jpg"></image>
-					<view class="product-text">产品名称</view>
-					<view class="product-price">￥100.00</view>
+				<view class="items" wx:for="{{item.products}}" wx:for-item="obj" wx:for-index="order" wx:key="{{order}}" data-id="{{obj.product_id}}" catchtap="goproduct">
+					<image class="product-img" mode="aspectFill" src="{{obj.image_src}}"></image>
+					<view class="product-text">{{obj.title}}</view>
+					<view class="product-price">￥{{obj.price}}</view>
 				</view>
 			</view>
 		</view>
 	</view>
 </view>
+
 <view class="indexItem">
 	<!-- <view class="banner">
       <swiper indicator-dots="{{indicatorDots}}"
@@ -107,7 +95,7 @@
 		<button class="authBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 	</view>
 </block>
-<view class="ad-wrapper" wx:if="{{isShowAd}}" bindtap="hideAd">
+<view class="ad-wrapper {{isShowAd ? 'active' : ''}}" wx:if="{{isShowAd}}" bindtap="hideAd">
 	<image src="../../utils/img/dav.png" mode="widthFix" class="fade-in" catchtap="linkTo"></image>
 </view>
 <loadingSelf id="loadingSelf"></loadingSelf>

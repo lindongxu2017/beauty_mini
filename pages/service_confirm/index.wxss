@@ -1,0 +1,136 @@
+/* pages/service_confirm/index.wxss */
+page {
+    background-color: #f2f2f2;
+}
+.gray {
+    color: #999;
+}
+.price {
+    color: #FF9900;
+}
+.tips {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    line-height: 60rpx;
+    background-color: #FFF7F2;
+    color: #A0856A;
+    font-size: 28rpx;
+    text-align: center;
+}
+.tips .time {
+    font-weight: bold;
+    color: #FF9900;
+    margin: 0 5rpx;
+}
+.section {
+    background-color: #fff;
+    margin: 0 20rpx 20rpx;
+    border-radius: 5rpx;
+    padding: 40rpx 0 10rpx;
+    border-bottom: 4rpx solid #D8CCC0;
+}
+.section.no-border {
+    border: 0;
+}
+.section .cell {
+    padding: 0 40rpx 30rpx;
+}
+.value.border-top {
+    border-top: 2rpx solid #eee;
+    padding-top: 30rpx;
+}
+.cell .label, .cell .iconfont {
+    font-size: 28rpx;
+    color: #ccc;
+    display: inline-block;
+    vertical-align: baseline;
+}
+.cell .iconfont {
+    font-size: 24rpx;
+    margin-right: 10rpx;
+}
+.cell .value {
+    margin-top: 30rpx;
+    padding-left: 34rpx;
+    font-size: 28rpx;
+}
+.cell .value textarea {
+    height: 60px;
+}
+.cell .value.border-b {
+    border-bottom: 2rpx solid #eee;
+}
+.cell .value.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+.place {
+    height: 60px;
+}
+
+.submit-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20rpx 20rpx 20rpx 30rpx; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.submit-bar .info, .submit-bar .btn {
+    flex: 1;
+}
+.submit-bar .btn {
+    line-height: 80rpx;
+    border-radius: 80rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #BA9B65;
+    font-size: 32rpx;
+}
+.need-pay {
+    font-size: 24rpx;
+}
+.need-pay .text {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+.discount {
+    font-size: 20rpx;
+}
+.agreement {
+    padding: 30rpx 0;
+    text-align: center;
+    font-size: 28rpx;
+}
+.agreement .iconfont {
+    background-color: #f2f2f2;
+    color: #f2f2f2;
+    width: 28rpx;
+    height: 28rpx;
+    display: inline-block;
+    text-align: center;
+    line-height: 30rpx;
+    border-radius: 50%;
+    padding: 2rpx;
+    font-size: 24rpx;
+    margin-right: 10rpx;
+    border: 2rpx solid #DAAD83;
+}
+.agreement .iconfont.active {
+    background-color: #DAAD83;
+    color: #fff;
+}
+.protrol {
+    color: #DAAD83;
+}

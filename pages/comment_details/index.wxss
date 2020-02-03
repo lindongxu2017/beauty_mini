@@ -1,0 +1,19 @@
+/* pages/comment_details/index.wxss */
+@import '../comment/index.wxss';
+
+page {
+    background-color: #fff;
+}
+.default {
+    margin-bottom: 40rpx;
+}
+.tips text {
+    width: 40%;
+    display: inline-block;
+}
+.content {
+    font-size: 26rpx;
+    padding: 0 30rpx 30rpx;
+    color: #666;
+    line-height: 1.5;
+}

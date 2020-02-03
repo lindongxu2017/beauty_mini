@@ -1,0 +1,13 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "van-goods-action": "/miniprogram_npm/vant-weapp/goods-action/index",
+        "van-goods-action-icon": "/miniprogram_npm/vant-weapp/goods-action-icon/index",
+        "van-goods-action-button": "/miniprogram_npm/vant-weapp/goods-action-button/index",
+        "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+        "van-card": "/miniprogram_npm/vant-weapp/card/index",
+        "van-button": "/miniprogram_npm/vant-weapp/button/index",
+        "header": "../../components/navBar/navBar"
+    }
+}

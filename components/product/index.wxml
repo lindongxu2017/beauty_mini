@@ -1,0 +1,10 @@
+<!--components/product/index.wxml-->
+<view class="pdItem" bindtap="goForLook" data-id="{{item.id}}">
+	<image src="{{item.image_src}}" mode="widthFix"></image>
+	<view class="titelPd">{{item.title}}</view>
+	<view class="sogonPd">{{item.describe}}</view>
+	<view class="price">
+		<view class="priceItem"><text class="current_price">￥{{item.price}}</text><text class="original_price">原价：<text>￥{{item.origin_price}}</text></text></view>
+		<view class="goForLook">{{type == 1 ? '去看看' : '去预约'}}</view>
+	</view>
+</view>

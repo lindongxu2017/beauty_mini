@@ -1,0 +1,115 @@
+/* pages/comment/index.wxss */
+page {
+    background-color: #f2f2f2;
+}
+.star {
+    margin: 80rpx 0 40rpx;
+    text-align: center;
+}
+.iconfont {
+    margin: 0 20rpx;
+    font-size: 40rpx;
+    color: #E6E6E6;
+}
+.iconfont.active {
+    color: #FF9900;
+}
+.default {
+    font-size: 28rpx;
+    text-align: center;
+    color: #666;
+}
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #666;
+    padding: 0 25%;
+    box-sizing: border-box;
+    margin-bottom: 60rpx;
+}
+.score .label .text {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #FF9900;
+    margin-right: 6rpx;
+}
+.tips {
+    text-align: center;
+    font-size: 32rpx;
+    color: #666;
+    margin-bottom: 60rpx;
+}
+.tips text {
+    position: relative;
+}
+.tips text::before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 1px;
+    background-color: #E8E8E8;
+    left: -50%;
+    top: 20rpx;
+}
+.tips text::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 1px;
+    background-color: #E8E8E8;
+    right: -50%;
+    top: 20rpx;
+}
+.options {
+    padding: 0 10%;
+}
+.options .item {
+    display: inline-block;
+    width: calc(50% - 40rpx);
+    margin: 0 20rpx 40rpx;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #fff;
+    font-size: 28rpx;
+    line-height: 60rpx;
+    border-radius: 60rpx;
+    border: 2rpx solid #E8E8E8;
+    box-sizing: border-box;
+    color: #666;
+}
+.options .item.active {
+    border-color: #FF9900;
+    background-color: #FFF1DD;
+    color: #FF9900;
+}
+.mark {
+    padding: 0 30rpx;
+    margin-top: 40rpx;
+}
+.mark textarea {
+    height: 160rpx;
+    border: 2rpx solid #E8E8E8;
+    border-radius: 10rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+    font-size: 28rpx;
+}
+
+.submit {
+    width: 360rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    background-color: #A0856A;
+    border-radius: 100rpx;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    margin-top: 40rpx;
+}
+.submit:active {
+    opacity: 0.8;
+}

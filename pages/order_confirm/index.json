@@ -1,0 +1,7 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "header": "../../components/navBar/navBar",
+        "pay-module": "../../components/pay_module/index"
+    }
+}

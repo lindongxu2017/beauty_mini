@@ -1,0 +1,7 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "header": "../../components/navBar/navBar",
+        "van-icon": "/miniprogram_npm/vant-weapp/icon/index"
+    }
+}

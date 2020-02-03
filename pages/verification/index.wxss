@@ -1,0 +1,157 @@
+/* pages/verification/index.wxss */
+
+page {
+    background-color: rgba(242, 242, 242, 1);
+}
+
+.tips {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #fff7ee;
+    box-sizing: border-box;
+    padding-left: 20rpx;
+    z-index: 2;
+}
+
+.text {
+    color: #a0856a;
+    font-size: 24rpx;
+    line-height: 60rpx;
+}
+
+.list {
+    padding: 80rpx 20rpx 20rpx;
+}
+
+.nothing{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nothing image{
+  margin-top: 80rpx;
+  height: 240rpx;
+  width: 240rpx
+}
+.nothing text{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  color: #999999
+}
+
+/*隐藏框*/
+.dialog{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index:1000
+}
+
+.headImageView {
+  height: 162rpx;
+  width: 163rpx
+}
+
+.headImageView image{
+  height: 162rpx;
+  width: 162rpx
+}
+
+.titleText {
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
+  font-size: 38rpx;
+  color: #020e0f;
+}
+
+.contentText {
+  margin-bottom: 0px;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.authBtn {
+  margin-top: 70rpx;
+  height: 80rpx;
+  font-size: 38rpx;
+  width: 330rpx;
+  background: #a0856a;
+  color: #fff;
+  line-height: 80rpx;
+  border-radius: 50rpx
+}
+
+/* components/verification/index.wxss */
+.item {
+    background-color: #fff;
+    padding: 40rpx 0 10rpx;
+    border-radius: 10rpx;
+    box-shadow: 4rpx 4rpx 4rpx rgba(0, 0, 0, 0.1);
+    margin-bottom: 20rpx;
+}
+._tips {
+    text-align: center;
+    font-size: 24rpx;
+    color: #ccc;
+    line-height: 34rpx;
+}
+._tips.text {
+    font-size: 26rpx;
+    color: #333;
+    font-weight: bold;
+    line-height: 34rpx;
+}
+.barcode {
+    width: 76.6%;
+    height: 82px;
+    display: block;
+    margin: 0 auto 10rpx;
+}
+.cell {
+    padding: 20rpx 30rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+.cell .lable {
+    color: #999;
+}
+.cell .lable.hide {
+    opacity: 0;
+}
+.cell .value {
+    flex: 1;
+    padding-left: 20rpx;
+}
+.cell .value.addr {
+    font-size: 24rpx;
+    color: #999;
+}
+.operate {
+    display: flex;
+    padding: 20rpx 0;
+}
+.operate > view {
+    flex: 1;
+    text-align: center;
+}
+.operate text {
+    font-size: 28rpx;
+    color: #A0856A;
+    vertical-align: text-top;
+    display: inline-block;
+    margin-left: 4rpx;
+}
+van-icon {
+    display: inline-block;
+    vertical-align: text-top;
+}

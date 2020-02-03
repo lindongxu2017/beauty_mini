@@ -177,6 +177,10 @@ page{
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(0,0,0,0.607843);
+    opacity: 0
+}
+.ad-wrapper.active {
+    opacity: 1;
 }
 .fade-in {
 	width: 64.44%;
@@ -206,6 +210,7 @@ page{
 	padding: 40rpx 0;
 	font-size: 0;
 	background-color: #fff;
+    margin-bottom: 15rpx;
 }
 .grid-item {
 	display: inline-block;
@@ -226,6 +231,7 @@ page{
 	padding: 33.33vw 20rpx 10rpx;
 	background-size: 100% auto;
 	background-repeat: no-repeat;
+    margin-bottom: 15rpx;
 }
 .special-content {
 	background-color: #fff;

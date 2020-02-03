@@ -9,12 +9,19 @@ function tabbarinit() {
       "text": "美肌商城"
     },
     {
+        "current": 0,
+        "pagePath": "/pages/veriffication/index",
+        "iconPath": "../../utils/img/time-o.png",
+        "selectedIconPath": "../../utils/img/time.png",
+        "text": "预约"
+    },
+    {
       "current": 0,
       "pagePath": "/pages/mine/mine",
       "iconPath": "../../utils/img/gerenzhongxin.png",
       "selectedIconPath": "../../utils/img/gerenzhongxin1.png",
       "text": "我的"
-    },
+    }
   ]
 
 }
